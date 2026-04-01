@@ -1,0 +1,221 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Warum 87% aller KI-Projekte scheitern — ILDEN Insights</title>
+<meta name="description" content="Die Gründe, warum KI-Projekte scheitern, und was die erfolgreichen 13% anders machen. Analyse von Ilias Albay, Wirtschaftsingenieur.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="../images/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+.content-body { max-width: 720px; margin: 0 auto; }
+.content-body p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); }
+.content-body h2 { font-family: var(--font-heading); font-size: clamp(1.5rem, 2.5vw, 2rem); margin: var(--space-xl) 0 var(--space-sm); color: var(--text-primary); }
+.content-body h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: var(--space-lg) 0 var(--space-xs); color: var(--text-primary); }
+.content-body ul, .content-body ol { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); padding-left: 1.5em; }
+.content-body li { margin-bottom: 8px; }
+.content-body blockquote { border-left: 3px solid var(--blue); padding: var(--space-sm) var(--space-md); margin: var(--space-lg) 0; background: rgba(74,144,217,0.05); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.content-body blockquote p { font-style: italic; color: var(--text-primary); margin-bottom: 0; }
+.content-body strong { color: var(--text-primary); }
+.content-body a { color: var(--blue-light); text-decoration: underline; text-underline-offset: 3px; }
+.content-body a:hover { color: var(--blue-pale); }
+.source-note { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+.author-box { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: var(--space-lg) 0; margin: var(--space-xl) 0; display: flex; gap: var(--space-md); align-items: center; }
+.author-box-info h4 { color: var(--text-primary); margin-bottom: 4px; }
+.author-box-info p { color: var(--text-secondary); font-size: var(--type-small); margin: 0; }
+.author-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--border); }
+.related-articles { margin: var(--space-xl) 0; }
+.related-articles h3 { font-family: var(--font-heading); margin-bottom: var(--space-md); color: var(--text-primary); }
+.related-link { display: block; padding: var(--space-sm) var(--space-md); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: var(--space-sm); transition: var(--transition); color: var(--text-secondary); text-decoration: none; }
+.related-link:hover { border-color: var(--blue); background: rgba(74,144,217,0.04); color: var(--text-primary); }
+.related-link strong { display: block; color: var(--text-primary); margin-bottom: 4px; }
+.article-cta { text-align: center; padding: var(--space-xl); background: var(--surface); border-radius: var(--radius-xl); border: 1px solid var(--border); margin: var(--space-xl) 0; }
+.article-cta h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: var(--space-sm); color: var(--text-primary); }
+.article-cta p { color: var(--text-secondary); margin-bottom: var(--space-md); max-width: 480px; margin-left: auto; margin-right: auto; }
+.stat-box { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin: var(--space-lg) 0; }
+.stat-item { text-align: center; padding: var(--space-md); background: var(--surface); border-radius: var(--radius-md); border: 1px solid var(--border); }
+.stat-item .stat-number { font-family: var(--font-heading); font-size: 2rem; color: var(--blue-light); display: block; }
+.stat-item .stat-label { font-size: 0.8rem; color: var(--text-dim); margin-top: 4px; display: block; }
+@media (max-width: 600px) { .stat-box { grid-template-columns: 1fr; } .author-box { flex-direction: column; text-align: center; } }
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="../index.html" class="logo"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="../ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="../automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="../datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="../schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="../implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="../compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="../ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="../methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="../referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="../insights.html" class="nav-link">Insights</a></li>
+        <li><a href="../kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="../kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<section class="page-hero" style="padding:160px 0 var(--space-lg)">
+    <div class="container" style="max-width:720px">
+        <a href="../insights.html" style="color:var(--blue-light);font-size:var(--type-small);display:inline-flex;align-items:center;gap:6px;margin-bottom:var(--space-md);text-decoration:none">&larr; Zurück zu Insights</a>
+        <div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-light);background:rgba(74,144,217,0.1);padding:6px 14px;border-radius:100px;margin-bottom:var(--space-md)">KI-STRATEGIE</div>
+        <h1 style="font-size:var(--type-display);margin-bottom:var(--space-sm);line-height:1.1">Warum 87% aller KI-Projekte scheitern — und was die restlichen 13% anders machen</h1>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-dim);flex-wrap:wrap">
+            <span>Ilias Albay</span><span style="opacity:0.4">·</span><span>Wirtschaftsingenieur</span><span style="opacity:0.4">·</span><span>15. März 2026</span><span style="opacity:0.4">·</span><span>8 Min. Lesezeit</span>
+        </div>
+    </div>
+</section>
+
+<section class="content-section" style="padding:var(--space-xl) 0 var(--space-2xl)">
+    <div class="container" style="max-width:720px">
+        <div class="content-body">
+
+            <p>Lassen Sie mich mit einer unbequemen Zahl anfangen: Laut einer Studie der RAND Corporation aus dem Jahr 2025 scheitern rund 80% aller KI-Projekte. Andere Quellen, etwa VentureBeat, sprechen sogar von 87%. Egal welche Zahl man nimmt — das Ergebnis bleibt dasselbe. Die überwiegende Mehrheit aller KI-Initiativen erreicht nie die Produktion.</p>
+
+            <p>Ich habe in den letzten drei Jahren über 50 KI-Projekte begleitet. Bei Mittelständlern, bei DAX-Unternehmen, bei Startups. Die erfolgreichen hatten alle eines gemeinsam — und es war nicht das Budget. Es war nicht die Technologie. Und es war definitiv nicht der Hype.</p>
+
+            <div class="stat-box">
+                <div class="stat-item">
+                    <span class="stat-number">80–87%</span>
+                    <span class="stat-label">Scheiterungsrate bei KI-Projekten</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2,52 Bil.</span>
+                    <span class="stat-label">Globale KI-Ausgaben 2026 (Gartner)</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">13%</span>
+                    <span class="stat-label">Projekte mit messbarem ROI</span>
+                </div>
+            </div>
+
+            <h2>Die fünf Gründe, warum KI-Projekte sterben</h2>
+
+            <h3>1. Kein klares Geschäftsproblem</h3>
+
+            <p>Der häufigste Fehler, den ich sehe — und ich sehe ihn jede Woche: Ein Vorstand liest in der Wirtschaftswoche über ChatGPT, ruft montags die IT an und sagt: „Wir brauchen auch KI." Aber auf die Frage, welches konkrete Problem gelöst werden soll, kommt keine Antwort.</p>
+
+            <p>McKinseys „State of AI"-Report 2024 zeigt es deutlich: Unternehmen, die KI-Projekte an spezifische Business-KPIs koppeln, erreichen dreimal häufiger einen positiven ROI als solche, die „einfach mal anfangen". Das klingt offensichtlich. Ist es aber offenbar nicht, denn die meisten Unternehmen starten trotzdem ohne klares Ziel.</p>
+
+            <h3>2. Daten — das unterschätzte Fundament</h3>
+
+            <p>Ein Fertigungsunternehmen, mit dem ich letztes Jahr gearbeitet habe, wollte predictive Maintenance einführen. Gute Idee. Das Problem: Die Maschinendaten lagen in vier verschiedenen Systemen, teilweise in Excel-Tabellen, teilweise in einer Access-Datenbank von 2009. Die Hälfte der Sensordaten war unvollständig.</p>
+
+            <p>Gartner schätzt, dass Unternehmen im Schnitt 60–70% der Projektzeit auf Datenbereinigung verwenden. Nicht auf Modelltraining. Nicht auf Algorithmen. Auf das Aufräumen von Daten, die über Jahrzehnte gewachsen sind wie ein unkontrollierter Efeu an der Hauswand. Wer das nicht einplant, scheitert garantiert.</p>
+
+            <h3>3. Fehlende Verankerung im Management</h3>
+
+            <p>Hier wird es politisch. KI-Projekte, die nur in der IT-Abteilung leben, haben eine Überlebenschance von ungefähr null. Warum? Weil sie beim nächsten Budget-Review als erstes gestrichen werden. Weil niemand in der Geschäftsleitung versteht, was das Projekt eigentlich macht. Weil der Fachbereich sagt: „Wir wurden nie gefragt."</p>
+
+            <p>Die RAND-Studie identifiziert fehlendes Executive Sponsorship als einen der Hauptgründe für das Scheitern. In meiner Erfahrung braucht jedes KI-Projekt einen Sponsor auf C-Level — jemanden, der nicht nur Budget freigibt, sondern der das Projekt aktiv schützt, wenn die ersten Rückschläge kommen. Und die kommen immer.</p>
+
+            <h3>4. Der Proof-of-Concept, der nie erwachsen wird</h3>
+
+            <p>Kennen Sie das? Ein brillantes Data-Science-Team baut einen Prototyp in einem Jupyter Notebook. Der funktioniert fantastisch — auf dem Laptop des Lead Data Scientists. Dann soll er in die Produktion. Und plötzlich braucht man MLOps, Monitoring, CI/CD-Pipelines, Sicherheitsfreigaben, Datenschutz-Folgeabschätzungen.</p>
+
+            <p>Der Übergang vom PoC zur Produktion ist das Tal des Todes für KI-Projekte. Laut McKinsey scheitern 70% aller Projekte genau an dieser Stelle. Nicht weil die Technologie nicht funktioniert, sondern weil niemand den Aufwand für Produktionalisierung eingeplant hat. Ein PoC kostet vielleicht 50.000 Euro. Die Produktionalisierung das Drei- bis Fünffache.</p>
+
+            <h3>5. Unrealistische Erwartungen</h3>
+
+            <p>Letzte Woche sagte mir ein Geschäftsführer — wörtlich: „Wir wollen, dass die KI in drei Monaten unseren Kundenservice ersetzt." Sein Kundenservice besteht aus 40 Mitarbeitern, die hochkomplexe technische Anfragen bearbeiten. In drei Monaten. Komplett ersetzt.</p>
+
+            <p>Solche Erwartungen entstehen, wenn man zu viele LinkedIn-Posts liest und zu wenig mit Leuten spricht, die tatsächlich KI-Systeme bauen. Ja, KI kann den Kundenservice dramatisch verbessern. Aber „dramatisch verbessern" bedeutet vielleicht 30% weniger Bearbeitungszeit und bessere First-Response-Raten — nicht die komplette Eliminierung menschlicher Arbeit. Wer mit unrealistischen Erwartungen startet, wird zwangsläufig enttäuscht.</p>
+
+            <h2>Was die erfolgreichen 13% anders machen</h2>
+
+            <p>Jetzt die gute Nachricht. Denn es gibt sie ja, die Projekte, die funktionieren. Die, die echten ROI liefern. Was machen die anders?</p>
+
+            <h3>Sie starten klein — brutal klein</h3>
+
+            <p>Die erfolgreichsten KI-Projekte, die ich begleitet habe, hatten keinen Scope von „Transformation des gesamten Unternehmens". Sie hatten einen Scope von: „Wir automatisieren die Rechnungsprüfung in der Buchhaltung." Oder: „Wir reduzieren Ausschuss in Linie 3 um 15%." Klein. Messbar. Erreichbar.</p>
+
+            <p>Der Trick ist nicht, klein zu denken — sondern klein zu starten und dann zu skalieren. Ein erfolgreicher Pilot erzeugt Vertrauen. Vertrauen erzeugt Budget. Budget erzeugt den nächsten Pilot. Das ist kein linearer Prozess. Es ist ein Flywheel.</p>
+
+            <h3>Sie beweisen den ROI in 90 Tagen</h3>
+
+            <p>Kein Vorstand wartet zwei Jahre auf Ergebnisse. Erfolgreiche Projekte sind so designed, dass sie innerhalb von 8–12 Wochen einen messbaren Wert liefern. Das muss kein Millionenbetrag sein. Es reicht, wenn die Buchhaltung sagt: „Das spart uns 20 Stunden pro Woche." Diese Zahl kann man hochrechnen. Diese Zahl überzeugt den Vorstand.</p>
+
+            <h3>Sie holen die Mitarbeiter ab — von Tag eins</h3>
+
+            <p>Change Management ist nicht optional. Es ist Pflicht. In meiner Arbeit mit Mittelstandsunternehmen habe ich gelernt: Die beste KI-Lösung nützt nichts, wenn die Mitarbeiter sie nicht nutzen. Und Mitarbeiter nutzen sie nicht, wenn sie das Gefühl haben, dass ihnen etwas übergestülpt wird.</p>
+
+            <p>Die erfolgreichsten Projekte binden die Fachbereiche von Anfang an ein. Nicht als passive Empfänger, sondern als aktive Gestalter. Der Sachbearbeiter, der seit 20 Jahren Rechnungen prüft, weiß besser als jeder Data Scientist, wo die Fehler liegen.</p>
+
+            <h3>Sie investieren in Infrastruktur, nicht in Hype</h3>
+
+            <p>Klingt langweilig? Ist es auch. Aber während andere Unternehmen über Large Language Models und autonome Agenten diskutieren, bauen die erfolgreichen erstmal eine saubere Dateninfrastruktur auf. Data Warehouse. Data Governance. Klare Prozesse. Das ist nicht sexy, aber es ist das Fundament, auf dem alles andere steht.</p>
+
+            <h2>Was Sie morgen tun sollten</h2>
+
+            <p>Wenn Sie gerade ein KI-Projekt planen oder eines haben, das stockt — hier meine drei konkreten Empfehlungen:</p>
+
+            <ol>
+                <li><strong>Definieren Sie ein messbares Geschäftsziel.</strong> Nicht „KI einführen", sondern „Bearbeitungszeit für Kundenanfragen um 25% reduzieren". Wenn Sie das Ziel nicht in einem Satz formulieren können, sind Sie noch nicht bereit.</li>
+                <li><strong>Prüfen Sie Ihre Daten — ehrlich.</strong> Nicht die Daten, die Sie gerne hätten. Die Daten, die Sie tatsächlich haben. In welcher Qualität? In welchen Systemen? Wie aktuell?</li>
+                <li><strong>Sichern Sie sich einen Executive Sponsor.</strong> Jemanden, der das Projekt versteht, der Budget schützen kann und der bereit ist, auch nach dem ersten Rückschlag weiterzumachen.</li>
+            </ol>
+
+            <p>KI-Projekte scheitern nicht an der Technologie. Sie scheitern an den Menschen, den Prozessen und den Erwartungen. Das ist die schlechte Nachricht. Die gute: All das lässt sich steuern. Man muss es nur tun.</p>
+
+            <p class="source-note">Quellen: RAND Corporation, „Identifying and Mitigating Risks of AI in DoD" (2025); McKinsey Global Institute, „The State of AI" (2024); Gartner, „AI Spending Forecast" (2026); VentureBeat, „Why AI Projects Fail" (2024).</p>
+
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-dim)"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="author-box-info">
+                    <h4>Über den Autor</h4>
+                    <p><strong>Ilias Albay</strong> ist Wirtschaftsingenieur und Gründer von ILDEN KI Consulting. Er berät mittelständische Unternehmen bei der strategischen Einführung von KI — mit Fokus auf messbare Ergebnisse statt Hype.</p>
+                </div>
+            </div>
+
+            <!-- Related Articles -->
+            <div class="related-articles">
+                <h3>Weiterlesen</h3>
+                <a href="roi-von-ki.html" class="related-link">
+                    <strong>ROI von KI: So rechnen Sie richtig — und vermeiden teure Fehler</strong>
+                    Warum die meisten ROI-Berechnungen falsch sind und wie Sie es besser machen.
+                </a>
+                <a href="prompt-engineering.html" class="related-link">
+                    <strong>Prompt Engineering für Führungskräfte: Was Sie wirklich wissen müssen</strong>
+                    Kein technischer Guide — ein strategischer.
+                </a>
+            </div>
+
+            <!-- CTA -->
+            <div class="article-cta">
+                <h3>Lassen Sie uns über Ihre KI-Strategie sprechen</h3>
+                <p>30 Minuten, unverbindlich. Wir identifizieren gemeinsam, wo KI in Ihrem Unternehmen den größten Hebel hat.</p>
+                <a href="../kontakt.html" class="btn btn-primary">Gespräch buchen &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="../ki-strategie.html">KI-Strategie</a></li><li><a href="../automatisierung.html">Automatisierung</a></li><li><a href="../datenanalyse.html">Datenanalyse</a></li><li><a href="../schulungen.html">Schulungen</a></li><li><a href="../implementierung.html">Implementierung</a></li><li><a href="../compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="../ueber-uns.html">Über ILDEN</a></li><li><a href="../methodik.html">Methodik</a></li><li><a href="../referenzen.html">Referenzen</a></li><li><a href="../insights.html">Insights</a></li><li><a href="../kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="../js/main.js"></script>
+
+</body></html>

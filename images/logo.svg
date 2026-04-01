@@ -1,0 +1,26 @@
+<svg viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ILDEN Wordmark -->
+  <!-- I -->
+  <rect x="0" y="8" width="8" height="32" rx="1" fill="#5b8ec9"/>
+  <!-- L -->
+  <rect x="16" y="8" width="8" height="32" rx="1" fill="#5b8ec9"/>
+  <rect x="16" y="32" width="20" height="8" rx="1" fill="#5b8ec9"/>
+  <!-- D -->
+  <path d="M44 8h12c8.8 0 16 7.2 16 16s-7.2 16-16 16H44V8zm8 7v18h4c5 0 9-4 9-9s-4-9-9-9h-4z" fill="#1e3454"/>
+  <!-- E -->
+  <rect x="80" y="8" width="8" height="32" rx="1" fill="#1e3454"/>
+  <rect x="80" y="8" width="20" height="7" rx="1" fill="#1e3454"/>
+  <rect x="80" y="20.5" width="16" height="7" rx="1" fill="#1e3454"/>
+  <rect x="80" y="33" width="20" height="7" rx="1" fill="#1e3454"/>
+  <!-- N -->
+  <rect x="108" y="8" width="8" height="32" rx="1" fill="#1e3454"/>
+  <polygon points="116,8 132,32 132,8 140,8 140,40 132,40 116,16 116,40 108,40 108,8" fill="#1e3454"/>
+  <rect x="132" y="8" width="8" height="32" rx="1" fill="#1e3454"/>
+  <!-- Arrow Icon (top-right of N) -->
+  <!-- Back arrow (light blue) -->
+  <rect x="140" y="2" width="14" height="5" rx="2.5" fill="#b8d4f0"/>
+  <rect x="149" y="2" width="5" height="15" rx="2.5" fill="#b8d4f0"/>
+  <!-- Front arrow (brand blue) -->
+  <rect x="133" y="9" width="14" height="5" rx="2.5" fill="#5b8ec9"/>
+  <rect x="142" y="9" width="5" height="15" rx="2.5" fill="#5b8ec9"/>
+</svg>

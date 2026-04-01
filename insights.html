@@ -1,0 +1,521 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights — ILDEN KI Consulting</title>
+<meta name="description" content="Strategische Insights zu KI, Automatisierung und digitaler Transformation. Analysen und Reports von ILDEN KI Consulting.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+<style>
+/* Insights page-specific styles */
+.featured-insight {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-xl);
+    align-items: center;
+}
+.featured-insight-image {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+}
+.featured-insight-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+    transition: 0.6s ease;
+}
+.featured-insight-image:hover img {
+    transform: scale(1.02);
+}
+.featured-insight-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-xl);
+    border: 1px solid rgba(255,255,255,0.06);
+    pointer-events: none;
+}
+.featured-insight-content .featured-tag {
+    margin-bottom: var(--space-md);
+}
+.featured-insight-content h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    margin-bottom: var(--space-sm);
+    line-height: 1.1;
+}
+.featured-insight-content > p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+}
+.featured-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--type-micro);
+    color: var(--text-dim);
+    margin-top: var(--space-md);
+    flex-wrap: wrap;
+}
+.featured-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.featured-meta .meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-dim);
+}
+
+/* Insight article cards */
+.insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+.insight-card:hover {
+    border-color: var(--border-light);
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 0 40px rgba(74,144,217,0.04);
+}
+.insight-card-image {
+    position: relative;
+    overflow: hidden;
+    height: 210px;
+}
+.insight-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s ease;
+}
+.insight-card:hover .insight-card-image img {
+    transform: scale(1.04);
+}
+.insight-card-body {
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.insight-category {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 10px;
+}
+.insight-card-body h3 {
+    font-size: 1.1rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
+}
+.insight-card-body > p {
+    color: var(--text-secondary);
+    font-size: var(--type-small);
+    line-height: 1.7;
+    flex: 1;
+}
+.insight-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    color: var(--text-dim);
+    margin-top: var(--space-sm);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+}
+.insight-meta .meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-dim);
+}
+
+/* Newsletter section */
+.newsletter-form {
+    display: flex;
+    gap: 12px;
+    max-width: 520px;
+    margin: 0 auto var(--space-sm);
+}
+.newsletter-form input[type="email"] {
+    flex: 1;
+    padding: 14px 20px;
+    border-radius: 60px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: var(--white);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    color: var(--text-dark);
+    outline: none;
+    transition: var(--transition);
+}
+.newsletter-form input[type="email"]:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74,144,217,0.12);
+}
+.newsletter-form input[type="email"]::placeholder {
+    color: var(--text-dark-secondary);
+    opacity: 0.6;
+}
+.newsletter-form button {
+    padding: 14px 28px;
+    border-radius: 60px;
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.newsletter-form button:hover {
+    background: var(--navy-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(26,39,68,0.3);
+}
+.newsletter-trust {
+    font-size: var(--type-micro);
+    color: var(--text-dark-secondary);
+    opacity: 0.7;
+    text-align: center;
+}
+
+/* Featured read-link style */
+.read-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--blue-light);
+    transition: var(--transition);
+}
+.read-link:hover {
+    color: var(--blue-pale);
+    gap: 12px;
+}
+.read-link svg {
+    transition: var(--transition);
+}
+
+@media (max-width: 900px) {
+    .featured-insight {
+        grid-template-columns: 1fr;
+        gap: var(--space-lg);
+    }
+    .featured-insight-image img {
+        height: 320px;
+    }
+}
+@media (max-width: 768px) {
+    .grid-3 { grid-template-columns: 1fr; }
+    .newsletter-form {
+        flex-direction: column;
+    }
+    .newsletter-form button {
+        width: 100%;
+    }
+    .featured-insight-image img {
+        height: 240px;
+    }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="index.html" class="logo"><img src="images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="insights.html" class="nav-link">Insights</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<!-- Page Hero -->
+<section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container" data-animate>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="index.html">Home</a>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Insights</span>
+        </nav>
+        <h1>Wissen, das Entscheidungen<br>verändert.</h1>
+        <p>Strategische Analysen, Reports und Perspektiven zu KI, Automatisierung und digitaler Transformation — von den Experten, die es täglich umsetzen.</p>
+    </div>
+</section>
+
+
+<!-- Featured Insight -->
+<section class="section">
+    <div class="container">
+        <div class="featured-insight" data-animate>
+            <div class="featured-insight-image">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80&auto=format" alt="KI-Readiness-Index 2026 — Datenvisualisierung" loading="lazy">
+            </div>
+            <div class="featured-insight-content">
+                <span class="featured-tag">FEATURED REPORT</span>
+                <h2>Der KI-Readiness-Index 2026: Wo steht der deutsche Mittelstand?</h2>
+                <p>Unsere Analyse von 200+ mittelständischen Unternehmen zeigt ein ernüchterndes Bild: Nur 12% haben KI-Systeme in der Produktion. 43% experimentieren ohne klare Strategie. Und der Abstand zu internationalen Wettbewerbern wächst — nicht linear, sondern exponentiell. Dieser Report analysiert die fünf entscheidenden Faktoren, die erfolgreiche KI-Adopter vom Rest unterscheiden.</p>
+                <a href="ki-report-2026.html" class="read-link">Analyse lesen <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                <div class="featured-meta">
+                    <span>ILDEN Research Team</span>
+                    <span class="meta-dot"></span>
+                    <span>März 2026</span>
+                    <span class="meta-dot"></span>
+                    <span>12 Min. Lesezeit</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Divider -->
+<div class="container"><div class="divider"></div></div>
+
+
+<!-- Insights Grid -->
+<section class="section">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <span class="overline">Aktuelle Insights</span>
+            <h2>Analysen, die Klarheit schaffen.</h2>
+        </div>
+
+        <div class="grid-3" data-stagger>
+
+            <!-- Article 1 -->
+            <article class="insight-card" style="--i:0">
+                <div class="insight-card-image">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&q=80&auto=format" alt="KI-Projekte Analyse — Daten und Strategie" loading="lazy">
+                </div>
+                <div class="insight-card-body">
+                    <span class="insight-category">KI-Strategie</span>
+                    <h3>Warum 87% aller KI-Projekte scheitern — und was die restlichen 13% anders machen</h3>
+                    <p>Die häufigsten Ursachen für gescheiterte KI-Initiativen liegen nicht in der Technologie, sondern in der Organisation. Unsere Analyse von 150 Projekten identifiziert drei systematische Fehler — und zeigt, wie erfolgreiche Unternehmen sie vermeiden.</p>
+                    <div class="insight-meta">
+                        <span>Ilias Albay</span>
+                        <span class="meta-dot"></span>
+                        <span>18. März 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>8 Min.</span>
+                    </div>
+                    <a href="artikel/ki-projekte-scheitern.html" class="card-link">Weiterlesen <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </article>
+
+            <!-- Article 2 -->
+            <article class="insight-card" style="--i:1">
+                <div class="insight-card-image">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80&auto=format" alt="EU AI Act — Regulierung und Compliance" loading="lazy">
+                </div>
+                <div class="insight-card-body">
+                    <span class="insight-category">Compliance</span>
+                    <h3>EU AI Act 2026: Was sich ab August für Ihr Unternehmen ändert</h3>
+                    <p>Die Übergangsfristen laufen aus. Ab August gelten neue Pflichten für Hochrisiko-KI-Systeme, Transparenzanforderungen und Dokumentationspflichten. Ein praxisnaher Leitfaden mit konkreten Handlungsempfehlungen für Geschäftsführung und Compliance-Abteilungen.</p>
+                    <div class="insight-meta">
+                        <span>Ilias Albay</span>
+                        <span class="meta-dot"></span>
+                        <span>11. März 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>10 Min.</span>
+                    </div>
+                    <a href="artikel/eu-ai-act-2026.html" class="card-link">Weiterlesen <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </article>
+
+            <!-- Article 3 -->
+            <article class="insight-card" style="--i:2">
+                <div class="insight-card-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80&auto=format" alt="ROI Berechnung — Datenanalyse und Finanzen" loading="lazy">
+                </div>
+                <div class="insight-card-body">
+                    <span class="insight-category">Daten</span>
+                    <h3>ROI von KI: So rechnen Sie richtig — und vermeiden teure Fehler</h3>
+                    <p>Die meisten ROI-Kalkulationen für KI-Projekte sind Wunschdenken auf Zellbasis. Wir zeigen ein Framework, das versteckte Kosten berücksichtigt, realistische Zeithorizonte ansetzt und Entscheidern eine belastbare Grundlage liefert.</p>
+                    <div class="insight-meta">
+                        <span>Ilias Albay</span>
+                        <span class="meta-dot"></span>
+                        <span>4. März 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>7 Min.</span>
+                    </div>
+                    <a href="artikel/roi-von-ki.html" class="card-link">Weiterlesen <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </article>
+
+            <!-- Article 4 -->
+            <article class="insight-card" style="--i:3">
+                <div class="insight-card-image">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format" alt="Führungskräfte im Meeting — Executive Briefing" loading="lazy">
+                </div>
+                <div class="insight-card-body">
+                    <span class="insight-category">Führung</span>
+                    <h3>Prompt Engineering für Führungskräfte: Was Sie wirklich wissen müssen</h3>
+                    <p>Kein Hype, keine Buzzwords. Was C-Level-Entscheider über LLMs, Prompt-Strategien und die Grenzen generativer KI tatsächlich verstehen sollten — in 15 Minuten statt in einem dreitägigen Seminar.</p>
+                    <div class="insight-meta">
+                        <span>Ilias Albay</span>
+                        <span class="meta-dot"></span>
+                        <span>22. Feb. 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>6 Min.</span>
+                    </div>
+                    <a href="artikel/prompt-engineering.html" class="card-link">Weiterlesen <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </article>
+
+            <!-- Article 5 -->
+            <article class="insight-card" style="--i:4">
+                <div class="insight-card-image">
+                    <img src="https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?w=800&q=80&auto=format" alt="Hyperautomation — Automatisierte Workflows" loading="lazy">
+                </div>
+                <div class="insight-card-body">
+                    <span class="insight-category">Automatisierung</span>
+                    <h3>Hyperautomation vs. RPA: Der entscheidende Unterschied</h3>
+                    <p>RPA automatisiert Klicks. Hyperautomation automatisiert Entscheidungen. Warum der Unterschied für Ihre Skalierungsstrategie kritisch ist — und wann welcher Ansatz den höheren Business Value liefert.</p>
+                    <div class="insight-meta">
+                        <span>Ilias Albay</span>
+                        <span class="meta-dot"></span>
+                        <span>10. Feb. 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>9 Min.</span>
+                    </div>
+                    <a href="artikel/hyperautomation-vs-rpa.html" class="card-link">Weiterlesen <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </article>
+
+            <!-- Article 6 -->
+            <article class="insight-card" style="--i:5">
+                <div class="insight-card-image">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format" alt="KI-Talente — Team und Recruiting" loading="lazy">
+                </div>
+                <div class="insight-card-body">
+                    <span class="insight-category">Trends</span>
+                    <h3>KI-Talente gewinnen und halten: Der Kampf um die besten Köpfe</h3>
+                    <p>Der Markt für KI-Spezialisten ist leergefegt. Doch die Unternehmen, die trotzdem Top-Talente anziehen, setzen nicht auf Gehalt allein. Drei Recruiting-Strategien, die 2026 den Unterschied machen.</p>
+                    <div class="insight-meta">
+                        <span>Ilias Albay</span>
+                        <span class="meta-dot"></span>
+                        <span>28. Jan. 2026</span>
+                        <span class="meta-dot"></span>
+                        <span>7 Min.</span>
+                    </div>
+                    <a href="artikel/ki-talente.html" class="card-link">Weiterlesen <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+                </div>
+            </article>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Whitepapers -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <div class="overline">WHITEPAPERS</div>
+            <h2>Kostenlose Leitfäden für Entscheider</h2>
+            <p>Tiefgehende Analysen, Frameworks und Checklisten — basierend auf echten Projektdaten.</p>
+        </div>
+        <div class="grid-3" data-animate data-stagger>
+            <a href="whitepaper-ki-mittelstand.html" class="card" style="text-decoration:none;display:flex;flex-direction:column;--i:0">
+                <div style="display:inline-block;padding:4px 12px;border-radius:50px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(74,144,217,0.1);color:var(--blue-light);margin-bottom:var(--space-sm);width:fit-content">25 SEITEN</div>
+                <h3>KI im Mittelstand 2026</h3>
+                <p>Der Implementierungs-Leitfaden. Frameworks, Checklisten und Benchmark-Daten für den erfolgreichen KI-Start.</p>
+                <span class="card-link" style="margin-top:auto">Herunterladen &rarr;</span>
+            </a>
+            <a href="whitepaper-roi.html" class="card" style="text-decoration:none;display:flex;flex-direction:column;--i:1">
+                <div style="display:inline-block;padding:4px 12px;border-radius:50px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(201,168,76,0.1);color:var(--gold);margin-bottom:var(--space-sm);width:fit-content">15 SEITEN</div>
+                <h3>ROI von KI-Automatisierung</h3>
+                <p>Das Framework für Entscheider. Formeln, Benchmarks und Fallstricke — damit Ihr CFO Ja sagt.</p>
+                <span class="card-link" style="margin-top:auto">Herunterladen &rarr;</span>
+            </a>
+            <a href="whitepaper-eu-ai-act.html" class="card" style="text-decoration:none;display:flex;flex-direction:column;--i:2">
+                <div style="display:inline-block;padding:4px 12px;border-radius:50px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(239,68,68,0.1);color:#f87171;margin-bottom:var(--space-sm);width:fit-content">10 SEITEN</div>
+                <h3>EU AI Act Compliance Checklist</h3>
+                <p>23-Punkte-Checkliste. Was Sie jetzt umsetzen müssen — bevor es bis zu 35 Mio. € kostet.</p>
+                <span class="card-link" style="margin-top:auto">Herunterladen &rarr;</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter CTA -->
+<section class="section section-light">
+    <div class="container">
+        <div style="max-width:640px; margin:0 auto; text-align:center;" data-animate>
+            <span class="overline" style="justify-content:center;">Newsletter</span>
+            <h2>Insights direkt in Ihr Postfach</h2>
+            <p style="margin-bottom:var(--space-lg);">Einmal im Monat: Die wichtigsten KI-Entwicklungen, analysiert und eingeordnet. Kein Spam. Kein Buzzword-Bingo.</p>
+            <form class="newsletter-form" onsubmit="return false;">
+                <input type="email" placeholder="ihre@email.de" aria-label="E-Mail-Adresse" required>
+                <button type="submit">Abonnieren</button>
+            </form>
+            <p class="newsletter-trust">1.200+ Entscheider lesen bereits mit</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container" data-animate>
+        <h2>Lassen Sie uns über Ihre<br>KI-Strategie sprechen.</h2>
+        <p>Erste Einschätzung. Klare Empfehlungen. Kein Verkaufsgespräch.</p>
+        <a href="kontakt.html" class="btn btn-primary">Gespräch buchen</a>
+    </div>
+</section>
+
+</main>
+
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="ki-strategie.html">KI-Strategie</a></li><li><a href="automatisierung.html">Automatisierung</a></li><li><a href="datenanalyse.html">Datenanalyse</a></li><li><a href="schulungen.html">Schulungen</a></li><li><a href="implementierung.html">Implementierung</a></li><li><a href="compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="ueber-uns.html">Über ILDEN</a></li><li><a href="methodik.html">Methodik</a></li><li><a href="referenzen.html">Referenzen</a></li><li><a href="insights.html">Insights</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body></html>

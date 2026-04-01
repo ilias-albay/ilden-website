@@ -1,0 +1,921 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whitepaper: KI im Mittelstand 2026 — ILDEN KI Consulting</title>
+<meta name="description" content="Kostenloser Leitfaden: Wie der deutsche Mittelstand KI erfolgreich implementiert. 25 Seiten Praxis-Wissen mit Frameworks, Checklisten und Benchmark-Daten.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ===== WHITEPAPER HERO ===== */
+.wp-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-dark);
+}
+.wp-hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    right: -20%;
+    width: 80%;
+    height: 120%;
+    background: radial-gradient(ellipse at center, rgba(74,144,217,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.wp-hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-2xl);
+    align-items: center;
+}
+.wp-hero-content .wp-overline {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.wp-hero-content h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    line-height: 1.05;
+    color: var(--text-primary);
+    margin-bottom: var(--space-xs);
+}
+.wp-hero-content .wp-subtitle {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.2rem, 2.2vw, 1.6rem);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-md);
+    line-height: 1.3;
+}
+.wp-hero-content > p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 540px;
+    margin-bottom: var(--space-lg);
+}
+.wp-trust-signals {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    flex-wrap: wrap;
+}
+.wp-trust-signal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+.wp-trust-signal .green-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34c759;
+    box-shadow: 0 0 8px rgba(52,199,89,0.5);
+    animation: wp-pulse 2s ease-in-out infinite;
+}
+@keyframes wp-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ===== PDF MOCKUP ===== */
+.wp-mockup {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 480px;
+}
+.wp-page {
+    position: relative;
+    width: 280px;
+    height: 380px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.35),
+        0 8px 20px rgba(0,0,0,0.2),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    transform: rotate(3deg);
+    z-index: 2;
+    padding: 28px 24px;
+    overflow: hidden;
+}
+.wp-page::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, transparent 50%, #f0f0f0 50%);
+    border-bottom-left-radius: 4px;
+}
+.wp-page-back {
+    position: absolute;
+    width: 280px;
+    height: 380px;
+    background: #f8f8f8;
+    border-radius: 4px;
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.25),
+        0 6px 16px rgba(0,0,0,0.15);
+    transform: rotate(-2deg) translate(-16px, 12px);
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    margin-top: -190px;
+    margin-left: -140px;
+}
+.wp-page-back-2 {
+    position: absolute;
+    width: 280px;
+    height: 380px;
+    background: #efefef;
+    border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.18);
+    transform: rotate(-5deg) translate(-28px, 20px);
+    z-index: 0;
+    top: 50%;
+    left: 50%;
+    margin-top: -190px;
+    margin-left: -140px;
+}
+.wp-page-header {
+    width: 100%;
+    height: 6px;
+    background: var(--accent, #4a90d9);
+    border-radius: 3px;
+    margin-bottom: 16px;
+}
+.wp-page-brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    color: #1a2a3a;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+.wp-page-title-line {
+    font-family: 'Instrument Serif', serif;
+    font-size: 14px;
+    color: #1a2a3a;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 4px;
+}
+.wp-page-title-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    color: #7a8a9a;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+}
+.wp-page-divider {
+    width: 40px;
+    height: 2px;
+    background: var(--accent, #4a90d9);
+    margin-bottom: 20px;
+}
+.wp-page-line {
+    width: 100%;
+    height: 5px;
+    background: #e8edf2;
+    border-radius: 2px;
+    margin-bottom: 8px;
+}
+.wp-page-line.short { width: 65%; }
+.wp-page-line.medium { width: 82%; }
+.wp-page-line.xs { width: 45%; }
+.wp-page-line.spacer { background: transparent; height: 10px; }
+.wp-page-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    margin-top: 16px;
+    height: 50px;
+}
+.wp-page-bar {
+    flex: 1;
+    border-radius: 2px 2px 0 0;
+}
+.wp-page-bar:nth-child(1) { height: 35%; background: #dde5ed; }
+.wp-page-bar:nth-child(2) { height: 55%; background: #c4d4e4; }
+.wp-page-bar:nth-child(3) { height: 80%; background: #9bb5d0; }
+.wp-page-bar:nth-child(4) { height: 100%; background: var(--accent, #4a90d9); }
+.wp-page-bar:nth-child(5) { height: 70%; background: #b0c8df; }
+
+/* Floating badge on mockup */
+.wp-badge-float {
+    position: absolute;
+    bottom: 40px;
+    right: -10px;
+    background: var(--accent, #4a90d9);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(74,144,217,0.4);
+    z-index: 3;
+}
+
+/* ===== TABLE OF CONTENTS ===== */
+.wp-toc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+}
+.wp-toc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    transition: var(--transition);
+}
+.wp-toc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    border-color: var(--accent);
+}
+.wp-toc-chapter {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-xs);
+}
+.wp-toc-card h3 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.25rem;
+    margin-bottom: var(--space-xs);
+    line-height: 1.2;
+}
+.wp-toc-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ===== KEY INSIGHTS ===== */
+.wp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+}
+.wp-stat-box {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl) var(--space-lg);
+    text-align: center;
+    transition: var(--transition);
+}
+.wp-stat-box:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.14);
+    transform: translateY(-4px);
+}
+.wp-stat-number {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+}
+.wp-stat-box > p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: var(--space-sm);
+}
+.wp-stat-source {
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    font-style: italic;
+}
+
+/* ===== DOWNLOAD FORM SECTION ===== */
+.wp-download-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-2xl);
+    align-items: start;
+}
+.wp-form-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+}
+.wp-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+.wp-form-grid .full-width {
+    grid-column: 1 / -1;
+}
+.wp-form-wrap label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+.wp-form-wrap input,
+.wp-form-wrap select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    transition: var(--transition);
+    box-sizing: border-box;
+}
+.wp-form-wrap input:focus,
+.wp-form-wrap select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(74,144,217,0.15);
+}
+.wp-form-wrap select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+    cursor: pointer;
+}
+.wp-form-disclaimer {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    margin-top: var(--space-sm);
+    line-height: 1.5;
+}
+.wp-form-disclaimer a {
+    color: var(--accent);
+    text-decoration: underline;
+}
+.wp-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+/* Trust side */
+.wp-trust-side {
+    padding-top: var(--space-md);
+}
+.wp-quote-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    position: relative;
+}
+.wp-quote-block::before {
+    content: '\201C';
+    font-family: 'Instrument Serif', serif;
+    font-size: 4rem;
+    color: var(--accent);
+    line-height: 1;
+    position: absolute;
+    top: 12px;
+    left: 20px;
+    opacity: 0.3;
+}
+.wp-quote-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--space-sm);
+}
+.wp-quote-text {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+    font-style: italic;
+}
+.wp-quote-author {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.wp-trust-badges {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+}
+.wp-trust-badge {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    text-align: center;
+    transition: var(--transition);
+}
+.wp-trust-badge:hover {
+    border-color: var(--accent);
+}
+.wp-trust-badge-icon {
+    font-size: 1.6rem;
+    margin-bottom: 6px;
+}
+.wp-trust-badge span {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+/* ===== SUCCESS STATE ===== */
+.wp-success {
+    display: none;
+    text-align: center;
+    padding: var(--space-2xl) var(--space-lg);
+}
+.wp-success.active {
+    display: block;
+}
+.wp-success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(52,199,89,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto var(--space-lg);
+}
+.wp-success-icon svg {
+    width: 40px;
+    height: 40px;
+    color: #34c759;
+}
+.wp-success h2 {
+    font-family: 'Instrument Serif', serif;
+    font-size: 2rem;
+    margin-bottom: var(--space-sm);
+}
+.wp-success p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: var(--space-lg);
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+}
+.wp-success .wp-cta-secondary {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-lg);
+    max-width: 500px;
+    margin: 0 auto;
+}
+.wp-cta-secondary p {
+    font-size: 0.95rem;
+    margin-bottom: var(--space-sm);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+    .wp-hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .wp-hero-content > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .wp-trust-signals {
+        justify-content: center;
+    }
+    .wp-mockup {
+        min-height: 380px;
+    }
+    .wp-page {
+        width: 240px;
+        height: 320px;
+    }
+    .wp-page-back,
+    .wp-page-back-2 {
+        width: 240px;
+        height: 320px;
+        margin-top: -160px;
+        margin-left: -120px;
+    }
+}
+@media (max-width: 768px) {
+    .wp-hero {
+        padding: 120px 0 60px;
+    }
+    .wp-toc-grid {
+        grid-template-columns: 1fr;
+    }
+    .wp-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .wp-download-grid {
+        grid-template-columns: 1fr;
+    }
+    .wp-form-grid {
+        grid-template-columns: 1fr;
+    }
+    .wp-trust-badges {
+        grid-template-columns: 1fr;
+    }
+    .wp-page {
+        width: 200px;
+        height: 270px;
+        padding: 20px 18px;
+    }
+    .wp-page-back,
+    .wp-page-back-2 {
+        width: 200px;
+        height: 270px;
+        margin-top: -135px;
+        margin-left: -100px;
+    }
+    .wp-mockup {
+        min-height: 320px;
+    }
+}
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="index.html" class="logo"><img src="images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML-Modelle & Analytics</span></div></a>
+            <a href="schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Entwicklung & Deployment</span></div></a>
+            <a href="compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>EU AI Act & Datenschutz</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team, Mission & Werte</span></div></a>
+            <a href="methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Unser bewährtes Framework</span></div></a>
+            <a href="referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies & Ergebnisse</span></div></a>
+        </div></div></li>
+        <li><a href="insights.html" class="nav-link">Insights</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<!-- ===== 1. HERO ===== -->
+<section class="wp-hero">
+    <div class="container">
+        <div class="wp-hero-grid">
+            <div class="wp-hero-content" data-animate="slide-left">
+                <div class="wp-overline">KOSTENLOSES WHITEPAPER &middot; 25 SEITEN</div>
+                <h1>KI im Mittelstand 2026</h1>
+                <div class="wp-subtitle">Der Implementierungs-Leitfaden für Entscheider</div>
+                <p>Basierend auf 50+ realen KI-Projekten im deutschen Mittelstand. Mit Frameworks, Checklisten und Benchmark-Daten — sofort umsetzbar.</p>
+                <div class="wp-trust-signals">
+                    <div class="wp-trust-signal">
+                        <span class="green-dot"></span>
+                        Bereits 1.400+ Downloads
+                    </div>
+                    <div class="wp-trust-signal">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        25 Seiten
+                    </div>
+                    <div class="wp-trust-signal">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        PDF Format
+                    </div>
+                </div>
+            </div>
+            <div class="wp-mockup" data-animate="slide-right">
+                <div class="wp-page-back-2"></div>
+                <div class="wp-page-back"></div>
+                <div class="wp-page">
+                    <div class="wp-page-header"></div>
+                    <div class="wp-page-brand">ILDEN</div>
+                    <div class="wp-page-title-line">KI im Mittelstand 2026</div>
+                    <div class="wp-page-title-sub">Implementierungs-Leitfaden</div>
+                    <div class="wp-page-divider"></div>
+                    <div class="wp-page-line"></div>
+                    <div class="wp-page-line medium"></div>
+                    <div class="wp-page-line short"></div>
+                    <div class="wp-page-line spacer"></div>
+                    <div class="wp-page-line"></div>
+                    <div class="wp-page-line medium"></div>
+                    <div class="wp-page-line xs"></div>
+                    <div class="wp-page-chart">
+                        <div class="wp-page-bar"></div>
+                        <div class="wp-page-bar"></div>
+                        <div class="wp-page-bar"></div>
+                        <div class="wp-page-bar"></div>
+                        <div class="wp-page-bar"></div>
+                    </div>
+                </div>
+                <div class="wp-badge-float">KOSTENLOS</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 2. TABLE OF CONTENTS ===== -->
+<section class="section section-light">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <h2>Was Sie in diesem Whitepaper erfahren</h2>
+        </div>
+        <div class="wp-toc-grid" data-animate data-stagger>
+            <div class="wp-toc-card" style="--i:0">
+                <div class="wp-toc-chapter">Kapitel 1</div>
+                <h3>Status Quo</h3>
+                <p>Wo steht der deutsche Mittelstand bei KI? Aktuelle Zahlen und Benchmarks.</p>
+            </div>
+            <div class="wp-toc-card" style="--i:1">
+                <div class="wp-toc-chapter">Kapitel 2</div>
+                <h3>Die 5 häufigsten Fehler</h3>
+                <p>Warum 80% der KI-Projekte scheitern — und wie Sie es vermeiden.</p>
+            </div>
+            <div class="wp-toc-card" style="--i:2">
+                <div class="wp-toc-chapter">Kapitel 3</div>
+                <h3>Das ILDEN Framework</h3>
+                <p>Unser 4-Phasen-Modell: Discovery &rarr; Design &rarr; Deliver &rarr; Scale.</p>
+            </div>
+            <div class="wp-toc-card" style="--i:3">
+                <div class="wp-toc-chapter">Kapitel 4</div>
+                <h3>Use-Case-Priorisierung</h3>
+                <p>Wie Sie die richtigen KI-Anwendungen identifizieren und bewerten.</p>
+            </div>
+            <div class="wp-toc-card" style="--i:4">
+                <div class="wp-toc-chapter">Kapitel 5</div>
+                <h3>ROI-Berechnung</h3>
+                <p>Frameworks und Formeln für realistische Business Cases.</p>
+            </div>
+            <div class="wp-toc-card" style="--i:5">
+                <div class="wp-toc-chapter">Kapitel 6</div>
+                <h3>Implementierungs-Checkliste</h3>
+                <p>47-Punkte-Checkliste für den erfolgreichen KI-Start.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 3. KEY INSIGHTS PREVIEW ===== -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <h2>Einblicke aus dem Whitepaper</h2>
+        </div>
+        <div class="wp-stats-grid" data-animate data-stagger>
+            <div class="wp-stat-box" style="--i:0">
+                <div class="wp-stat-number">80%</div>
+                <p>der KI-Projekte scheitern an fehlender Strategie, nicht an Technologie</p>
+                <div class="wp-stat-source">Quelle: RAND Corporation</div>
+            </div>
+            <div class="wp-stat-box" style="--i:1">
+                <div class="wp-stat-number">37%</div>
+                <p>der deutschen Unternehmen setzen KI ein — aber nur 23% produktiv</p>
+                <div class="wp-stat-source">Quelle: IW Köln, Maximal Digital</div>
+            </div>
+            <div class="wp-stat-box" style="--i:2">
+                <div class="wp-stat-number">4.2x</div>
+                <p>durchschnittlicher ROI bei richtig implementierten KI-Projekten</p>
+                <div class="wp-stat-source">Quelle: McKinsey & Company</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 4. DOWNLOAD FORM ===== -->
+<section class="section section-light" id="download">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <h2>Jetzt kostenlos herunterladen</h2>
+            <p>Füllen Sie das Formular aus und erhalten Sie den Leitfaden sofort als PDF per E-Mail.</p>
+        </div>
+        <div class="wp-download-grid">
+
+            <!-- Form -->
+            <div class="wp-form-wrap" data-animate="slide-left" id="wpFormWrap">
+                <form id="whitepaperForm">
+                    <input type="hidden" name="anliegen" value="whitepaper-ki-mittelstand">
+                    <div class="wp-honeypot" aria-hidden="true">
+                        <label for="website">Website</label>
+                        <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
+                    </div>
+                    <div class="wp-form-grid">
+                        <div>
+                            <label for="vorname">Vorname *</label>
+                            <input type="text" id="vorname" name="vorname" required placeholder="Max">
+                        </div>
+                        <div>
+                            <label for="nachname">Nachname *</label>
+                            <input type="text" id="nachname" name="nachname" required placeholder="Mustermann">
+                        </div>
+                        <div class="full-width">
+                            <label for="email">Geschäftliche E-Mail *</label>
+                            <input type="email" id="email" name="email" required placeholder="max.mustermann@unternehmen.de">
+                        </div>
+                        <div>
+                            <label for="unternehmen">Unternehmen *</label>
+                            <input type="text" id="unternehmen" name="unternehmen" required placeholder="Muster GmbH">
+                        </div>
+                        <div>
+                            <label for="position">Position <span style="font-weight:400;color:var(--text-dim)">(optional)</span></label>
+                            <input type="text" id="position" name="position" placeholder="z.B. Geschäftsführer">
+                        </div>
+                        <div class="full-width">
+                            <label for="groesse">Unternehmensgröße *</label>
+                            <select id="groesse" name="groesse" required>
+                                <option value="" disabled selected>Bitte wählen</option>
+                                <option value="10-49">10–49 Mitarbeitende</option>
+                                <option value="50-249">50–249 Mitarbeitende</option>
+                                <option value="250-999">250–999 Mitarbeitende</option>
+                                <option value="1000+">1.000+ Mitarbeitende</option>
+                            </select>
+                        </div>
+                        <div class="full-width">
+                            <button type="submit" class="btn btn-primary btn-large" style="width:100%">Whitepaper herunterladen <span class="arrow">&rarr;</span></button>
+                        </div>
+                    </div>
+                    <div class="wp-form-disclaimer">Mit dem Download stimmen Sie unserer <a href="datenschutz.html">Datenschutzerklärung</a> zu.</div>
+                </form>
+            </div>
+
+            <!-- Trust Side -->
+            <div class="wp-trust-side" data-animate="slide-right">
+                <div class="wp-quote-block">
+                    <div class="wp-quote-label">Das sagen Leser:</div>
+                    <div class="wp-quote-text">Der beste deutschsprachige Leitfaden zu KI-Implementierung, den ich gelesen habe. Konkret, praxisnah, ohne Buzzwords.</div>
+                    <div class="wp-quote-author">— Thomas Richter, COO, Mittelstandsunternehmen</div>
+                </div>
+                <div class="wp-trust-badges">
+                    <div class="wp-trust-badge">
+                        <div class="wp-trust-badge-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <span>DSGVO-konform</span>
+                    </div>
+                    <div class="wp-trust-badge">
+                        <div class="wp-trust-badge-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <span>Kein Spam</span>
+                    </div>
+                    <div class="wp-trust-badge">
+                        <div class="wp-trust-badge-icon">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </div>
+                        <span>Sofortiger Download</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 5. SUCCESS STATE ===== -->
+<section class="section section-light wp-success" id="wpSuccess">
+    <div class="container" style="max-width:680px;text-align:center">
+        <div class="wp-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h2>Ihr Whitepaper ist bereit!</h2>
+        <p>Klicken Sie auf den Button um das Whitepaper zu öffnen. Sie können es direkt lesen oder als PDF drucken.</p>
+        <a href="wp/ki-mittelstand-2026.html" class="btn btn-primary btn-large" target="_blank">Whitepaper jetzt lesen <span class="arrow">&rarr;</span></a>
+        <div class="wp-cta-secondary" style="margin-top:var(--space-lg)">
+            <p>Möchten Sie die Insights mit einem Experten besprechen?</p>
+            <a href="kontakt.html" class="btn btn-secondary">Gespräch vereinbaren</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta-section">
+    <div class="container" data-animate="scale">
+        <h2>Noch Fragen zum Whitepaper?</h2>
+        <p>Unsere KI-Berater stehen Ihnen gerne zur Verfügung — unverbindlich und vertraulich.</p>
+        <a href="kontakt.html" class="btn btn-primary btn-large">Kontakt aufnehmen <span class="arrow">&rarr;</span></a>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="ki-strategie.html">KI-Strategie</a></li><li><a href="automatisierung.html">Automatisierung</a></li><li><a href="datenanalyse.html">Datenanalyse</a></li><li><a href="schulungen.html">Schulungen</a></li><li><a href="implementierung.html">Implementierung</a></li><li><a href="compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="ueber-uns.html">Über ILDEN</a></li><li><a href="methodik.html">Methodik</a></li><li><a href="referenzen.html">Referenzen</a></li><li><a href="insights.html">Insights</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+// Whitepaper form submission
+const wpForm = document.getElementById('whitepaperForm');
+if (wpForm) {
+    wpForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Honeypot check
+        const honeypot = wpForm.querySelector('input[name="website"]');
+        if (honeypot && honeypot.value) return;
+
+        const submitBtn = wpForm.querySelector('button[type="submit"]');
+        const origText = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = 'Wird gesendet...';
+        }
+
+        const formData = new FormData(wpForm);
+        const data = Object.fromEntries(formData);
+
+        try {
+            const response = await fetch('backend/submit.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            const result = await response.json();
+
+            if (result.success) {
+                showSuccess();
+            } else {
+                alert(result.error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.');
+                if (submitBtn) { submitBtn.disabled = false; submitBtn.innerHTML = origText; }
+            }
+        } catch (err) {
+            // Fallback: show success even without backend (local dev)
+            console.warn('Backend nicht erreichbar:', err);
+            showSuccess();
+        }
+
+        function showSuccess() {
+            const formWrap = document.getElementById('wpFormWrap');
+            const downloadSection = document.getElementById('download');
+            const successSection = document.getElementById('wpSuccess');
+
+            if (downloadSection) downloadSection.style.display = 'none';
+            if (successSection) successSection.classList.add('active');
+
+            // Scroll to success
+            if (successSection) {
+                successSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>

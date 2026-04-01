@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hyperautomation vs. RPA: Der Unterschied — ILDEN Insights</title>
+<meta name="description" content="Hyperautomation vs. RPA: Wann reicht einfache Automatisierung, wann brauchen Sie mehr? Ein Vergleich mit Marktdaten und Praxisbeispielen.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="../images/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+.content-body { max-width: 720px; margin: 0 auto; }
+.content-body p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); }
+.content-body h2 { font-family: var(--font-heading); font-size: clamp(1.5rem, 2.5vw, 2rem); margin: var(--space-xl) 0 var(--space-sm); color: var(--text-primary); }
+.content-body h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: var(--space-lg) 0 var(--space-xs); color: var(--text-primary); }
+.content-body ul, .content-body ol { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); padding-left: 1.5em; }
+.content-body li { margin-bottom: 8px; }
+.content-body blockquote { border-left: 3px solid var(--blue); padding: var(--space-sm) var(--space-md); margin: var(--space-lg) 0; background: rgba(74,144,217,0.05); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.content-body blockquote p { font-style: italic; color: var(--text-primary); margin-bottom: 0; }
+.content-body strong { color: var(--text-primary); }
+.content-body a { color: var(--blue-light); text-decoration: underline; text-underline-offset: 3px; }
+.content-body a:hover { color: var(--blue-pale); }
+.source-note { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+.author-box { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: var(--space-lg) 0; margin: var(--space-xl) 0; display: flex; gap: var(--space-md); align-items: center; }
+.author-box-info h4 { color: var(--text-primary); margin-bottom: 4px; }
+.author-box-info p { color: var(--text-secondary); font-size: var(--type-small); margin: 0; }
+.author-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--border); }
+.related-articles { margin: var(--space-xl) 0; }
+.related-articles h3 { font-family: var(--font-heading); margin-bottom: var(--space-md); color: var(--text-primary); }
+.related-link { display: block; padding: var(--space-sm) var(--space-md); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: var(--space-sm); transition: var(--transition); color: var(--text-secondary); text-decoration: none; }
+.related-link:hover { border-color: var(--blue); background: rgba(74,144,217,0.04); color: var(--text-primary); }
+.related-link strong { display: block; color: var(--text-primary); margin-bottom: 4px; }
+.article-cta { text-align: center; padding: var(--space-xl); background: var(--surface); border-radius: var(--radius-xl); border: 1px solid var(--border); margin: var(--space-xl) 0; }
+.article-cta h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: var(--space-sm); color: var(--text-primary); }
+.article-cta p { color: var(--text-secondary); margin-bottom: var(--space-md); max-width: 480px; margin-left: auto; margin-right: auto; }
+.compare-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; font-size: 0.9rem; }
+.compare-table th { background: var(--surface); color: var(--text-primary); font-weight: 600; text-align: left; padding: 14px 16px; border-bottom: 2px solid var(--border); }
+.compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+.compare-table tr:hover td { background: rgba(74,144,217,0.03); }
+.compare-table .col-feature { width: 30%; color: var(--text-primary); font-weight: 500; }
+.compare-table .col-rpa { width: 35%; }
+.compare-table .col-hyper { width: 35%; }
+.stack-visual { display: flex; flex-direction: column; gap: 4px; margin: var(--space-lg) 0; }
+.stack-layer { padding: 14px 20px; border-radius: var(--radius-md); text-align: center; font-size: 0.85rem; font-weight: 500; color: var(--text-primary); }
+.stack-layer:nth-child(1) { background: rgba(74,144,217,0.15); border: 1px solid rgba(74,144,217,0.3); }
+.stack-layer:nth-child(2) { background: rgba(74,144,217,0.12); border: 1px solid rgba(74,144,217,0.25); }
+.stack-layer:nth-child(3) { background: rgba(74,144,217,0.09); border: 1px solid rgba(74,144,217,0.2); }
+.stack-layer:nth-child(4) { background: rgba(74,144,217,0.06); border: 1px solid rgba(74,144,217,0.15); }
+.stack-layer:nth-child(5) { background: rgba(74,144,217,0.03); border: 1px solid rgba(74,144,217,0.1); }
+@media (max-width: 600px) { .compare-table { font-size: 0.8rem; } .compare-table th, .compare-table td { padding: 10px 8px; } .author-box { flex-direction: column; text-align: center; } }
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="../index.html" class="logo"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="../ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="../automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="../datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="../schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="../implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="../compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="../ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="../methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="../referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="../insights.html" class="nav-link">Insights</a></li>
+        <li><a href="../kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="../kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<section class="page-hero" style="padding:160px 0 var(--space-lg)">
+    <div class="container" style="max-width:720px">
+        <a href="../insights.html" style="color:var(--blue-light);font-size:var(--type-small);display:inline-flex;align-items:center;gap:6px;margin-bottom:var(--space-md);text-decoration:none">&larr; Zurück zu Insights</a>
+        <div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-light);background:rgba(74,144,217,0.1);padding:6px 14px;border-radius:100px;margin-bottom:var(--space-md)">AUTOMATISIERUNG</div>
+        <h1 style="font-size:var(--type-display);margin-bottom:var(--space-sm);line-height:1.1">Hyperautomation vs. RPA: Der entscheidende Unterschied</h1>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-dim);flex-wrap:wrap">
+            <span>Ilias Albay</span><span style="opacity:0.4">·</span><span>Wirtschaftsingenieur</span><span style="opacity:0.4">·</span><span>28. Januar 2026</span><span style="opacity:0.4">·</span><span>6 Min. Lesezeit</span>
+        </div>
+    </div>
+</section>
+
+<section class="content-section" style="padding:var(--space-xl) 0 var(--space-2xl)">
+    <div class="container" style="max-width:720px">
+        <div class="content-body">
+
+            <p>RPA war der Anfang. Und für viele Unternehmen war es ein guter Anfang: Repetitive, regelbasierte Aufgaben automatisieren, Fehler reduzieren, Mitarbeiter entlasten. Aber wenn Ihre Automatisierung bei einem geänderten PDF-Layout zusammenbricht, bei einer neuen Spalte in der Excel-Tabelle, oder bei einer E-Mail, die anders formuliert ist als erwartet — dann haben Sie ein Problem. Und genau dieses Problem ist der Grund, warum der Begriff „Hyperautomation" in den letzten zwei Jahren so viel Aufmerksamkeit bekommen hat.</p>
+
+            <p>Aber was steckt dahinter? Ist Hyperautomation nur ein Buzzword, das Gartner erfunden hat, um Konferenztickets zu verkaufen? Oder ist es ein tatsächlicher Technologiesprung? Spoiler: Es ist beides. Und genau deshalb lohnt sich ein genauer Blick.</p>
+
+            <h2>RPA: Was es kann — und wo es aufhört</h2>
+
+            <p>Robotic Process Automation macht genau das, was der Name sagt: Es automatisiert Prozesse durch Software-Roboter, die menschliche Interaktionen mit IT-Systemen nachahmen. Klicken, kopieren, einfügen, Formulare ausfüllen. Für strukturierte, sich wiederholende Aufgaben ist das grandios.</p>
+
+            <p>Ein Beispiel: Ein Versicherungsunternehmen, mit dem ich gearbeitet habe, hat seine Schadenmeldungserfassung mit RPA automatisiert. Der Bot öffnet die E-Mail, extrahiert die Police-Nummer, legt einen Fall im System an, ordnet den richtigen Sachbearbeiter zu. Das läuft seit zwei Jahren, spart 12 FTE-Äquivalente und funktioniert — solange die E-Mails im erwarteten Format kommen.</p>
+
+            <p>Und da liegt das Problem. Denn E-Mails kommen nicht immer im erwarteten Format. Kunden schreiben Freitext. Sie schicken Fotos statt Formulare. Sie rufen an und der Mitarbeiter tippt eine Notiz, die kein Bot parsen kann. RPA ist regelbasiert. Es kann nur das, was man ihm beigebracht hat. Alles außerhalb der Regeln führt zu Fehlern oder Abbrüchen.</p>
+
+            <p>Laut Forrester (2025) liegen die Wartungskosten für RPA-Bots im Schnitt bei 30–40% der ursprünglichen Implementierungskosten — pro Jahr. Warum? Weil sich Systeme ändern. Weil sich Layouts ändern. Weil sich Prozesse ändern. Und jede Änderung erfordert eine Anpassung des Bots.</p>
+
+            <h2>Hyperautomation: Die nächste Stufe</h2>
+
+            <p>Hyperautomation ist kein einzelnes Tool. Es ist eine Kombination mehrerer Technologien, die zusammenarbeiten:</p>
+
+            <div class="stack-visual">
+                <div class="stack-layer">KI / Machine Learning — Erkennt Muster, trifft Entscheidungen, lernt aus Daten</div>
+                <div class="stack-layer">Process Mining — Analysiert tatsächliche Prozessabläufe aus Systemdaten</div>
+                <div class="stack-layer">Intelligent Document Processing — Versteht unstrukturierte Dokumente</div>
+                <div class="stack-layer">RPA — Führt regelbasierte Aktionen in Systemen aus</div>
+                <div class="stack-layer">Analytics & Monitoring — Misst Ergebnisse und optimiert kontinuierlich</div>
+            </div>
+
+            <p>Der entscheidende Unterschied: Während RPA nur das „Tun" automatisiert (klicken, kopieren, einfügen), automatisiert Hyperautomation auch das „Verstehen" und „Entscheiden". Ein Hyperautomation-System kann eine handschriftliche Rechnung lesen, die relevanten Informationen extrahieren, sie mit der Bestellung abgleichen, Abweichungen erkennen und eine Entscheidung treffen — automatisch freigeben oder zur manuellen Prüfung weiterleiten.</p>
+
+            <h2>Der direkte Vergleich</h2>
+
+            <table class="compare-table">
+                <thead>
+                    <tr>
+                        <th class="col-feature">Kriterium</th>
+                        <th class="col-rpa">RPA</th>
+                        <th class="col-hyper">Hyperautomation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="col-feature">Datentypen</td>
+                        <td>Nur strukturierte Daten</td>
+                        <td>Strukturiert + unstrukturiert</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature">Entscheidungen</td>
+                        <td>Regelbasiert (if/then)</td>
+                        <td>KI-gestützt, kontextabhängig</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature">Lernfähigkeit</td>
+                        <td>Keine — statische Regeln</td>
+                        <td>Lernt aus Daten und Feedback</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature">Wartungsaufwand</td>
+                        <td>Hoch (30–40% p.a.)</td>
+                        <td>Mittel, sinkend über Zeit</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature">Einstiegskosten</td>
+                        <td>Niedrig bis mittel</td>
+                        <td>Mittel bis hoch</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature">Skalierbarkeit</td>
+                        <td>Linear (mehr Bots = mehr Kosten)</td>
+                        <td>Exponentiell (Modelle verbessern sich)</td>
+                    </tr>
+                    <tr>
+                        <td class="col-feature">Fehlertoleranz</td>
+                        <td>Gering — bricht bei Abweichungen ab</td>
+                        <td>Hoch — kann mit Variationen umgehen</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>Wann reicht RPA? Wann brauchen Sie mehr?</h2>
+
+            <p>Nicht jeder Prozess braucht Hyperautomation. Das sage ich bewusst, obwohl ich als Berater natürlich ein Interesse daran hätte, jedem Kunden das Premiumpaket zu verkaufen. Aber ehrlich: Für einfache, stabile Prozesse ist RPA immer noch die richtige Wahl.</p>
+
+            <p><strong>RPA reicht, wenn:</strong></p>
+            <ul>
+                <li>Der Prozess klar definiert ist und sich selten ändert</li>
+                <li>Die Daten strukturiert vorliegen (Datenbanken, feste Formulare)</li>
+                <li>Keine Ausnahmen oder Sonderfälle behandelt werden müssen</li>
+                <li>Das Volumen hoch genug ist, um den Implementierungsaufwand zu rechtfertigen</li>
+            </ul>
+
+            <p><strong>Hyperautomation brauchen Sie, wenn:</strong></p>
+            <ul>
+                <li>Unstrukturierte Daten verarbeitet werden (Freitext-E-Mails, Dokumente, Bilder)</li>
+                <li>Entscheidungen getroffen werden müssen, die über einfache Regeln hinausgehen</li>
+                <li>Prozesse variabel sind und sich häufig ändern</li>
+                <li>Sie End-to-End-Automatisierung anstreben — nicht nur einzelne Schritte</li>
+            </ul>
+
+            <h2>Marktentwicklung: Wohin die Reise geht</h2>
+
+            <p>Gartner hat Hyperautomation seit 2020 in den Top-10-Technologietrends gelistet. Der globale Markt für Hyperautomation-Tools wird laut Grand View Research auf 26,5 Milliarden Dollar im Jahr 2028 geschätzt — ein jährliches Wachstum von über 23%. Das klassische RPA-Wachstum hat sich dagegen verlangsamt. UiPath, der größte RPA-Anbieter, hat seine Plattform komplett in Richtung Hyperautomation umgebaut. Automation Anywhere und Microsoft Power Automate ebenfalls.</p>
+
+            <p>Die Botschaft ist klar: RPA allein reicht nicht mehr. Nicht weil es schlecht wäre, sondern weil die Anforderungen gestiegen sind. Unternehmen wollen nicht mehr einzelne Tasks automatisieren — sie wollen ganze Prozessketten. Und das erfordert eine Kombination aus Technologien.</p>
+
+            <h2>Mein Rat: Pragmatisch anfangen</h2>
+
+            <p>Wenn Sie noch kein RPA haben, starten Sie nicht mit Hyperautomation. Das wäre, als würden Sie joggen lernen, indem Sie einen Marathon laufen. Beginnen Sie mit einem einfachen RPA-Piloten, sammeln Sie Erfahrung, und erweitern Sie dann schrittweise um KI-Komponenten, Process Mining und Intelligent Document Processing.</p>
+
+            <p>Wenn Sie bereits RPA im Einsatz haben und an Grenzen stoßen — zu hohe Wartungskosten, zu viele Ausnahmen, zu viel manuelle Nacharbeit — dann ist es Zeit für den nächsten Schritt. Nicht als Revolution, sondern als Evolution. Schritt für Schritt, Prozess für Prozess.</p>
+
+            <p class="source-note">Quellen: Gartner, „Top Strategic Technology Trends 2025"; Forrester, „The State of RPA 2025"; Grand View Research, „Hyperautomation Market Report 2024–2028"; UiPath, „Annual Report 2025".</p>
+
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-dim)"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="author-box-info">
+                    <h4>Über den Autor</h4>
+                    <p><strong>Ilias Albay</strong> ist Wirtschaftsingenieur und Gründer von ILDEN KI Consulting. Er berät mittelständische Unternehmen bei der strategischen Einführung von KI — mit Fokus auf messbare Ergebnisse statt Hype.</p>
+                </div>
+            </div>
+
+            <!-- Related Articles -->
+            <div class="related-articles">
+                <h3>Weiterlesen</h3>
+                <a href="roi-von-ki.html" class="related-link">
+                    <strong>ROI von KI: So rechnen Sie richtig — und vermeiden teure Fehler</strong>
+                    Warum die meisten ROI-Berechnungen falsch sind und wie Sie es besser machen.
+                </a>
+                <a href="ki-projekte-scheitern.html" class="related-link">
+                    <strong>Warum 87% aller KI-Projekte scheitern — und was die restlichen 13% anders machen</strong>
+                    Die fünf häufigsten Gründe und wie erfolgreiche Projekte anders vorgehen.
+                </a>
+            </div>
+
+            <!-- CTA -->
+            <div class="article-cta">
+                <h3>Lassen Sie uns über Ihre KI-Strategie sprechen</h3>
+                <p>30 Minuten, unverbindlich. Wir analysieren, wo Automatisierung in Ihrem Unternehmen den größten Hebel hat.</p>
+                <a href="../kontakt.html" class="btn btn-primary">Gespräch buchen &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="../ki-strategie.html">KI-Strategie</a></li><li><a href="../automatisierung.html">Automatisierung</a></li><li><a href="../datenanalyse.html">Datenanalyse</a></li><li><a href="../schulungen.html">Schulungen</a></li><li><a href="../implementierung.html">Implementierung</a></li><li><a href="../compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="../ueber-uns.html">Über ILDEN</a></li><li><a href="../methodik.html">Methodik</a></li><li><a href="../referenzen.html">Referenzen</a></li><li><a href="../insights.html">Insights</a></li><li><a href="../kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="../js/main.js"></script>
+
+</body></html>

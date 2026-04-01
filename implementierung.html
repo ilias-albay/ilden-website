@@ -1,0 +1,200 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Implementierung & Deployment — ILDEN KI Consulting</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+</head><body>
+
+<nav class="navbar" id="navbar">
+    <div class="container nav-container">
+        <a href="index.html" class="logo" aria-label="ILDEN KI Consulting">
+            <img src="images/logo-white.png" alt="ILDEN" class="logo-img">
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+                    <div class="dropdown-menu"><div class="dropdown-grid">
+                        <a href="ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+                        <a href="automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+                        <a href="datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Datenanalyse</strong><span>ML-Modelle & Analytics</span></div></a>
+                        <a href="schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>KI-Schulungen</strong><span>Workshops & Training</span></div></a>
+                        <a href="implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Implementierung</strong><span>Entwicklung & Deployment</span></div></a>
+                        <a href="compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Compliance & Ethik</strong><span>EU AI Act & Datenschutz</span></div></a>
+                    </div></div>
+                </li>
+                <li class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+                    <div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+                        <a href="ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Über ILDEN</strong><span>Team, Mission & Werte</span></div></a>
+                        <a href="methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Methodik</strong><span>Unser bewährtes Framework</span></div></a>
+                        <a href="referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></div><div><strong>Referenzen</strong><span>Case Studies & Ergebnisse</span></div></a>
+                    </div></div>
+                </li>
+                <li><a href="insights.html" class="nav-link">Insights</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+            </ul>
+            <div class="nav-cta"><a href="kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div>
+        </div>
+    </div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+    <!-- Page Hero -->
+    <section class="page-hero" style="background-image: linear-gradient(rgba(10,12,20,0.82), rgba(10,12,20,0.72)), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80&auto=format');">
+        <div class="container">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="index.html">Home</a>
+                <svg class="ilden-arrow" viewBox="0 0 16 16" width="12" height="12"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                <a href="#">Leistungen</a>
+                <svg class="ilden-arrow" viewBox="0 0 16 16" width="12" height="12"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                <span>Implementierung</span>
+            </nav>
+            <span class="overline" data-animate>KI-Implementierung & Deployment</span>
+            <h1 data-animate>Konzepte haben wir genug.<br><em>Jetzt wird gebaut.</em></h1>
+            <p class="hero-description" data-animate>Vom validierten Use Case zum produktiven System. Wir entwickeln, deployen und betreiben KI-Lösungen — agil, cloud-native und DSGVO-konform. In Wochen, nicht in Quartalen.</p>
+            <a href="kontakt.html" class="btn btn-primary" data-animate>Projekt starten <svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a>
+        </div>
+    </section>
+
+    <!-- Highlight Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="highlight-grid grid-4" data-stagger>
+                <div class="highlight-card" data-animate>
+                    <span class="highlight-number">&lt;8 Wo.</span>
+                    <span class="highlight-label">MVP-Lieferzeit</span>
+                </div>
+                <div class="highlight-card" data-animate>
+                    <span class="highlight-number">99,5%</span>
+                    <span class="highlight-label">System-Uptime</span>
+                </div>
+                <div class="highlight-card" data-animate>
+                    <span class="highlight-number">40+</span>
+                    <span class="highlight-label">API-Integrationen realisiert</span>
+                </div>
+                <div class="highlight-card" data-animate>
+                    <span class="highlight-number">3</span>
+                    <span class="highlight-label">Cloud-Plattformen (AWS/Azure/GCP)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Block 1: MVP in 8 Wochen -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="feature-block" data-animate>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80&auto=format" alt="Agile KI-Entwicklung Sprint Board" loading="lazy">
+                </div>
+                <div class="feature-content">
+                    <span class="overline">Agile Delivery</span>
+                    <h2>MVP in 8 Wochen — Nicht in 8 Monaten</h2>
+                    <p>Agile Sprints, echtes Produkt, echte User. Kein Prototyp, der in der Demo-Umgebung stirbt. Wir liefern funktionsfähige KI-Systeme, die ab Tag 1 Wert schaffen. Jeder Sprint hat ein klares Deliverable. Jedes Deliverable wird mit echten Nutzern getestet.</p>
+                    <p>Unser Tech-Stack ist bewährt: FastAPI, LangChain, Hugging Face, PostgreSQL. Keine Vendor-Lock-ins. Kein Over-Engineering. Der kürzeste Weg von der Idee zur Produktion.</p>
+                    <ul class="feature-list">
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Sprint 1-2: Daten-Pipeline, Feature Engineering, Baseline-Modell</li>
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Sprint 3-4: API-Entwicklung, UI, Integration in Ihre Systeme</li>
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Sprint 5-6: Load Testing, Security Audit, User Acceptance Testing</li>
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Sprint 7-8: Go-Live, Monitoring-Setup, Runbook-Übergabe</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feature Block 2: Cloud-native & On-Premise -->
+    <section class="section">
+        <div class="container">
+            <div class="feature-block reverse" data-animate>
+                <div class="feature-image">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80&auto=format" alt="Cloud Infrastructure Serverraum" loading="lazy">
+                </div>
+                <div class="feature-content">
+                    <span class="overline">Infrastruktur & DevOps</span>
+                    <h2>Cloud-native & On-Premise — Ihre Regeln</h2>
+                    <p>Kubernetes, Docker, CI/CD. Wir deployen dort, wo Ihre Daten leben. DSGVO-konform. Immer. Ob AWS Frankfurt, Azure Deutschland oder Ihr eigenes Rechenzentrum — wir bauen die Infrastruktur, die zu Ihren Anforderungen passt.</p>
+                    <p>Automatisierte Pipelines. Infrastructure as Code. Zero-Downtime Deployments. Ihre KI-Systeme laufen stabil, skalieren automatisch und sind jederzeit reproduzierbar.</p>
+                    <ul class="feature-list">
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Kubernetes-Cluster mit Auto-Scaling und Self-Healing</li>
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> CI/CD-Pipelines: GitLab CI, GitHub Actions, ArgoCD</li>
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> Terraform & Pulumi für reproduzierbare Infrastruktur</li>
+                        <li><svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg> EU-Rechenzentren mit Datenresidenz-Garantie</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Light Section: Insight -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="overline">Die Realität</span>
+                <h2>80% aller KI-Prototypen schaffen es nie in die Produktion. Bei uns sind es 15%.</h2>
+                <p>Der Unterschied? Wir denken vom ersten Tag an an Produktion. Skalierbarkeit, Monitoring, Fehlerbehandlung, Security — das sind keine Nachgedanken, sondern Grundpfeiler unserer Architektur.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 Cards -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header" data-animate>
+                <span class="overline">Unsere Kernkompetenzen</span>
+                <h2>Von der Pipeline bis zum Production-Grade System.</h2>
+            </div>
+            <div class="grid-3" data-stagger>
+                <div class="card" data-animate>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    </div>
+                    <h3>MLOps & Monitoring</h3>
+                    <p>Modell-Drift erkennen, bevor er Schaden anrichtet. Wir implementieren MLflow, Weights & Biases und custom Monitoring-Stacks. Automatische Retraining-Pipelines. A/B-Testing für Modell-Versionen. Alerting bei Performance-Degradation. 24/7.</p>
+                </div>
+                <div class="card" data-animate>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                    </div>
+                    <h3>API-Schnittstellen</h3>
+                    <p>REST, GraphQL, gRPC — wir bauen die Schnittstellen, die Ihre KI-Modelle in bestehende Systeme integrieren. SAP, Salesforce, Microsoft 365, Custom-ERPs. Rate Limiting, Caching, Versionierung. Dokumentiert mit OpenAPI. Getestet mit 99,9% Coverage.</p>
+                </div>
+                <div class="card" data-animate>
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3>Sicherheit & Compliance</h3>
+                    <p>Penetration Testing, OWASP Top 10, Verschlüsselung at rest und in transit. Role-Based Access Control. Audit Logs. SOC 2 Type II-ready. Wir bauen Systeme, die nicht nur funktionieren, sondern denen Ihre Compliance-Abteilung vertraut.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-box" data-animate>
+                <h2>Bereit für den Go-Live?</h2>
+                <p>Schluss mit Prototypen. Wir bauen KI-Systeme, die in Produktion laufen — stabil, sicher und skalierbar. Erzählen Sie uns von Ihrem Projekt.</p>
+                <a href="kontakt.html" class="btn btn-primary">Projekt besprechen <svg class="ilden-arrow" viewBox="0 0 16 16" width="16" height="16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="ki-strategie.html">KI-Strategie</a></li><li><a href="automatisierung.html">Automatisierung</a></li><li><a href="datenanalyse.html">Datenanalyse</a></li><li><a href="schulungen.html">Schulungen</a></li><li><a href="implementierung.html">Implementierung</a></li><li><a href="compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="ueber-uns.html">Über ILDEN</a></li><li><a href="methodik.html">Methodik</a></li><li><a href="referenzen.html">Referenzen</a></li><li><a href="insights.html">Insights</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+</body></html>

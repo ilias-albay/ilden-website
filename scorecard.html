@@ -1,0 +1,1402 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Readiness-Scorecard — ILDEN KI Consulting</title>
+<meta name="description" content="Wie bereit ist Ihr Unternehmen für KI? Finden Sie es in 3 Minuten heraus mit der ILDEN KI-Readiness-Scorecard.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+<style>
+/* Scorecard-specific styles */
+
+/* Compact Hero */
+.scorecard-hero {
+    padding: clamp(140px, 16vw, 200px) 0 clamp(60px, 8vw, 100px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.scorecard-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 20%, rgba(74,144,217,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.scorecard-hero .overline {
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+}
+.scorecard-hero .overline::before { display: none; }
+.scorecard-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    margin-bottom: var(--space-md);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.scorecard-hero p {
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.8;
+    max-width: 580px;
+    margin: 0 auto var(--space-md);
+}
+.trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-micro);
+    font-weight: 600;
+    color: var(--text-dim);
+    letter-spacing: 0.04em;
+}
+.trust-line::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 8px rgba(52,211,153,0.5);
+}
+
+/* Scorecard Container */
+.scorecard-wrap {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 32px var(--space-xl);
+    min-height: 500px;
+}
+
+/* Progress Bar */
+.sc-progress {
+    margin-bottom: var(--space-lg);
+}
+.sc-progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.sc-progress-label {
+    font-size: var(--type-micro);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+}
+.sc-progress-count {
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--blue-light);
+}
+.sc-progress-track {
+    width: 100%;
+    height: 4px;
+    background: var(--surface);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.sc-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-pale));
+    border-radius: 4px;
+    transition: width 0.5s var(--ease-out-expo);
+    width: 10%;
+}
+
+/* Question Card */
+.sc-question-area {
+    position: relative;
+    overflow: hidden;
+}
+.sc-question {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.4s ease, transform 0.4s var(--ease-out-expo);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+}
+.sc-question.active {
+    opacity: 1;
+    transform: translateX(0);
+    position: relative;
+    pointer-events: auto;
+}
+.sc-question.exit-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    position: absolute;
+}
+.sc-question-number {
+    font-size: var(--type-micro);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: var(--space-sm);
+}
+.sc-question h2 {
+    font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+    font-family: var(--font-display);
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+/* Answer Options */
+.sc-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.sc-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 22px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    background: var(--surface);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+.sc-option::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(74,144,217,0.08), rgba(74,144,217,0.02));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+.sc-option:hover {
+    border-color: var(--blue);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+.sc-option:hover::before {
+    opacity: 1;
+}
+.sc-option.selected {
+    border-color: var(--blue-light);
+    background: rgba(74,144,217,0.08);
+}
+.sc-option-radio {
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--border-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    margin-top: 2px;
+}
+.sc-option:hover .sc-option-radio {
+    border-color: var(--blue);
+}
+.sc-option.selected .sc-option-radio {
+    border-color: var(--blue-light);
+    background: var(--blue-light);
+}
+.sc-option.selected .sc-option-radio::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--white);
+}
+.sc-option-text {
+    font-size: var(--type-small);
+    line-height: 1.6;
+    color: var(--text-primary);
+    position: relative;
+    z-index: 1;
+}
+.sc-option input[type="radio"] {
+    display: none;
+}
+
+/* Email Gate */
+.sc-email-gate {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s var(--ease-out-expo);
+    display: none;
+}
+.sc-email-gate.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.sc-email-gate h2 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    margin-bottom: var(--space-md);
+}
+
+/* Teaser Score Circle */
+.sc-teaser-circle {
+    width: 160px;
+    height: 160px;
+    margin: 0 auto var(--space-md);
+    position: relative;
+    filter: blur(4px);
+    opacity: 0.6;
+}
+.sc-teaser-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+.sc-teaser-circle .track {
+    fill: none;
+    stroke: var(--surface);
+    stroke-width: 8;
+}
+.sc-teaser-circle .fill {
+    fill: none;
+    stroke: var(--blue-light);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 408.4;
+    stroke-dashoffset: 408.4;
+    transition: stroke-dashoffset 1.5s var(--ease-out-expo);
+}
+.sc-teaser-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.sc-email-gate p {
+    color: var(--text-secondary);
+    font-size: var(--type-small);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto var(--space-lg);
+}
+
+/* Email Form */
+.sc-form {
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: left;
+}
+.sc-form-group {
+    margin-bottom: 16px;
+}
+.sc-form-group label {
+    display: block;
+    font-size: var(--type-micro);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+}
+.sc-form-group input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    background: var(--surface);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition);
+}
+.sc-form-group input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74,144,217,0.12);
+}
+.sc-form-group input::placeholder {
+    color: var(--text-dim);
+}
+.sc-form-honeypot {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+}
+.sc-form-submit {
+    width: 100%;
+    padding: 16px 32px;
+    border-radius: 60px;
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: var(--space-sm);
+}
+.sc-form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255,255,255,0.15);
+}
+.sc-form-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+.sc-form-trust {
+    text-align: center;
+    font-size: var(--type-micro);
+    color: var(--text-dim);
+    margin-top: var(--space-sm);
+}
+
+/* Results */
+.sc-results {
+    text-align: center;
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s var(--ease-out-expo);
+}
+.sc-results.visible {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Score Circle */
+.sc-score-circle {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto var(--space-md);
+    position: relative;
+}
+.sc-score-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+.sc-score-circle .track {
+    fill: none;
+    stroke: var(--surface-light);
+    stroke-width: 10;
+}
+.sc-score-circle .fill {
+    fill: none;
+    stroke: url(#scoreGradient);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 534.07;
+    stroke-dashoffset: 534.07;
+    transition: stroke-dashoffset 2s var(--ease-out-expo);
+}
+.sc-score-value {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sc-score-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+}
+.sc-score-total {
+    font-size: var(--type-micro);
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+/* Level Badge */
+.sc-level-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border-radius: 60px;
+    font-size: var(--type-small);
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    letter-spacing: 0.04em;
+}
+.sc-level-badge.starter { background: rgba(239,68,68,0.12); color: #f87171; border: 1px solid rgba(239,68,68,0.2); }
+.sc-level-badge.explorer { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+.sc-level-badge.advancer { background: rgba(74,144,217,0.12); color: var(--blue-light); border: 1px solid rgba(74,144,217,0.2); }
+.sc-level-badge.leader { background: rgba(52,211,153,0.12); color: #34d399; border: 1px solid rgba(52,211,153,0.2); }
+
+.sc-level-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--space-sm);
+    line-height: 1.2;
+}
+.sc-level-desc {
+    color: var(--text-secondary);
+    font-size: var(--type-small);
+    line-height: 1.7;
+    max-width: 520px;
+    margin: 0 auto var(--space-xl);
+}
+
+/* Category Bars */
+.sc-categories {
+    max-width: 520px;
+    margin: 0 auto var(--space-xl);
+    text-align: left;
+}
+.sc-categories h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+.sc-cat-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.sc-cat-label {
+    width: 110px;
+    min-width: 110px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: right;
+}
+.sc-cat-bar-track {
+    flex: 1;
+    height: 10px;
+    background: var(--surface);
+    border-radius: 6px;
+    overflow: hidden;
+}
+.sc-cat-bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--blue), var(--blue-pale));
+    transition: width 1.5s var(--ease-out-expo);
+    width: 0;
+}
+.sc-cat-score {
+    width: 36px;
+    min-width: 36px;
+    font-size: var(--type-small);
+    font-weight: 700;
+    color: var(--blue-light);
+}
+
+/* Recommendations */
+.sc-recommendations {
+    max-width: 560px;
+    margin: 0 auto var(--space-xl);
+    text-align: left;
+}
+.sc-recommendations h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+.sc-rec-item {
+    padding: 20px 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+}
+.sc-rec-item h4 {
+    font-size: var(--type-small);
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--blue-light);
+}
+.sc-rec-item p {
+    font-size: var(--type-small);
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Results CTA */
+.sc-results-cta {
+    padding-top: var(--space-md);
+}
+.sc-results-cta .btn {
+    font-size: 1rem;
+    padding: 18px 40px;
+}
+
+/* Error message */
+.sc-error {
+    color: #f87171;
+    font-size: var(--type-small);
+    text-align: center;
+    margin-top: var(--space-sm);
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .scorecard-wrap { padding: 0 20px var(--space-lg); }
+    .sc-option { padding: 14px 16px; gap: 12px; }
+    .sc-cat-label { width: 80px; min-width: 80px; font-size: var(--type-micro); }
+    .sc-form { padding: 0 8px; }
+}
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="index.html" class="logo"><img src="images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="insights.html" class="nav-link">Insights</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<!-- Hero -->
+<section class="scorecard-hero">
+    <div class="container" data-animate>
+        <span class="overline">KOSTENLOS &middot; 3 MINUTEN &middot; 10 FRAGEN</span>
+        <h1>Wie bereit ist Ihr Unternehmen für KI?</h1>
+        <p>Finden Sie heraus, wo Sie stehen — und wo der größte Hebel liegt. Unser Readiness-Score basiert auf 50+ KI-Projekten im deutschen Mittelstand.</p>
+        <span class="trust-line">Bereits 840+ Unternehmen haben den Test gemacht</span>
+    </div>
+</section>
+
+<!-- Scorecard -->
+<div class="scorecard-wrap" id="scorecardWrap">
+
+    <!-- Progress -->
+    <div class="sc-progress" id="scProgress">
+        <div class="sc-progress-header">
+            <span class="sc-progress-label">Fortschritt</span>
+            <span class="sc-progress-count" id="scProgressCount">1 / 10</span>
+        </div>
+        <div class="sc-progress-track">
+            <div class="sc-progress-fill" id="scProgressFill"></div>
+        </div>
+    </div>
+
+    <!-- Questions -->
+    <div class="sc-question-area" id="scQuestionArea">
+
+        <!-- Q1 -->
+        <div class="sc-question active" data-question="1">
+            <div class="sc-question-number">Frage 1 von 10</div>
+            <h2>Wie würden Sie die Datenqualität in Ihrem Unternehmen beschreiben?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q1" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Chaotisch — Daten in Silos, wenig Struktur</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q1" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Grundlegend — Einige strukturierte Datenquellen vorhanden</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q1" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Gut — Zentrale Datenhaltung, definierte Prozesse</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q1" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Exzellent — Data Warehouse/Lake, Governance etabliert</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="sc-question" data-question="2">
+            <div class="sc-question-number">Frage 2 von 10</div>
+            <h2>Gibt es in Ihrem Unternehmen bereits KI- oder ML-Projekte?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q2" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Nein, noch gar nicht</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q2" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Wir haben darüber gesprochen, aber nichts gestartet</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q2" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Ein Pilotprojekt läuft oder wurde abgeschlossen</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q2" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Mehrere KI-Systeme sind produktiv im Einsatz</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="sc-question" data-question="3">
+            <div class="sc-question-number">Frage 3 von 10</div>
+            <h2>Wie hoch ist das KI-Know-how in Ihrem Team?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q3" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Kaum vorhanden — wir bräuchten externe Hilfe</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q3" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Grundverständnis bei einzelnen Mitarbeitern</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q3" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Dedizierte Datenanalysten/Data Scientists im Team</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q3" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Starkes internes KI-Team mit ML-Engineering-Kapazität</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="sc-question" data-question="4">
+            <div class="sc-question-number">Frage 4 von 10</div>
+            <h2>Haben Sie ein Budget für KI-Initiativen definiert?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q4" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Nein, kein dediziertes Budget</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q4" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Wir diskutieren noch über die Höhe</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q4" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Budget ist genehmigt, aber noch nicht allokiert</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q4" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Dediziertes KI-Budget mit klarem Business Case</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="sc-question" data-question="5">
+            <div class="sc-question-number">Frage 5 von 10</div>
+            <h2>Wie steht Ihre Geschäftsführung zum Thema KI?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q5" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Skeptisch oder desinteressiert</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q5" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Offen, aber noch nicht überzeugt</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q5" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Aktiv interessiert und unterstützend</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q5" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">KI ist Teil der Unternehmensstrategie</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="sc-question" data-question="6">
+            <div class="sc-question-number">Frage 6 von 10</div>
+            <h2>Wie gut sind Ihre IT-Systeme für KI-Integration vorbereitet?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q6" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Legacy-Systeme, wenig APIs, manuelle Prozesse</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q6" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Teilweise modernisiert, einige Schnittstellen vorhanden</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q6" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Cloud-fähig, API-first Architektur in Teilen</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q6" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Moderne Cloud-Infrastruktur mit CI/CD und APIs</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="sc-question" data-question="7">
+            <div class="sc-question-number">Frage 7 von 10</div>
+            <h2>Wie gehen Sie mit dem Thema Datenschutz und KI-Compliance um?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q7" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Noch nicht auf dem Radar</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q7" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">DSGVO-konform, aber kein KI-spezifischer Ansatz</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q7" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Datenschutzbeauftragter eingebunden, erste KI-Richtlinien</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q7" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">KI-Governance-Framework etabliert, EU AI Act vorbereitet</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="sc-question" data-question="8">
+            <div class="sc-question-number">Frage 8 von 10</div>
+            <h2>Welche Prozesse würden Sie am ehesten automatisieren wollen?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q8" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Wir wissen noch nicht, wo wir anfangen sollen</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q8" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Ein paar Ideen, aber nicht priorisiert</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q8" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Konkrete Use Cases identifiziert und bewertet</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q8" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Priorisierte Roadmap mit Business Cases vorhanden</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="sc-question" data-question="9">
+            <div class="sc-question-number">Frage 9 von 10</div>
+            <h2>Wie messen Sie aktuell den Erfolg digitaler Initiativen?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q9" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Gar nicht — wir fahren auf Bauchgefühl</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q9" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Grobe KPIs, aber kein systematisches Tracking</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q9" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Definierte KPIs mit regelmäßigem Reporting</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q9" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Echtzeit-Dashboards mit automatisierten Alerts</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Q10 -->
+        <div class="sc-question" data-question="10">
+            <div class="sc-question-number">Frage 10 von 10</div>
+            <h2>Was ist Ihr Hauptziel mit KI in den nächsten 12 Monaten?</h2>
+            <div class="sc-options">
+                <label class="sc-option" data-value="1">
+                    <input type="radio" name="q10" value="1">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Erstmal verstehen, was möglich ist</span>
+                </label>
+                <label class="sc-option" data-value="2">
+                    <input type="radio" name="q10" value="2">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Einen konkreten Use Case pilotieren</span>
+                </label>
+                <label class="sc-option" data-value="3">
+                    <input type="radio" name="q10" value="3">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">Bestehende Piloten in Produktion bringen</span>
+                </label>
+                <label class="sc-option" data-value="4">
+                    <input type="radio" name="q10" value="4">
+                    <div class="sc-option-radio"></div>
+                    <span class="sc-option-text">KI flächendeckend skalieren</span>
+                </label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Email Gate -->
+    <div class="sc-email-gate" id="scEmailGate">
+        <h2>Ihr Score ist berechnet.</h2>
+        <div class="sc-teaser-circle" id="scTeaserCircle">
+            <svg viewBox="0 0 140 140">
+                <circle class="track" cx="70" cy="70" r="65"/>
+                <circle class="fill" id="scTeaserFill" cx="70" cy="70" r="65"/>
+            </svg>
+            <div class="sc-teaser-value" id="scTeaserValue">—%</div>
+        </div>
+        <p>Geben Sie Ihre E-Mail-Adresse ein, um Ihren vollständigen Report zu erhalten — inklusive Benchmark-Vergleich und personalisierter Handlungsempfehlungen.</p>
+        <form class="sc-form" id="scForm" novalidate>
+            <div class="sc-form-group">
+                <label for="scName">Name *</label>
+                <input type="text" id="scName" name="vorname" placeholder="Ihr vollständiger Name" required>
+            </div>
+            <div class="sc-form-group">
+                <label for="scEmail">E-Mail *</label>
+                <input type="email" id="scEmail" name="email" placeholder="ihre@email.de" required>
+            </div>
+            <div class="sc-form-group">
+                <label for="scCompany">Unternehmen *</label>
+                <input type="text" id="scCompany" name="unternehmen" placeholder="Firmenname" required>
+            </div>
+            <!-- Honeypot -->
+            <div class="sc-form-honeypot" aria-hidden="true">
+                <label for="scWebsite">Website</label>
+                <input type="text" id="scWebsite" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <button type="submit" class="sc-form-submit" id="scSubmitBtn">Meinen Report erhalten</button>
+            <div class="sc-error" id="scFormError"></div>
+            <p class="sc-form-trust">Kein Spam. Ihre Daten sind DSGVO-konform geschützt.</p>
+        </form>
+    </div>
+
+    <!-- Results -->
+    <div class="sc-results" id="scResults">
+        <div class="sc-score-circle">
+            <svg viewBox="0 0 180 180">
+                <defs>
+                    <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#4a90d9"/>
+                        <stop offset="100%" stop-color="#8dbaf0"/>
+                    </linearGradient>
+                </defs>
+                <circle class="track" cx="90" cy="90" r="85"/>
+                <circle class="fill" id="scScoreFill" cx="90" cy="90" r="85"/>
+            </svg>
+            <div class="sc-score-value">
+                <span class="sc-score-number" id="scScoreNumber">0</span>
+                <span class="sc-score-total">von 40 Punkten</span>
+            </div>
+        </div>
+
+        <div class="sc-level-badge" id="scLevelBadge"></div>
+        <h2 class="sc-level-title" id="scLevelTitle"></h2>
+        <p class="sc-level-desc" id="scLevelDesc"></p>
+
+        <!-- Category Bars -->
+        <div class="sc-categories">
+            <h3>Ihre Ergebnisse nach Kategorie</h3>
+            <div class="sc-cat-row">
+                <span class="sc-cat-label">Daten</span>
+                <div class="sc-cat-bar-track"><div class="sc-cat-bar-fill" id="catData"></div></div>
+                <span class="sc-cat-score" id="catDataScore">0/8</span>
+            </div>
+            <div class="sc-cat-row">
+                <span class="sc-cat-label">Team</span>
+                <div class="sc-cat-bar-track"><div class="sc-cat-bar-fill" id="catTeam"></div></div>
+                <span class="sc-cat-score" id="catTeamScore">0/8</span>
+            </div>
+            <div class="sc-cat-row">
+                <span class="sc-cat-label">Strategie</span>
+                <div class="sc-cat-bar-track"><div class="sc-cat-bar-fill" id="catStrategy"></div></div>
+                <span class="sc-cat-score" id="catStrategyScore">0/8</span>
+            </div>
+            <div class="sc-cat-row">
+                <span class="sc-cat-label">Technologie</span>
+                <div class="sc-cat-bar-track"><div class="sc-cat-bar-fill" id="catTech"></div></div>
+                <span class="sc-cat-score" id="catTechScore">0/8</span>
+            </div>
+            <div class="sc-cat-row">
+                <span class="sc-cat-label">Governance</span>
+                <div class="sc-cat-bar-track"><div class="sc-cat-bar-fill" id="catGov"></div></div>
+                <span class="sc-cat-score" id="catGovScore">0/8</span>
+            </div>
+        </div>
+
+        <!-- Recommendations -->
+        <div class="sc-recommendations" id="scRecommendations">
+            <h3>Personalisierte Empfehlungen</h3>
+        </div>
+
+        <!-- CTA -->
+        <div class="sc-results-cta">
+            <a href="kontakt.html" class="btn btn-primary">Kostenlose 30-Min. Analyse buchen</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- CTA Section -->
+<section class="cta-section" id="scCtaSection" style="display:none;">
+    <div class="container" data-animate>
+        <h2>Lassen Sie uns über Ihre<br>KI-Strategie sprechen.</h2>
+        <p>Erste Einschätzung. Klare Empfehlungen. Kein Verkaufsgespräch.</p>
+        <a href="kontakt.html" class="btn btn-primary">Gespräch buchen</a>
+    </div>
+</section>
+
+</main>
+
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="ki-strategie.html">KI-Strategie</a></li><li><a href="automatisierung.html">Automatisierung</a></li><li><a href="datenanalyse.html">Datenanalyse</a></li><li><a href="schulungen.html">Schulungen</a></li><li><a href="implementierung.html">Implementierung</a></li><li><a href="compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="ueber-uns.html">Über ILDEN</a></li><li><a href="methodik.html">Methodik</a></li><li><a href="referenzen.html">Referenzen</a></li><li><a href="insights.html">Insights</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+(function() {
+    'use strict';
+
+    // State
+    var currentQuestion = 1;
+    var totalQuestions = 10;
+    var answers = {};
+
+    // Category mapping: question index -> category
+    // Data: Q1, Q9  |  Team: Q3, Q10  |  Strategy: Q4, Q5  |  Tech: Q6, Q8  |  Governance: Q2, Q7
+    var categories = {
+        Daten:      [1, 9],
+        Team:       [3, 10],
+        Strategie:  [4, 5],
+        Technologie:[6, 8],
+        Governance: [2, 7]
+    };
+
+    // Level definitions
+    var levels = [
+        { min: 10, max: 16, key: 'starter',  badge: 'Starter',  title: 'Ihr Unternehmen steht am Anfang der KI-Reise.',
+          desc: 'Die Grundlagen fehlen noch — von Dateninfrastruktur über Know-how bis zur strategischen Verankerung. Das ist kein Problem, sondern ein klarer Startpunkt. Unternehmen in dieser Phase profitieren am meisten von einem strukturierten Einstieg mit Quick Wins und einer realistischen Roadmap.' },
+        { min: 17, max: 24, key: 'explorer', badge: 'Explorer', title: 'Grundlagen sind da, aber es fehlt die Strategie.',
+          desc: 'Ihr Unternehmen hat erste Schritte gemacht — einzelne Initiativen, grundlegendes Verständnis. Was fehlt, ist die Verbindung: Eine klare Strategie, die Einzelinitiativen zu einem kohärenten KI-Programm verbindet und messbare Ergebnisse liefert.' },
+        { min: 25, max: 32, key: 'advancer', badge: 'Advancer', title: 'Sie sind auf einem guten Weg, aber Skalierung fehlt.',
+          desc: 'Solide Basis, erste Erfolge, aber der Sprung von Pilotprojekten zu unternehmensweiter KI-Nutzung steht noch aus. Die größten Hebel liegen jetzt in Governance, Skalierungsarchitektur und der Verankerung von KI in den Kernprozessen.' },
+        { min: 33, max: 40, key: 'leader',   badge: 'Leader',   title: 'Ihr Unternehmen ist KI-ready. Jetzt geht es um Wettbewerbsvorsprung.',
+          desc: 'Sie gehören zu den Top 10% der deutschen Unternehmen in Sachen KI-Readiness. Ihre nächsten Schritte: Differenzierung durch proprietäre Modelle, KI-gestützte Entscheidungssysteme und die konsequente Skalierung über alle Geschäftsbereiche.' }
+    ];
+
+    // Category recommendations based on score
+    var catRecommendations = {
+        Daten: {
+            low:  'Ihre Datenbasis braucht dringend Struktur. Beginnen Sie mit einem Data Audit und konsolidieren Sie Ihre wichtigsten Datenquellen in einem zentralen System.',
+            mid:  'Ihre Datengrundlage ist solide, aber nicht optimal. Investieren Sie in Datenqualitäts-Prozesse und automatisiertes Monitoring, um KI-Projekte zuverlässig zu versorgen.',
+            high: 'Ihre Dateninfrastruktur ist eine echte Stärke. Nutzen Sie diese Basis, um fortgeschrittene Analytics und ML-Pipelines aufzubauen.'
+        },
+        Team: {
+            low:  'Ohne KI-Kompetenz im Team werden Projekte scheitern. Starten Sie mit gezielten Schulungen für Schlüsselpersonen und ziehen Sie externe Expertise hinzu.',
+            mid:  'Ihr Team hat Potenzial, braucht aber Verstärkung. Investieren Sie in Weiterbildung und definieren Sie klare KI-Rollen in der Organisation.',
+            high: 'Ihr Team ist gut aufgestellt. Fokussieren Sie sich auf Wissenstransfer ins gesamte Unternehmen und den Aufbau einer KI-Community of Practice.'
+        },
+        Strategie: {
+            low:  'Ohne strategische Verankerung und Budget bleibt KI ein Experiment. Entwickeln Sie eine KI-Roadmap mit klaren Business Cases und sichern Sie sich C-Level-Sponsorship.',
+            mid:  'Die strategische Grundlage steht, aber die Umsetzung braucht mehr Struktur. Priorisieren Sie Use Cases nach Impact und Machbarkeit — und definieren Sie messbare Meilensteine.',
+            high: 'Ihre KI-Strategie ist vorbildlich. Jetzt geht es um Execution Excellence: schnelle Iteration, systematisches Learning und die Integration von KI in alle Geschäftsentscheidungen.'
+        },
+        Technologie: {
+            low:  'Ihre IT-Infrastruktur ist ein Engpass für KI. Beginnen Sie mit der Modernisierung kritischer Schnittstellen und evaluieren Sie Cloud-basierte KI-Plattformen.',
+            mid:  'Ihre Technologie-Basis ist ausbaufähig. Fokussieren Sie sich auf API-Standardisierung und den Aufbau einer skalierbaren ML-Infrastruktur.',
+            high: 'Ihre technische Infrastruktur ist KI-ready. Nutzen Sie Ihren Vorsprung für schnelle Experimente und den Aufbau von MLOps-Pipelines.'
+        },
+        Governance: {
+            low:  'KI-Governance ist kein Nice-to-have — mit dem EU AI Act wird sie Pflicht. Starten Sie jetzt mit einer Bestandsaufnahme und definieren Sie grundlegende KI-Richtlinien.',
+            mid:  'Sie haben die Basics, aber KI-spezifische Governance fehlt. Entwickeln Sie ein KI-Governance-Framework und bereiten Sie sich systematisch auf den EU AI Act vor.',
+            high: 'Ihre Governance ist eine Stärke und ein Wettbewerbsvorteil. Nutzen Sie Ihr Framework als Enabler für schnellere, sicherere KI-Deployments.'
+        }
+    };
+
+    // DOM refs
+    var progressFill  = document.getElementById('scProgressFill');
+    var progressCount = document.getElementById('scProgressCount');
+    var questionArea  = document.getElementById('scQuestionArea');
+    var questions     = questionArea.querySelectorAll('.sc-question');
+    var progressBar   = document.getElementById('scProgress');
+    var emailGate     = document.getElementById('scEmailGate');
+    var resultsDiv    = document.getElementById('scResults');
+    var form          = document.getElementById('scForm');
+    var formError     = document.getElementById('scFormError');
+    var submitBtn     = document.getElementById('scSubmitBtn');
+    var ctaSection    = document.getElementById('scCtaSection');
+
+    // Initialize: set question area height
+    function setAreaHeight() {
+        var active = questionArea.querySelector('.sc-question.active');
+        if (active) {
+            questionArea.style.minHeight = active.offsetHeight + 'px';
+        }
+    }
+    setAreaHeight();
+    window.addEventListener('resize', setAreaHeight);
+
+    // Update progress
+    function updateProgress(num) {
+        progressCount.textContent = num + ' / ' + totalQuestions;
+        progressFill.style.width = (num / totalQuestions * 100) + '%';
+    }
+
+    // Transition to next question
+    function goToQuestion(from, to) {
+        var fromEl = questions[from - 1];
+        var toEl   = questions[to - 1];
+
+        fromEl.classList.remove('active');
+        fromEl.classList.add('exit-left');
+
+        // Small delay then show next
+        setTimeout(function() {
+            toEl.classList.add('active');
+            questionArea.style.minHeight = toEl.offsetHeight + 'px';
+            updateProgress(to);
+            currentQuestion = to;
+        }, 150);
+
+        // Clean up exit class
+        setTimeout(function() {
+            fromEl.classList.remove('exit-left');
+        }, 500);
+    }
+
+    // Show email gate
+    function showEmailGate() {
+        progressBar.style.display = 'none';
+        var lastQ = questions[totalQuestions - 1];
+        lastQ.classList.remove('active');
+        lastQ.classList.add('exit-left');
+
+        setTimeout(function() {
+            lastQ.classList.remove('exit-left');
+            questionArea.style.display = 'none';
+
+            emailGate.style.display = 'block';
+            // Force reflow
+            emailGate.offsetHeight;
+            emailGate.classList.add('visible');
+
+            // Show teaser score
+            var totalScore = calcTotalScore();
+            var pct = Math.round(totalScore / 40 * 100);
+            document.getElementById('scTeaserValue').textContent = pct + '%';
+
+            // Animate teaser ring
+            var circumference = 2 * Math.PI * 65; // r=65
+            var offset = circumference - (pct / 100) * circumference;
+            setTimeout(function() {
+                document.getElementById('scTeaserFill').style.strokeDashoffset = offset;
+            }, 300);
+
+            // Scroll to gate
+            emailGate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 200);
+    }
+
+    // Calculate total score
+    function calcTotalScore() {
+        var total = 0;
+        for (var i = 1; i <= totalQuestions; i++) {
+            total += (answers[i] || 1);
+        }
+        return total;
+    }
+
+    // Calculate category scores
+    function calcCategoryScores() {
+        var result = {};
+        for (var cat in categories) {
+            var qs = categories[cat];
+            var score = 0;
+            for (var j = 0; j < qs.length; j++) {
+                score += (answers[qs[j]] || 1);
+            }
+            result[cat] = score;
+        }
+        return result;
+    }
+
+    // Get level for score
+    function getLevel(score) {
+        for (var i = 0; i < levels.length; i++) {
+            if (score >= levels[i].min && score <= levels[i].max) return levels[i];
+        }
+        return levels[0];
+    }
+
+    // Get recommendation tier
+    function getRecTier(catScore, maxScore) {
+        var pct = catScore / maxScore;
+        if (pct <= 0.375) return 'low';
+        if (pct <= 0.75)  return 'mid';
+        return 'high';
+    }
+
+    // Show results
+    function showResults() {
+        emailGate.classList.remove('visible');
+        emailGate.style.display = 'none';
+
+        var totalScore = calcTotalScore();
+        var pct = Math.round(totalScore / 40 * 100);
+        var level = getLevel(totalScore);
+        var catScores = calcCategoryScores();
+
+        // Level badge
+        var badge = document.getElementById('scLevelBadge');
+        badge.className = 'sc-level-badge ' + level.key;
+        badge.textContent = level.badge;
+
+        document.getElementById('scLevelTitle').textContent = level.title;
+        document.getElementById('scLevelDesc').textContent  = level.desc;
+
+        // Category bars
+        var catMap = {
+            Daten:       { bar: 'catData',     score: 'catDataScore' },
+            Team:        { bar: 'catTeam',     score: 'catTeamScore' },
+            Strategie:   { bar: 'catStrategy', score: 'catStrategyScore' },
+            Technologie: { bar: 'catTech',     score: 'catTechScore' },
+            Governance:  { bar: 'catGov',      score: 'catGovScore' }
+        };
+
+        // Recommendations
+        var recsContainer = document.getElementById('scRecommendations');
+        // Clear old recs (keep h3)
+        var recItems = recsContainer.querySelectorAll('.sc-rec-item');
+        for (var r = 0; r < recItems.length; r++) recItems[r].remove();
+
+        for (var cat in catMap) {
+            var s = catScores[cat];
+            var maxCat = 8;
+            var tier = getRecTier(s, maxCat);
+
+            document.getElementById(catMap[cat].score).textContent = s + '/' + maxCat;
+
+            // Recommendation
+            var recDiv = document.createElement('div');
+            recDiv.className = 'sc-rec-item';
+            recDiv.innerHTML = '<h4>' + cat + '</h4><p>' + catRecommendations[cat][tier] + '</p>';
+            recsContainer.appendChild(recDiv);
+        }
+
+        // Show results
+        resultsDiv.style.display = 'block';
+        resultsDiv.offsetHeight; // reflow
+        resultsDiv.classList.add('visible');
+
+        // Show CTA section
+        ctaSection.style.display = '';
+
+        // Scroll to results
+        resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Animate score number
+        var scoreNum = document.getElementById('scScoreNumber');
+        animateNumber(scoreNum, 0, totalScore, 1500);
+
+        // Animate score ring
+        var circumference = 2 * Math.PI * 85; // r=85
+        var offset = circumference - (pct / 100) * circumference;
+        setTimeout(function() {
+            document.getElementById('scScoreFill').style.strokeDashoffset = offset;
+        }, 200);
+
+        // Animate category bars (delayed)
+        setTimeout(function() {
+            for (var c in catMap) {
+                var sc = catScores[c];
+                var barPct = (sc / 8) * 100;
+                document.getElementById(catMap[c].bar).style.width = barPct + '%';
+            }
+        }, 600);
+    }
+
+    // Animate number counting
+    function animateNumber(el, from, to, duration) {
+        var start = performance.now();
+        function step(now) {
+            var elapsed = now - start;
+            var progress = Math.min(elapsed / duration, 1);
+            // ease out expo
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var val = Math.round(from + (to - from) * eased);
+            el.textContent = val;
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    // Click handlers for options
+    var allOptions = questionArea.querySelectorAll('.sc-option');
+    allOptions.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+            var questionEl = this.closest('.sc-question');
+            var qNum = parseInt(questionEl.getAttribute('data-question'));
+            var val  = parseInt(this.getAttribute('data-value'));
+
+            // Mark selected
+            var siblings = questionEl.querySelectorAll('.sc-option');
+            siblings.forEach(function(s) { s.classList.remove('selected'); });
+            this.classList.add('selected');
+            this.querySelector('input').checked = true;
+
+            answers[qNum] = val;
+
+            // Auto-advance after short delay
+            setTimeout(function() {
+                if (qNum < totalQuestions) {
+                    goToQuestion(qNum, qNum + 1);
+                } else {
+                    showEmailGate();
+                }
+            }, 400);
+        });
+    });
+
+    // Form submission
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        formError.style.display = 'none';
+
+        var name    = document.getElementById('scName').value.trim();
+        var email   = document.getElementById('scEmail').value.trim();
+        var company = document.getElementById('scCompany').value.trim();
+        var honey   = document.getElementById('scWebsite').value;
+
+        // Validation
+        if (!name || !email || !company) {
+            formError.textContent = 'Bitte füllen Sie alle Pflichtfelder aus.';
+            formError.style.display = 'block';
+            return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            formError.textContent = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.';
+            formError.style.display = 'block';
+            return;
+        }
+
+        // Disable button
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird gesendet...';
+
+        // Build payload
+        var totalScore = calcTotalScore();
+        var catScores  = calcCategoryScores();
+        var level      = getLevel(totalScore);
+
+        // Split name into vorname/nachname
+        var nameParts = name.split(' ');
+        var vorname   = nameParts[0];
+        var nachname  = nameParts.length > 1 ? nameParts.slice(1).join(' ') : '';
+
+        var payload = {
+            anliegen:    'scorecard',
+            vorname:     vorname,
+            nachname:    nachname,
+            email:       email,
+            unternehmen: company,
+            website:     honey,
+            nachricht:   'KI-Readiness-Score: ' + totalScore + '/40 (' + Math.round(totalScore/40*100) + '%) — Level: ' + level.badge +
+                         ' | Daten: ' + catScores.Daten + '/8' +
+                         ' | Team: ' + catScores.Team + '/8' +
+                         ' | Strategie: ' + catScores.Strategie + '/8' +
+                         ' | Technologie: ' + catScores.Technologie + '/8' +
+                         ' | Governance: ' + catScores.Governance + '/8'
+        };
+
+        fetch('backend/submit.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        })
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+            if (data.success) {
+                showResults();
+            } else {
+                formError.textContent = data.error || 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.';
+                formError.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Meinen Report erhalten';
+            }
+        })
+        .catch(function() {
+            // Show results anyway (graceful degradation)
+            showResults();
+        });
+    });
+
+})();
+</script>
+</body></html>

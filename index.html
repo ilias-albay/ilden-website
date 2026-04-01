@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILDEN KI Consulting — Process. Automation. Performance.</title>
+    <meta name="description" content="ILDEN baut KI-Systeme, die Unternehmen in 90 Tagen transformieren. Keine Slides ohne Ergebnis. Strategie, Automatisierung und messbare Performance aus einer Hand.">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="images/icon.svg">
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="index.html" class="logo"><img src="images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML-Modelle & Analytics</span></div></a>
+            <a href="schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Entwicklung & Deployment</span></div></a>
+            <a href="compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>EU AI Act & Datenschutz</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team, Mission & Werte</span></div></a>
+            <a href="methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Unser bewährtes Framework</span></div></a>
+            <a href="referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies & Ergebnisse</span></div></a>
+        </div></div></li>
+        <li><a href="insights.html" class="nav-link">Insights</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+
+<!-- ===== 1. HERO ===== -->
+<section class="hero">
+    <div class="hero-bg-gradient"></div>
+    <div class="container">
+        <!-- Large centered logo -->
+        <div class="hero-logo-wrap" data-animate>
+            <img src="images/logo-white.png" alt="ILDEN KI Consulting" class="hero-logo">
+        </div>
+        <!-- Content below logo -->
+        <div class="hero-centered" data-animate>
+            <h1>Ihre Konkurrenz automatisiert bereits. <em>Was tun Sie?</em></h1>
+            <p class="hero-text">Wir bauen KI-Systeme, die Ihr Unternehmen in 90 Tagen transformieren. Keine Pilotprojekte, die in der Schublade landen. Keine Slides ohne Ergebnis.</p>
+            <div class="hero-cta">
+                <a href="kontakt.html" class="btn btn-primary btn-large">30 Min. Potenzialanalyse — kostenlos <span class="arrow">&rarr;</span></a>
+                <a href="scorecard.html" class="btn btn-secondary">KI-Readiness testen</a>
+            </div>
+            <div class="availability">Aktuell 2 Projektplätze verfügbar für Q2 2026</div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 2. MARQUEE ===== -->
+<div class="marquee-section">
+    <div class="marquee-label">Vertraut von Entscheidern in</div>
+    <div class="marquee-track">
+        <span class="marquee-item">NEXOVA</span>
+        <span class="marquee-item">FALKENBERG GROUP</span>
+        <span class="marquee-item">STRAHLWERK</span>
+        <span class="marquee-item">MERIDIAN TECH</span>
+        <span class="marquee-item">VELTRIC AG</span>
+        <span class="marquee-item">NEXOVA</span>
+        <span class="marquee-item">FALKENBERG GROUP</span>
+        <span class="marquee-item">STRAHLWERK</span>
+        <span class="marquee-item">MERIDIAN TECH</span>
+        <span class="marquee-item">VELTRIC AG</span>
+    </div>
+</div>
+
+
+<!-- ===== 3. PROBLEM ===== -->
+<section class="section section-light">
+    <div class="container">
+        <div class="problem-grid">
+            <div data-animate="slide-left">
+                <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> DAS PROBLEM</div>
+                <h2>87% aller KI-Projekte scheitern. Immer die gleichen Fehler.</h2>
+                <div class="problem-stat">87%</div>
+            </div>
+            <div class="problem-points" data-animate data-stagger>
+                <div class="problem-point" style="--i:0">
+                    <h3>Strategie ohne Substanz</h3>
+                    <p>Die meisten Berater liefern PowerPoint-Strategien, die nie umgesetzt werden. Kein Prototyp. Kein ROI. Nur Papier.</p>
+                </div>
+                <div class="problem-point" style="--i:1">
+                    <h3>Technologie ohne Geschäftsverständnis</h3>
+                    <p>KI-Teams, die brillante Modelle bauen — aber nicht verstehen, welches Problem sie lösen sollen.</p>
+                </div>
+                <div class="problem-point" style="--i:2">
+                    <h3>Piloten ohne Skalierung</h3>
+                    <p>Proof of Concepts, die ewig in der Testphase bleiben. Kein Go-Live. Kein messbarer Impact.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 4. SERVICES / BENTO GRID ===== -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> UNSERE DISZIPLINEN</div>
+            <h2>Sechs Disziplinen. Ein Ziel: <em>Ihr Vorsprung.</em></h2>
+        </div>
+        <div class="bento-grid" data-animate data-stagger>
+            <div class="bento-card bento-large" style="--i:0">
+                <div class="bento-card-image"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80&auto=format" alt="Strategiemeeting" loading="lazy"></div>
+                <div class="bento-card-content">
+                    <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> STRATEGIE</div>
+                    <h3>KI-Strategie & Roadmap</h3>
+                    <p>Kein 80-seitiges Strategiepapier. Stattdessen: eine priorisierte Roadmap mit konkreten Use Cases, die sich in Quartalen rechnen — nicht in Jahren.</p>
+                    <a href="ki-strategie.html" class="card-link">Mehr erfahren <span class="arrow">&rarr;</span></a>
+                </div>
+            </div>
+            <div class="bento-card bento-medium" style="--i:1">
+                <div class="bento-card-content">
+                    <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> AUTOMATION</div>
+                    <h3>Prozessautomatisierung</h3>
+                    <p>Repetitive Arbeit, die Ihre besten Leute ausbremst? Wir eliminieren sie. Dokumentenverarbeitung, Freigabeprozesse, Datenmigration — automatisiert und auditierbar.</p>
+                    <a href="automatisierung.html" class="card-link">Mehr erfahren <span class="arrow">&rarr;</span></a>
+                </div>
+            </div>
+            <div class="bento-card bento-third" style="--i:2">
+                <div class="bento-card-content">
+                    <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> ANALYTICS</div>
+                    <h3>Datenanalyse & ML</h3>
+                    <p>Predictive Maintenance, Demand Forecasting, Anomalie-Erkennung. Modelle, die in Produktion laufen — nicht im Notebook verstauben.</p>
+                </div>
+            </div>
+            <div class="bento-card bento-third" style="--i:3">
+                <div class="bento-card-content">
+                    <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> ENABLEMENT</div>
+                    <h3>KI-Schulungen</h3>
+                    <p>Prompt Engineering, LLM-Integration, verantwortungsvoller KI-Einsatz. Workshops, nach denen Ihr Team selbst loslegen kann.</p>
+                </div>
+            </div>
+            <div class="bento-card bento-third" style="--i:4">
+                <div class="bento-card-content">
+                    <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> ENGINEERING</div>
+                    <h3>Implementierung</h3>
+                    <p>Von der API-Integration bis zur MLOps-Pipeline. Wir deployen in Ihre Infrastruktur — Cloud, On-Premise, Hybrid. Produktionsreif ab Tag eins.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 5. CASE STUDIES ===== -->
+<section class="section">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> ERGEBNISSE</div>
+            <h2>Messbar. Nachweisbar. <em>Wiederholbar.</em></h2>
+        </div>
+    </div>
+    <div class="cases-scroll" data-animate>
+        <div class="case-scroll-card">
+            <div class="case-scroll-image">
+                <img src="https://images.unsplash.com/photo-1565043589221-1a6fd9ae45c7?w=800&q=80&auto=format" alt="NEXOVA Industrietechnik — Fertigung" loading="lazy">
+                <span class="case-scroll-tag">Manufacturing</span>
+            </div>
+            <div class="case-scroll-body">
+                <div class="case-scroll-metric">94%</div>
+                <div class="case-scroll-metric-label">Fehlerreduktion in der Endkontrolle</div>
+                <h3>NEXOVA Industrietechnik</h3>
+                <p>KI-gestützte Qualitätskontrolle mit Computer Vision. 14 Kamerapositionen, Echtzeit-Klassifikation, integriert in die bestehende SPS-Steuerung.</p>
+            </div>
+        </div>
+        <div class="case-scroll-card">
+            <div class="case-scroll-image">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&q=80&auto=format" alt="Falkenberg Finanzgruppe — Finance" loading="lazy">
+                <span class="case-scroll-tag">Finance</span>
+            </div>
+            <div class="case-scroll-body">
+                <div class="case-scroll-metric">3.2M</div>
+                <div class="case-scroll-metric-label">EUR Einsparungen im ersten Jahr</div>
+                <h3>Falkenberg Finanzgruppe</h3>
+                <p>Predictive Analytics für Kreditrisikobewertung. 340.000 Datenpunkte pro Entscheidung, Modell-Accuracy von 96,4% — aufsichtskonform dokumentiert.</p>
+            </div>
+        </div>
+        <div class="case-scroll-card">
+            <div class="case-scroll-image">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?w=800&q=80&auto=format" alt="MedVita Kliniken — Healthcare" loading="lazy">
+                <span class="case-scroll-tag">Healthcare</span>
+            </div>
+            <div class="case-scroll-body">
+                <div class="case-scroll-metric">67%</div>
+                <div class="case-scroll-metric-label">schnellere Dokumentenverarbeitung</div>
+                <h3>MedVita Kliniken</h3>
+                <p>NLP-gestützte Analyse von Arztbriefen und Befundberichten. Automatische Kodierung nach ICD-10, direkte KIS-Integration. DSGVO-konform.</p>
+            </div>
+        </div>
+        <div class="case-scroll-card">
+            <div class="case-scroll-image">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80&auto=format" alt="Strahlwerk Commerce — Retail" loading="lazy">
+                <span class="case-scroll-tag">Retail</span>
+            </div>
+            <div class="case-scroll-body">
+                <div class="case-scroll-metric">+41%</div>
+                <div class="case-scroll-metric-label">Conversion Rate im Onlineshop</div>
+                <h3>Strahlwerk Commerce</h3>
+                <p>Echtzeit-Personalisierung über alle Touchpoints. Produktempfehlungen, dynamische Preisgestaltung und Churn-Prediction in einem System.</p>
+            </div>
+        </div>
+        <div class="case-scroll-card">
+            <div class="case-scroll-image">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&auto=format" alt="Meridian Logistik — Logistics" loading="lazy">
+                <span class="case-scroll-tag">Logistics</span>
+            </div>
+            <div class="case-scroll-body">
+                <div class="case-scroll-metric">18%</div>
+                <div class="case-scroll-metric-label">Kraftstoffersparnis flottenweit</div>
+                <h3>Meridian Logistik</h3>
+                <p>Dynamische Routenoptimierung mit Reinforcement Learning. 1.200 Fahrzeuge, Echtzeit-Verkehrsdaten, Wetter-Integration. ROI nach 4 Monaten.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== LEADMAGNET BANNER ===== -->
+<section class="section section-light" style="padding:var(--space-xl) 0">
+    <div class="container">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md)" data-animate data-stagger>
+            <a href="scorecard.html" style="background:var(--navy);border-radius:var(--radius-xl);padding:var(--space-lg);display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;transition:var(--transition);border:1px solid transparent;--i:0" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                <div>
+                    <div style="display:inline-block;padding:4px 12px;border-radius:50px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(74,144,217,0.12);color:var(--blue-light);margin-bottom:var(--space-sm)">KOSTENLOSER TEST</div>
+                    <h3 style="font-family:var(--font-display);font-size:1.6rem;color:var(--white);font-weight:400;margin-bottom:8px;letter-spacing:-0.02em">KI-Readiness-Scorecard</h3>
+                    <p style="color:var(--text-secondary);font-size:var(--type-small);line-height:1.6;margin-bottom:var(--space-md)">10 Fragen. 3 Minuten. Finden Sie heraus, wo Ihr Unternehmen steht — und wo der größte Hebel liegt.</p>
+                </div>
+                <span style="color:var(--blue-light);font-size:var(--type-small);font-weight:600;display:flex;align-items:center;gap:6px">Test starten <span style="transition:transform 0.3s">&rarr;</span></span>
+            </a>
+            <a href="roi-rechner.html" style="background:var(--navy);border-radius:var(--radius-xl);padding:var(--space-lg);display:flex;flex-direction:column;justify-content:space-between;text-decoration:none;transition:var(--transition);border:1px solid transparent;--i:1" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 20px 60px rgba(0,0,0,0.2)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+                <div>
+                    <div style="display:inline-block;padding:4px 12px;border-radius:50px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(201,168,76,0.12);color:var(--gold);margin-bottom:var(--space-sm)">KOSTENLOSER RECHNER</div>
+                    <h3 style="font-family:var(--font-display);font-size:1.6rem;color:var(--white);font-weight:400;margin-bottom:8px;letter-spacing:-0.02em">KI-ROI-Rechner</h3>
+                    <p style="color:var(--text-secondary);font-size:var(--type-small);line-height:1.6;margin-bottom:var(--space-md)">Berechnen Sie in 2 Minuten, wie viel Ihr Unternehmen durch KI-Automatisierung einsparen kann.</p>
+                </div>
+                <span style="color:var(--gold);font-size:var(--type-small);font-weight:600;display:flex;align-items:center;gap:6px">Jetzt berechnen <span style="transition:transform 0.3s">&rarr;</span></span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHITEPAPER BANNER ===== -->
+<section class="section" style="padding:var(--space-xl) 0">
+    <div class="container" data-animate>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-xl);padding:var(--space-lg);display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);flex-wrap:wrap">
+            <div style="flex:1;min-width:280px">
+                <div style="display:inline-block;padding:4px 12px;border-radius:50px;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:rgba(74,144,217,0.1);color:var(--blue-light);margin-bottom:var(--space-sm)">KOSTENLOSES WHITEPAPER</div>
+                <h3 style="font-family:var(--font-display);font-size:1.5rem;font-weight:400;margin-bottom:6px">KI im Mittelstand 2026: Der Implementierungs-Leitfaden</h3>
+                <p style="color:var(--text-secondary);font-size:var(--type-small)">25 Seiten. Frameworks, Checklisten, Benchmark-Daten. Basierend auf 50+ realen Projekten.</p>
+            </div>
+            <a href="whitepaper-ki-mittelstand.html" class="btn btn-primary">Whitepaper herunterladen <span class="arrow">&rarr;</span></a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 6. METHODIK ===== -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header center" data-animate>
+            <div class="overline" style="justify-content:center">SO ARBEITEN WIR</div>
+            <h2>Vier Phasen. Null Risiko.</h2>
+        </div>
+        <div class="timeline" data-animate data-stagger>
+            <div class="timeline-step" style="--i:0">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 1</div>
+                <h3>Discovery</h3>
+                <p>Wir durchleuchten Ihre Prozesse, identifizieren die drei Use Cases mit dem höchsten ROI und validieren die Datenlage. Kein Raten. Nur Fakten.</p>
+                <span class="timeline-duration">2 — 4 Wochen</span>
+            </div>
+            <div class="timeline-step" style="--i:1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 2</div>
+                <h3>Design</h3>
+                <p>Architektur, Tech-Stack, Integrationsplan. Jede Entscheidung dokumentiert, jede Abhängigkeit kartiert. Sie sehen exakt, was gebaut wird — bevor eine Zeile Code entsteht.</p>
+                <span class="timeline-duration">2 — 3 Wochen</span>
+            </div>
+            <div class="timeline-step" style="--i:2">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 3</div>
+                <h3>Deliver</h3>
+                <p>Agile Sprints, wöchentliche Demos, direkter Draht zum Engineering-Team. Kein Verschwinden hinter einem Projektmanager. Sie sehen Fortschritt in Echtzeit.</p>
+                <span class="timeline-duration">4 — 12 Wochen</span>
+            </div>
+            <div class="timeline-step" style="--i:3">
+                <div class="timeline-dot"></div>
+                <div class="timeline-phase">Phase 4</div>
+                <h3>Scale</h3>
+                <p>Monitoring, Retraining, Optimierung. Wir bleiben an Bord, bis das System stabil skaliert. Und Ihr Team es eigenständig weiterentwickeln kann.</p>
+                <span class="timeline-duration">Laufend</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 7. ABOUT ===== -->
+<section class="section">
+    <div class="container">
+        <div class="about-split">
+            <div class="about-images" data-animate="slide-left">
+                <div class="about-img-main">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80&auto=format" alt="ILDEN Team bei der Arbeit" loading="lazy">
+                </div>
+                <div class="about-img-accent">
+                    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80&auto=format" alt="Technische Diskussion im Team" loading="lazy">
+                </div>
+                <div class="about-logo-badge">
+                    <svg viewBox="0 0 140 32" fill="none" style="height:28px;width:auto"><text y="24" font-family="Inter, sans-serif" font-weight="800" font-size="24" letter-spacing="-1"><tspan fill="#ffffff">IL</tspan><tspan fill="#4a90d9">DEN</tspan></text></svg>
+                </div>
+            </div>
+            <div class="about-text" data-animate="slide-right">
+                <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> ÜBER ILDEN</div>
+                <h2>Berater, die selbst bauen können.</h2>
+                <p>Die meisten Beratungen hören beim Konzept auf. Wir nicht. Unser Team besteht aus Strategen, die Code schreiben können — und Ingenieuren, die Geschäftsmodelle verstehen.</p>
+                <p>Kein Offshore-Team, das nach Briefing arbeitet. Kein Junior, der Ihre Anforderungen aufnimmt und an jemand anderen weitergibt. Bei ILDEN sprechen Sie mit den Leuten, die Ihr System tatsächlich bauen.</p>
+                <div class="values-grid">
+                    <div class="value-row">
+                        <div class="value-marker">P</div>
+                        <div>
+                            <h4>Process</h4>
+                            <p>Erst den Prozess verstehen. Dann automatisieren. Nie andersherum.</p>
+                        </div>
+                    </div>
+                    <div class="value-row">
+                        <div class="value-marker">A</div>
+                        <div>
+                            <h4>Automation</h4>
+                            <p>Jede Stunde, die ein Mensch mit Copy-Paste verbringt, ist eine Stunde zu viel.</p>
+                        </div>
+                    </div>
+                    <div class="value-row">
+                        <div class="value-marker">P</div>
+                        <div>
+                            <h4>Performance</h4>
+                            <p>Wenn es sich nicht messen lässt, existiert es nicht. Punkt.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 8. STATS / WHY ILDEN ===== -->
+<section class="section section-light">
+    <div class="container">
+        <div class="stats-split">
+            <div class="stats-numbers" data-animate="slide-left" data-stagger>
+                <div class="stat-row" style="--i:0">
+                    <div class="stat-big" style="color:var(--navy)">50+</div>
+                    <div class="stat-big-label" style="color:var(--text-dark-secondary)">Projekte realisiert — vom Mittelstand bis zum DAX-Konzern</div>
+                </div>
+                <div class="stat-row" style="--i:1">
+                    <div class="stat-big" style="color:var(--navy)">35%</div>
+                    <div class="stat-big-label" style="color:var(--text-dark-secondary)">durchschnittliche Effizienzsteigerung über alle Kundenprojekte</div>
+                </div>
+                <div class="stat-row" style="--i:2">
+                    <div class="stat-big" style="color:var(--navy)">&lt;9</div>
+                    <div class="stat-big-label" style="color:var(--text-dark-secondary)">Monate bis zum vollständigen Return on Investment</div>
+                </div>
+                <div class="stat-row" style="--i:3">
+                    <div class="stat-big" style="color:var(--navy)">98%</div>
+                    <div class="stat-big-label" style="color:var(--text-dark-secondary)">Kundenzufriedenheit — gemessen, nicht geschätzt</div>
+                </div>
+            </div>
+            <div data-animate="slide-right">
+                <div class="overline"><span class="brand-icon brand-icon-xs"><svg viewBox="0 0 64 64" fill="none"><rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/><rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/><rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/><rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/></svg></span> WARUM ILDEN</div>
+                <h2>Zahlen, die für sich sprechen.</h2>
+                <p>Andere Beratungen verkaufen Hoffnung. Wir verkaufen Ergebnisse — und belegen sie. Jedes Projekt startet mit definierten KPIs, jedes Quartal liefern wir einen Impact-Report. Wenn der ROI ausbleibt, reden wir als Erste darüber.</p>
+                <p style="margin-top:var(--space-sm)">Der Unterschied: Wir kommen nicht aus der klassischen Unternehmensberatung. Wir kommen aus der Produktion — aus Data Engineering, ML-Ops und Systemarchitektur. Das merkt man. Spätestens dann, wenn ein System nach sechs Monaten immer noch einwandfrei läuft.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ===== 9. TESTIMONIAL ===== -->
+<section class="section section-dark">
+    <div class="container">
+        <div class="section-header center" data-animate>
+            <div class="overline" style="justify-content:center">KUNDENSTIMME</div>
+            <h2>Was Entscheider über uns sagen</h2>
+        </div>
+        <div class="quote-block" data-animate style="max-width:800px;margin:0 auto">
+            <p>ILDEN hat unsere Erwartungen nicht erfüllt — sie haben sie übertroffen. In 12 Wochen von der Idee zum produktiven System. Der ROI war nach 4 Monaten erreicht. Das Bemerkenswerteste: Das Team hat nicht nur beraten, sondern selbst gebaut. Das haben wir bei keiner anderen Beratung erlebt.</p>
+            <div class="quote-author">
+                <strong>Dr. Marcus Falkenberg</strong>
+                CEO, Falkenberg Finanzgruppe — 3.2M EUR Einsparungen im ersten Jahr
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 10. CTA ===== -->
+<section class="cta-section">
+    <div class="container" data-animate="scale">
+        <div class="featured-tag" style="margin:0 auto var(--space-md)">Nur noch 2 Plätze in Q2 2026</div>
+        <h2>Bereit, den ersten Schritt zu machen?</h2>
+        <p>30 Minuten. Unverbindlich. Wir zeigen Ihnen, wo KI in Ihrem Unternehmen den größten Hebel hat — und was es bringt.</p>
+        <a href="kontakt.html" class="btn btn-primary btn-large">Potenzialanalyse buchen <span class="arrow">&rarr;</span></a>
+        <div style="margin-top:var(--space-md)">
+            <div class="proof-bar">
+                <div class="proof-badge"><div class="proof-badge-icon">✓</div> DSGVO-konform</div>
+                <div class="proof-badge"><div class="proof-badge-icon">✓</div> ISO 27001</div>
+                <div class="proof-badge"><div class="proof-badge-icon">✓</div> EU AI Act Ready</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky Bottom Bar -->
+<div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+        <div class="sticky-cta-text" id="stickyText">
+            <strong>KI-Readiness-Scorecard</strong> — Wie bereit ist Ihr Unternehmen? 3 Min. Test.
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+            <a href="scorecard.html" class="btn btn-primary btn-small" id="stickyBtn1">Test starten <span class="arrow">&rarr;</span></a>
+            <a href="roi-rechner.html" class="btn btn-secondary btn-small" id="stickyBtn2" style="border-color:rgba(201,168,76,0.3);color:var(--gold)">ROI berechnen</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="ki-strategie.html">KI-Strategie</a></li><li><a href="automatisierung.html">Automatisierung</a></li><li><a href="datenanalyse.html">Datenanalyse</a></li><li><a href="schulungen.html">Schulungen</a></li><li><a href="implementierung.html">Implementierung</a></li><li><a href="compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="ueber-uns.html">Über ILDEN</a></li><li><a href="methodik.html">Methodik</a></li><li><a href="referenzen.html">Referenzen</a></li><li><a href="insights.html">Insights</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1210 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-ROI-Rechner — ILDEN KI Consulting</title>
+<meta name="description" content="Berechnen Sie in 2 Minuten, wie viel Ihr Unternehmen durch KI-Automatisierung einsparen kann. Kostenlos und unverbindlich.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+<style>
+/* ROI Calculator page-specific styles */
+
+/* Hero compact */
+.roi-hero {
+    padding: clamp(140px, 18vw, 200px) 0 clamp(60px, 8vw, 100px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.roi-hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(74,144,217,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+.roi-hero .overline {
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+}
+.roi-hero .overline::before { display: none; }
+.roi-hero h1 {
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
+    margin-bottom: var(--space-md);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.roi-hero > .container > p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 560px;
+    margin: 0 auto var(--space-md);
+}
+.roi-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: var(--type-micro);
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+}
+.roi-trust-line svg {
+    color: var(--blue-light);
+    flex-shrink: 0;
+}
+
+/* Calculator card */
+.calc-section {
+    padding-bottom: var(--space-xl);
+}
+.calc-card {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    padding: clamp(32px, 5vw, 56px);
+    position: relative;
+    overflow: hidden;
+}
+.calc-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74,144,217,0.3), transparent);
+}
+
+/* Form fields */
+.calc-field {
+    margin-bottom: var(--space-md);
+}
+.calc-field:last-of-type {
+    margin-bottom: var(--space-lg);
+}
+.calc-label {
+    display: block;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+}
+.calc-label-hint {
+    font-weight: 400;
+    color: var(--text-dim);
+    font-size: var(--type-micro);
+    display: block;
+    margin-top: 4px;
+}
+
+.calc-select,
+.calc-input {
+    width: 100%;
+    padding: 14px 18px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    background: var(--bg-dark);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+}
+.calc-select {
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%235a6577' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+    cursor: pointer;
+}
+.calc-select option {
+    background: var(--bg-dark);
+    color: var(--text-primary);
+}
+.calc-select:focus,
+.calc-input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74,144,217,0.12);
+}
+.calc-input::placeholder {
+    color: var(--text-dim);
+}
+
+/* Checkboxes */
+.calc-checkboxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+@media (max-width: 500px) {
+    .calc-checkboxes { grid-template-columns: 1fr; }
+}
+.calc-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    background: var(--bg-dark);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: var(--type-small);
+    color: var(--text-secondary);
+    user-select: none;
+}
+.calc-checkbox:hover {
+    border-color: rgba(74,144,217,0.3);
+    color: var(--text-primary);
+}
+.calc-checkbox.checked {
+    border-color: var(--blue);
+    background: rgba(74,144,217,0.06);
+    color: var(--white);
+}
+.calc-checkbox input[type="checkbox"] {
+    display: none;
+}
+.calc-check-mark {
+    width: 20px;
+    height: 20px;
+    border-radius: 5px;
+    border: 1.5px solid var(--border-light);
+    background: var(--bg-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+.calc-checkbox.checked .calc-check-mark {
+    background: var(--blue);
+    border-color: var(--blue);
+}
+.calc-check-mark svg {
+    opacity: 0;
+    transition: var(--transition);
+}
+.calc-checkbox.checked .calc-check-mark svg {
+    opacity: 1;
+}
+
+/* Calculate button */
+.calc-btn {
+    width: 100%;
+    padding: 18px 32px;
+    border-radius: 60px;
+    background: linear-gradient(135deg, var(--blue), #3d7cc5);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+}
+.calc-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(74,144,217,0.3);
+}
+.calc-btn:active {
+    transform: translateY(0);
+}
+.calc-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1));
+    opacity: 0;
+    transition: var(--transition);
+}
+.calc-btn:hover::after {
+    opacity: 1;
+}
+
+/* Results section */
+.results-section {
+    padding: var(--space-lg) 0 var(--space-xl);
+    display: none;
+}
+.results-section.visible {
+    display: block;
+}
+.results-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Primary savings display */
+.savings-display {
+    text-align: center;
+    padding: var(--space-lg) 0;
+}
+.savings-overline {
+    font-size: var(--type-micro);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: var(--space-sm);
+}
+.savings-amount {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+    letter-spacing: -0.03em;
+}
+.savings-amount .currency {
+    font-size: 0.6em;
+    color: var(--blue-light);
+    vertical-align: top;
+    margin-right: 4px;
+}
+.savings-sub {
+    color: var(--text-secondary);
+    font-size: var(--type-small);
+}
+
+/* Three-column estimates */
+.estimate-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: var(--space-md) 0 var(--space-lg);
+}
+@media (max-width: 500px) {
+    .estimate-grid { grid-template-columns: 1fr; }
+}
+.estimate-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    text-align: center;
+    transition: var(--transition);
+}
+.estimate-card.highlight {
+    border-color: var(--blue);
+    background: rgba(74,144,217,0.04);
+}
+.estimate-label {
+    font-size: var(--type-micro);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 8px;
+}
+.estimate-card.highlight .estimate-label {
+    color: var(--blue-light);
+}
+.estimate-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+.estimate-pct {
+    font-size: var(--type-micro);
+    color: var(--text-dim);
+}
+
+/* Blurred section */
+.blurred-section {
+    position: relative;
+    margin: var(--space-lg) 0;
+}
+.blurred-content {
+    filter: blur(8px);
+    user-select: none;
+    pointer-events: none;
+    opacity: 0.5;
+}
+.blurred-content.unlocked {
+    filter: none;
+    user-select: auto;
+    pointer-events: auto;
+    opacity: 1;
+    transition: all 0.6s ease;
+}
+
+/* Bar chart */
+.bar-chart {
+    margin: var(--space-md) 0;
+}
+.bar-item {
+    margin-bottom: 20px;
+}
+.bar-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: var(--type-small);
+}
+.bar-label-text {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+.bar-label-value {
+    color: var(--blue-light);
+    font-weight: 700;
+    font-size: var(--type-small);
+}
+.bar-track {
+    height: 10px;
+    background: var(--bg-dark);
+    border-radius: 20px;
+    overflow: hidden;
+}
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-pale));
+    border-radius: 20px;
+    width: 0;
+    transition: width 1.2s var(--ease-out-expo);
+}
+
+/* Detailed breakdown card */
+.detail-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-bottom: 16px;
+}
+.detail-card h4 {
+    font-size: var(--type-small);
+    margin-bottom: 8px;
+}
+.detail-card p {
+    color: var(--text-secondary);
+    font-size: var(--type-small);
+    line-height: 1.7;
+}
+.detail-highlight {
+    color: var(--blue-light);
+    font-weight: 600;
+}
+
+/* ROI timeline */
+.roi-timeline {
+    text-align: center;
+    padding: var(--space-md);
+    background: rgba(74,144,217,0.04);
+    border: 1px solid rgba(74,144,217,0.15);
+    border-radius: var(--radius-lg);
+    margin: var(--space-md) 0;
+}
+.roi-timeline-label {
+    font-size: var(--type-micro);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 6px;
+}
+.roi-timeline-value {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    color: var(--white);
+}
+
+/* Email gate overlay */
+.email-gate {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    padding: var(--space-md);
+}
+.email-gate.hidden {
+    display: none;
+}
+.email-gate-card {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    padding: clamp(28px, 4vw, 44px);
+    max-width: 460px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(74,144,217,0.06);
+    position: relative;
+}
+.email-gate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74,144,217,0.4), transparent);
+}
+.email-gate-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+}
+.email-gate-card > p {
+    color: var(--text-secondary);
+    font-size: var(--type-small);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+.gate-field {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-light);
+    background: var(--bg-dark);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    color: var(--text-primary);
+    outline: none;
+    transition: var(--transition);
+    margin-bottom: 10px;
+}
+.gate-field:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74,144,217,0.12);
+}
+.gate-field::placeholder {
+    color: var(--text-dim);
+}
+.gate-hp {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    height: 0;
+    width: 0;
+}
+.gate-btn {
+    width: 100%;
+    padding: 16px 32px;
+    border-radius: 60px;
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 6px;
+}
+.gate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(255,255,255,0.15);
+}
+.gate-trust {
+    font-size: var(--type-micro);
+    color: var(--text-dim);
+    margin-top: 12px;
+}
+.gate-trust svg {
+    vertical-align: -2px;
+    margin-right: 4px;
+}
+
+/* Recommendations */
+.reco-list {
+    margin: var(--space-md) 0;
+}
+.reco-item {
+    display: flex;
+    gap: 14px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+.reco-item:last-child {
+    border-bottom: none;
+}
+.reco-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(74,144,217,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--blue-light);
+}
+.reco-text h4 {
+    font-size: var(--type-small);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+.reco-text p {
+    font-size: var(--type-small);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Full results CTA */
+.results-cta {
+    text-align: center;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--border);
+}
+.results-cta h3 {
+    font-size: 1.3rem;
+    margin-bottom: var(--space-sm);
+}
+.results-cta p {
+    color: var(--text-secondary);
+    font-size: var(--type-small);
+    margin-bottom: var(--space-md);
+}
+
+/* Number animation */
+@keyframes countUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+    animation: countUp 0.8s var(--ease-out-expo) forwards;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .calc-card {
+        padding: 24px 20px;
+    }
+    .estimate-grid {
+        gap: 10px;
+    }
+}
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="index.html" class="logo"><img src="images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="insights.html" class="nav-link">Insights</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<!-- Hero -->
+<section class="roi-hero">
+    <div class="container" data-animate>
+        <span class="overline">KOSTENLOS &middot; 2 MINUTEN &middot; SOFORT ERGEBNIS</span>
+        <h1>Was bringt KI Ihrem Unternehmen? In Euro.</h1>
+        <p>Unser ROI-Rechner basiert auf Benchmarks aus 50+ realen KI-Projekten. Keine Theorie — echte Zahlen.</p>
+        <span class="roi-trust-line">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Bereits 620+ Unternehmen haben ihren KI-ROI berechnet
+        </span>
+    </div>
+</section>
+
+
+<!-- Calculator -->
+<section class="calc-section">
+    <div class="container">
+        <div class="calc-card" data-animate>
+            <form id="roiForm" autocomplete="off">
+
+                <!-- 1. Branche -->
+                <div class="calc-field">
+                    <label class="calc-label" for="branche">Branche</label>
+                    <select class="calc-select" id="branche" name="branche" required>
+                        <option value="" disabled selected>Bitte wählen</option>
+                        <option value="fertigung">Fertigung & Industrie</option>
+                        <option value="finanz">Finanzdienstleistungen</option>
+                        <option value="gesundheit">Gesundheitswesen</option>
+                        <option value="handel">Handel & E-Commerce</option>
+                        <option value="logistik">Logistik & Transport</option>
+                        <option value="tech">Technologie & IT</option>
+                        <option value="sonstige">Sonstige</option>
+                    </select>
+                </div>
+
+                <!-- 2. Mitarbeiter -->
+                <div class="calc-field">
+                    <label class="calc-label" for="mitarbeiter">Anzahl Mitarbeiter</label>
+                    <select class="calc-select" id="mitarbeiter" name="mitarbeiter" required>
+                        <option value="" disabled selected>Bitte wählen</option>
+                        <option value="75">50–100</option>
+                        <option value="175">100–250</option>
+                        <option value="375">250–500</option>
+                        <option value="750">500–1.000</option>
+                        <option value="3000">1.000–5.000</option>
+                        <option value="7500">5.000+</option>
+                    </select>
+                </div>
+
+                <!-- 3. Manuelle Stunden -->
+                <div class="calc-field">
+                    <label class="calc-label" for="stunden">Wie viele Stunden pro Woche verbringt Ihr Team mit repetitiven, manuellen Aufgaben?</label>
+                    <select class="calc-select" id="stunden" name="stunden" required>
+                        <option value="" disabled selected>Bitte wählen</option>
+                        <option value="60">Unter 100 Stunden</option>
+                        <option value="300">100–500 Stunden</option>
+                        <option value="750">500–1.000 Stunden</option>
+                        <option value="1500">1.000–2.000 Stunden</option>
+                        <option value="3000">Über 2.000 Stunden</option>
+                    </select>
+                </div>
+
+                <!-- 4. Personalkosten -->
+                <div class="calc-field">
+                    <label class="calc-label" for="kosten">Durchschnittliche Personalkosten pro Stunde
+                        <span class="calc-label-hint">Bruttolohn inkl. Arbeitgeberanteil</span>
+                    </label>
+                    <input class="calc-input" type="number" id="kosten" name="kosten" value="45" min="15" max="200" placeholder="45" required>
+                </div>
+
+                <!-- 5. Prozesse -->
+                <div class="calc-field">
+                    <label class="calc-label">Welche Prozesse möchten Sie automatisieren?</label>
+                    <div class="calc-checkboxes" id="prozesse">
+                        <label class="calc-checkbox" data-value="dokumente">
+                            <input type="checkbox" name="prozesse" value="dokumente">
+                            <span class="calc-check-mark"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Dokumentenverarbeitung
+                        </label>
+                        <label class="calc-checkbox" data-value="kundenservice">
+                            <input type="checkbox" name="prozesse" value="kundenservice">
+                            <span class="calc-check-mark"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Kundenservice / Chatbots
+                        </label>
+                        <label class="calc-checkbox" data-value="datenanalyse">
+                            <input type="checkbox" name="prozesse" value="datenanalyse">
+                            <span class="calc-check-mark"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Datenanalyse & Reporting
+                        </label>
+                        <label class="calc-checkbox" data-value="qualitaet">
+                            <input type="checkbox" name="prozesse" value="qualitaet">
+                            <span class="calc-check-mark"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Qualitätskontrolle
+                        </label>
+                        <label class="calc-checkbox" data-value="beschaffung">
+                            <input type="checkbox" name="prozesse" value="beschaffung">
+                            <span class="calc-check-mark"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            Beschaffung & Einkauf
+                        </label>
+                        <label class="calc-checkbox" data-value="hr">
+                            <input type="checkbox" name="prozesse" value="hr">
+                            <span class="calc-check-mark"><svg width="12" height="10" viewBox="0 0 12 10" fill="none"><path d="M1 5l3.5 3.5L11 1" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            HR & Recruiting
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="calc-btn">Einsparungspotenzial berechnen</button>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- Results -->
+<section class="results-section" id="resultsSection">
+    <div class="container">
+        <div class="results-wrapper">
+
+            <!-- Primary number -->
+            <div class="savings-display animate-in" id="savingsDisplay">
+                <div class="savings-overline">Geschätztes jährliches Einsparungspotenzial</div>
+                <div class="savings-amount"><span class="currency">&euro;</span><span id="savingsNumber">0</span></div>
+                <div class="savings-sub">basierend auf Ihren Angaben und ILDEN-Benchmarks</div>
+            </div>
+
+            <!-- Three estimates -->
+            <div class="estimate-grid" id="estimateGrid">
+                <div class="estimate-card">
+                    <div class="estimate-label">Konservativ</div>
+                    <div class="estimate-value" id="estConservative">-</div>
+                    <div class="estimate-pct">25% Automatisierung</div>
+                </div>
+                <div class="estimate-card highlight">
+                    <div class="estimate-label">Realistisch</div>
+                    <div class="estimate-value" id="estRealistic">-</div>
+                    <div class="estimate-pct">35% Automatisierung</div>
+                </div>
+                <div class="estimate-card">
+                    <div class="estimate-label">Optimistisch</div>
+                    <div class="estimate-value" id="estOptimistic">-</div>
+                    <div class="estimate-pct">50% Automatisierung</div>
+                </div>
+            </div>
+
+            <!-- Blurred section with email gate -->
+            <div class="blurred-section" id="blurredSection">
+
+                <div class="blurred-content" id="detailedResults">
+
+                    <!-- Bar chart -->
+                    <h3 style="margin-bottom: var(--space-md);">Einsparungspotenzial nach Kategorie</h3>
+                    <div class="bar-chart" id="barChart">
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span class="bar-label-text">Personalkosten-Einsparung</span>
+                                <span class="bar-label-value" id="barVal1">-</span>
+                            </div>
+                            <div class="bar-track"><div class="bar-fill" id="barFill1"></div></div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span class="bar-label-text">Prozesseffizienz</span>
+                                <span class="bar-label-value" id="barVal2">-</span>
+                            </div>
+                            <div class="bar-track"><div class="bar-fill" id="barFill2"></div></div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span class="bar-label-text">Fehlerreduktion</span>
+                                <span class="bar-label-value" id="barVal3">-</span>
+                            </div>
+                            <div class="bar-track"><div class="bar-fill" id="barFill3"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- ROI Timeline -->
+                    <div class="roi-timeline" id="roiTimeline">
+                        <div class="roi-timeline-label">Geschätzte Amortisation</div>
+                        <div class="roi-timeline-value" id="roiTimelineValue">6–9 Monate</div>
+                    </div>
+
+                    <!-- Recommendations -->
+                    <h3 style="margin-top: var(--space-lg); margin-bottom: var(--space-sm);">Empfohlene Use Cases</h3>
+                    <div class="reco-list" id="recoList"></div>
+
+                    <!-- Benchmark -->
+                    <div class="detail-card" id="benchmarkCard">
+                        <h4>Benchmark vs. Branchendurchschnitt</h4>
+                        <p id="benchmarkText">Ihr geschätztes Einsparungspotenzial liegt <span class="detail-highlight">23% über</span> dem Branchendurchschnitt vergleichbarer Unternehmen.</p>
+                    </div>
+
+                </div>
+
+                <!-- Email gate overlay -->
+                <div class="email-gate" id="emailGate">
+                    <div class="email-gate-card">
+                        <h3>Vollständigen ROI-Report freischalten</h3>
+                        <p>Erhalten Sie Ihren personalisierten Report mit detaillierter Aufschlüsselung, Branchenbenchmarks und konkreten Handlungsempfehlungen.</p>
+                        <form id="gateForm" autocomplete="off">
+                            <input class="gate-field" type="text" name="name" placeholder="Ihr Name *" required>
+                            <input class="gate-field" type="email" name="email" placeholder="E-Mail-Adresse *" required>
+                            <input class="gate-field" type="text" name="unternehmen" placeholder="Unternehmen *" required>
+                            <input class="gate-field" type="text" name="position" placeholder="Position (optional)">
+                            <input type="text" name="website_url" class="gate-hp" tabindex="-1" autocomplete="off">
+                            <input type="hidden" name="anliegen" value="roi-rechner">
+                            <button type="submit" class="gate-btn">Report freischalten</button>
+                        </form>
+                        <p class="gate-trust">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            Kein Spam. DSGVO-konform.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA (shown after unlock) -->
+            <div class="results-cta" id="resultsCta" style="display:none;">
+                <h3>Lassen Sie uns Ihre Zahlen validieren</h3>
+                <p>In einer kostenlosen 30-Minuten-Analyse prüfen wir Ihre individuellen Potenziale und erstellen einen konkreten Umsetzungsplan.</p>
+                <a href="kontakt.html" class="btn btn-primary">Kostenlose Analyse buchen</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container" data-animate>
+        <h2>Lassen Sie uns über Ihre<br>KI-Strategie sprechen.</h2>
+        <p>Erste Einschätzung. Klare Empfehlungen. Kein Verkaufsgespräch.</p>
+        <a href="kontakt.html" class="btn btn-primary">Gespräch buchen</a>
+    </div>
+</section>
+
+</main>
+
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="ki-strategie.html">KI-Strategie</a></li><li><a href="automatisierung.html">Automatisierung</a></li><li><a href="datenanalyse.html">Datenanalyse</a></li><li><a href="schulungen.html">Schulungen</a></li><li><a href="implementierung.html">Implementierung</a></li><li><a href="compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="ueber-uns.html">Über ILDEN</a></li><li><a href="methodik.html">Methodik</a></li><li><a href="referenzen.html">Referenzen</a></li><li><a href="insights.html">Insights</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+(function() {
+    'use strict';
+
+    // ========== CHECKBOX TOGGLE ==========
+    document.querySelectorAll('.calc-checkbox').forEach(function(label) {
+        label.addEventListener('click', function(e) {
+            // Let native checkbox toggle, then sync class
+            var cb = label.querySelector('input[type="checkbox"]');
+            // Small delay so the native state updates first
+            requestAnimationFrame(function() {
+                label.classList.toggle('checked', cb.checked);
+            });
+        });
+    });
+
+    // ========== CONFIGURATION ==========
+    var industryMultiplier = {
+        fertigung: 1.1,
+        finanz: 1.2,
+        gesundheit: 0.9,
+        handel: 1.0,
+        logistik: 1.05,
+        tech: 1.15,
+        sonstige: 1.0
+    };
+    var industryNames = {
+        fertigung: 'Fertigung & Industrie',
+        finanz: 'Finanzdienstleistungen',
+        gesundheit: 'Gesundheitswesen',
+        handel: 'Handel & E-Commerce',
+        logistik: 'Logistik & Transport',
+        tech: 'Technologie & IT',
+        sonstige: 'Sonstige'
+    };
+    var sizeMultiplier = {
+        '75': 0.9,
+        '175': 0.95,
+        '375': 1.0,
+        '750': 1.05,
+        '3000': 1.1,
+        '7500': 1.15
+    };
+
+    var processRecommendations = {
+        dokumente: {
+            title: 'Dokumentenverarbeitung',
+            text: 'Potenzielle Einsparung von {amount} durch OCR + NLP Automatisierung. Rechnungen, Verträge und Formulare werden automatisch erfasst, klassifiziert und verarbeitet.',
+            pct: 0.28
+        },
+        kundenservice: {
+            title: 'Kundenservice / Chatbots',
+            text: 'Potenzielle Einsparung von {amount} durch KI-gestützte Chatbots und Ticket-Routing. Bis zu 70% der Standardanfragen werden automatisch beantwortet.',
+            pct: 0.22
+        },
+        datenanalyse: {
+            title: 'Datenanalyse & Reporting',
+            text: 'Potenzielle Einsparung von {amount} durch automatisierte Dashboards und Anomalie-Erkennung. Reports, die bisher Stunden dauerten, entstehen in Sekunden.',
+            pct: 0.18
+        },
+        qualitaet: {
+            title: 'Qualitätskontrolle',
+            text: 'Potenzielle Einsparung von {amount} durch Computer Vision und prädiktive Qualitätsanalyse. Fehlerquoten sinken um bis zu 40%.',
+            pct: 0.15
+        },
+        beschaffung: {
+            title: 'Beschaffung & Einkauf',
+            text: 'Potenzielle Einsparung von {amount} durch automatisierte Lieferantenanalyse und Bestelloptimierung. Durchlaufzeiten werden um 30–50% reduziert.',
+            pct: 0.10
+        },
+        hr: {
+            title: 'HR & Recruiting',
+            text: 'Potenzielle Einsparung von {amount} durch KI-gestütztes Screening und automatisierte Onboarding-Prozesse. Time-to-Hire sinkt um 35%.',
+            pct: 0.12
+        }
+    };
+
+    // ========== UTILITY ==========
+    function formatEuro(num) {
+        return Math.round(num).toLocaleString('de-DE');
+    }
+
+    function animateNumber(el, target, duration) {
+        duration = duration || 1200;
+        var start = 0;
+        var startTime = null;
+        function step(timestamp) {
+            if (!startTime) startTime = timestamp;
+            var progress = Math.min((timestamp - startTime) / duration, 1);
+            // easeOutExpo
+            var ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+            var current = Math.round(start + (target - start) * ease);
+            el.textContent = formatEuro(current);
+            if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+    }
+
+    // ========== STORED RESULTS ==========
+    var calcResults = {};
+
+    // ========== CALCULATE ==========
+    var roiForm = document.getElementById('roiForm');
+    roiForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var branche = document.getElementById('branche').value;
+        var mitarbeiter = document.getElementById('mitarbeiter').value;
+        var stunden = document.getElementById('stunden').value;
+        var kosten = parseFloat(document.getElementById('kosten').value) || 45;
+
+        if (!branche || !mitarbeiter || !stunden) {
+            // Simple validation flash
+            document.querySelectorAll('.calc-select').forEach(function(sel) {
+                if (!sel.value) {
+                    sel.style.borderColor = '#e74c3c';
+                    setTimeout(function() { sel.style.borderColor = ''; }, 2000);
+                }
+            });
+            return;
+        }
+
+        var selectedProcesses = [];
+        document.querySelectorAll('#prozesse input[type="checkbox"]:checked').forEach(function(cb) {
+            selectedProcesses.push(cb.value);
+        });
+
+        // Core calculation
+        var weeklyHours = parseFloat(stunden);
+        var annualCost = weeklyHours * kosten * 52;
+
+        var indMult = industryMultiplier[branche] || 1.0;
+        var sizeMult = sizeMultiplier[mitarbeiter] || 1.0;
+
+        var conservative = annualCost * 0.25 * indMult * sizeMult;
+        var realistic = annualCost * 0.35 * indMult * sizeMult;
+        var optimistic = annualCost * 0.50 * indMult * sizeMult;
+
+        // Breakdown percentages
+        var personalPct = 0.55;
+        var prozessPct = 0.30;
+        var fehlerPct = 0.15;
+
+        // ROI timeline based on size/industry
+        var roiMonthsLow = branche === 'finanz' ? 4 : branche === 'tech' ? 5 : 6;
+        var roiMonthsHigh = roiMonthsLow + 3;
+        if (parseInt(mitarbeiter) >= 3000) {
+            roiMonthsLow = Math.max(3, roiMonthsLow - 1);
+            roiMonthsHigh = Math.max(roiMonthsLow + 2, roiMonthsHigh - 1);
+        }
+
+        // Benchmark delta
+        var benchmarkDelta = Math.round((indMult * sizeMult - 1) * 100 + 12);
+        if (benchmarkDelta < 5) benchmarkDelta = 8;
+
+        calcResults = {
+            branche: branche,
+            mitarbeiter: mitarbeiter,
+            stunden: stunden,
+            kosten: kosten,
+            prozesse: selectedProcesses,
+            conservative: conservative,
+            realistic: realistic,
+            optimistic: optimistic,
+            personalPct: personalPct,
+            prozessPct: prozessPct,
+            fehlerPct: fehlerPct,
+            roiMonthsLow: roiMonthsLow,
+            roiMonthsHigh: roiMonthsHigh,
+            benchmarkDelta: benchmarkDelta,
+            annualCost: annualCost,
+            indMult: indMult,
+            sizeMult: sizeMult
+        };
+
+        showResults();
+    });
+
+    // ========== SHOW RESULTS (PREVIEW) ==========
+    function showResults() {
+        var section = document.getElementById('resultsSection');
+        section.classList.add('visible');
+
+        // Scroll to results
+        setTimeout(function() {
+            section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+
+        // Animate main number
+        animateNumber(document.getElementById('savingsNumber'), calcResults.realistic, 1500);
+
+        // Estimates
+        document.getElementById('estConservative').textContent = '\u20AC ' + formatEuro(calcResults.conservative);
+        document.getElementById('estRealistic').textContent = '\u20AC ' + formatEuro(calcResults.realistic);
+        document.getElementById('estOptimistic').textContent = '\u20AC ' + formatEuro(calcResults.optimistic);
+
+        // Populate blurred content (still blurred until email gate)
+        populateDetailedResults();
+    }
+
+    // ========== POPULATE DETAILED RESULTS ==========
+    function populateDetailedResults() {
+        var r = calcResults;
+
+        // Bar chart values
+        var personalVal = r.realistic * r.personalPct;
+        var prozessVal = r.realistic * r.prozessPct;
+        var fehlerVal = r.realistic * r.fehlerPct;
+        var maxVal = personalVal;
+
+        document.getElementById('barVal1').textContent = '\u20AC ' + formatEuro(personalVal);
+        document.getElementById('barVal2').textContent = '\u20AC ' + formatEuro(prozessVal);
+        document.getElementById('barVal3').textContent = '\u20AC ' + formatEuro(fehlerVal);
+
+        // Bar widths (set to 0 initially, animate on unlock)
+        document.getElementById('barFill1').style.width = '0%';
+        document.getElementById('barFill2').style.width = '0%';
+        document.getElementById('barFill3').style.width = '0%';
+
+        // ROI timeline
+        document.getElementById('roiTimelineValue').textContent = r.roiMonthsLow + '–' + r.roiMonthsHigh + ' Monate';
+
+        // Benchmark
+        document.getElementById('benchmarkText').innerHTML = 'Ihr geschätztes Einsparungspotenzial liegt <span class="detail-highlight">' + r.benchmarkDelta + '% über</span> dem Branchendurchschnitt vergleichbarer Unternehmen in der Branche ' + (industryNames[r.branche] || 'Sonstige') + '.';
+
+        // Recommendations
+        var recoList = document.getElementById('recoList');
+        recoList.innerHTML = '';
+        var procs = r.prozesse.length > 0 ? r.prozesse : ['dokumente', 'datenanalyse'];
+        procs.forEach(function(key) {
+            var rec = processRecommendations[key];
+            if (!rec) return;
+            var amount = r.realistic * rec.pct * r.indMult;
+            var html = '<div class="reco-item">'
+                + '<div class="reco-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+                + '<div class="reco-text"><h4>' + rec.title + '</h4>'
+                + '<p>' + rec.text.replace('{amount}', '\u20AC ' + formatEuro(amount)) + '</p></div></div>';
+            recoList.innerHTML += html;
+        });
+
+        // If no processes selected, show generic
+        if (procs.length === 0) {
+            recoList.innerHTML = '<div class="reco-item"><div class="reco-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div class="reco-text"><h4>Individuelle Analyse empfohlen</h4><p>Basierend auf Ihren Angaben empfehlen wir eine detaillierte Prozessanalyse, um die besten Automatisierungshebel zu identifizieren.</p></div></div>';
+        }
+    }
+
+    // ========== ANIMATE BARS ==========
+    function animateBars() {
+        var r = calcResults;
+        var personalVal = r.realistic * r.personalPct;
+        var prozessVal = r.realistic * r.prozessPct;
+        var fehlerVal = r.realistic * r.fehlerPct;
+        var maxVal = personalVal;
+
+        setTimeout(function() {
+            document.getElementById('barFill1').style.width = Math.round(personalVal / maxVal * 100) + '%';
+        }, 100);
+        setTimeout(function() {
+            document.getElementById('barFill2').style.width = Math.round(prozessVal / maxVal * 100) + '%';
+        }, 300);
+        setTimeout(function() {
+            document.getElementById('barFill3').style.width = Math.round(fehlerVal / maxVal * 100) + '%';
+        }, 500);
+    }
+
+    // ========== EMAIL GATE ==========
+    var gateForm = document.getElementById('gateForm');
+    gateForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Honeypot check
+        if (gateForm.querySelector('[name="website_url"]').value) return;
+
+        var submitBtn = gateForm.querySelector('.gate-btn');
+        var origText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Wird freigeschaltet\u2026';
+
+        // Collect form + calculator data
+        var formData = new FormData(gateForm);
+        var data = Object.fromEntries(formData);
+        data.anliegen = 'roi-rechner';
+        data.roi_branche = calcResults.branche;
+        data.roi_mitarbeiter = calcResults.mitarbeiter;
+        data.roi_stunden = calcResults.stunden;
+        data.roi_kosten = calcResults.kosten;
+        data.roi_prozesse = (calcResults.prozesse || []).join(', ');
+        data.roi_conservative = Math.round(calcResults.conservative);
+        data.roi_realistic = Math.round(calcResults.realistic);
+        data.roi_optimistic = Math.round(calcResults.optimistic);
+
+        try {
+            var response = await fetch('backend/submit.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+            // Even if backend fails, unlock results (lead captured attempt logged)
+        } catch (err) {
+            // Silently continue — user still gets their results
+        }
+
+        unlockResults();
+    });
+
+    // ========== UNLOCK RESULTS ==========
+    function unlockResults() {
+        // Hide email gate
+        document.getElementById('emailGate').classList.add('hidden');
+
+        // Unblur content
+        document.getElementById('detailedResults').classList.add('unlocked');
+
+        // Animate bars
+        animateBars();
+
+        // Show CTA
+        document.getElementById('resultsCta').style.display = '';
+
+        // Smooth scroll to detailed results
+        setTimeout(function() {
+            document.getElementById('blurredSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 200);
+    }
+
+})();
+</script>
+
+</body></html>

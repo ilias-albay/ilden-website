@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EU AI Act Compliance Checklist — ILDEN KI Consulting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #fff;
+            color: #1a1a1e;
+            font-size: 11.5pt;
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .page {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 60px 50px;
+        }
+
+        /* Header */
+        .wp-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #4a90d9;
+            padding-bottom: 18px;
+            margin-bottom: 50px;
+        }
+        .wp-header img { height: 38px; }
+        .wp-header .meta {
+            text-align: right;
+            font-size: 9pt;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Title block */
+        .title-block {
+            margin-bottom: 50px;
+            padding: 40px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .title-block .label {
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: #4a90d9;
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+        .title-block h1 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 32pt;
+            line-height: 1.2;
+            color: #1a1a1e;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+        .title-block .subtitle {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 18pt;
+            color: #4a90d9;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 16px;
+        }
+        .title-block .desc {
+            font-size: 12pt;
+            color: #555;
+            font-weight: 300;
+        }
+        .title-block .author-line {
+            margin-top: 20px;
+            font-size: 10pt;
+            color: #888;
+        }
+        .title-block .author-line strong {
+            color: #1a1a1e;
+            font-weight: 600;
+        }
+
+        /* Headings */
+        h2 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 20pt;
+            font-weight: 400;
+            color: #1a1a1e;
+            margin-top: 50px;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e8e8e8;
+        }
+        h2 .chapter-num {
+            color: #4a90d9;
+            font-size: 14pt;
+            display: block;
+            margin-bottom: 4px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 12pt;
+            font-weight: 600;
+            color: #1a1a1e;
+            margin-top: 28px;
+            margin-bottom: 10px;
+        }
+
+        p { margin-bottom: 14px; }
+
+        .quote-block {
+            border-left: 3px solid #4a90d9;
+            padding: 14px 22px;
+            margin: 24px 0;
+            background: #f7fafd;
+            font-style: italic;
+            color: #333;
+            font-size: 11pt;
+        }
+
+        .stat-highlight {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #eef4fb;
+            border-radius: 6px;
+            padding: 6px 14px;
+            font-weight: 600;
+            color: #2a6cb8;
+            font-size: 10.5pt;
+            margin: 4px 0;
+        }
+
+        .warning-box {
+            background: #fef8f0;
+            border: 1px solid #f0d4a0;
+            border-left: 4px solid #e8a832;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning-box .warning-title {
+            font-weight: 700;
+            color: #a0701a;
+            font-size: 10pt;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .warning-box p {
+            margin-bottom: 0;
+            font-size: 10pt;
+            color: #5a4520;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+            font-size: 10pt;
+        }
+        th {
+            background: #1a1a1e;
+            color: #fff;
+            padding: 10px 14px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 9pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid #e8e8e8;
+            vertical-align: top;
+        }
+        tr:nth-child(even) td { background: #fafafa; }
+
+        /* Checklist */
+        .checklist {
+            margin: 20px 0;
+        }
+        .checklist-section {
+            margin-bottom: 28px;
+        }
+        .checklist-section-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 11pt;
+            font-weight: 700;
+            color: #4a90d9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #eef4fb;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .checkbox-svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .checklist-content {
+            flex: 1;
+        }
+        .checklist-content .item-title {
+            font-weight: 600;
+            font-size: 10.5pt;
+            color: #1a1a1e;
+        }
+        .checklist-content .item-desc {
+            font-size: 9.5pt;
+            color: #666;
+            margin-top: 2px;
+        }
+        .priority {
+            flex-shrink: 0;
+            font-size: 8pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            margin-top: 2px;
+        }
+        .priority.hoch { background: #fde8e8; color: #c23030; }
+        .priority.mittel { background: #fef3d8; color: #a07018; }
+        .priority.niedrig { background: #e8f5e8; color: #2a7a2a; }
+
+        /* SVG diagrams */
+        .diagram-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Bullet lists */
+        ul, ol { margin: 12px 0 16px 24px; }
+        li { margin-bottom: 6px; }
+
+        .footnote {
+            font-size: 8.5pt;
+            color: #888;
+            vertical-align: super;
+            text-decoration: none;
+        }
+
+        /* Sources */
+        .sources {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 2px solid #1a1a1e;
+        }
+        .sources h2 { border-bottom: none; }
+        .sources ol {
+            font-size: 9pt;
+            color: #555;
+            line-height: 1.8;
+        }
+        .sources ol li { margin-bottom: 4px; }
+
+        /* Back cover */
+        .back-cover {
+            margin-top: 80px;
+            padding: 50px;
+            background: #1a1a1e;
+            color: #fff;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .back-cover h3 {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 18pt;
+            font-weight: 400;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .back-cover p {
+            color: #aaa;
+            font-size: 10pt;
+        }
+        .back-cover a {
+            color: #4a90d9;
+            text-decoration: none;
+        }
+        .back-cover .contact-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .back-cover .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 10pt;
+            color: #ccc;
+        }
+
+        .page-break { page-break-before: always; }
+
+        /* Print styles */
+        @media print {
+            body { font-size: 10.5pt; }
+            .page { padding: 30px 40px; max-width: none; }
+            .wp-header { margin-bottom: 30px; }
+            .title-block { padding: 30px 0; margin-bottom: 30px; }
+            h2 { margin-top: 35px; page-break-after: avoid; }
+            h3 { page-break-after: avoid; }
+            p { orphans: 3; widows: 3; }
+            table { page-break-inside: avoid; }
+            .diagram-container { page-break-inside: avoid; }
+            .checklist-section { page-break-inside: avoid; }
+            .back-cover { page-break-before: always; }
+            th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .quote-block { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .stat-highlight { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .warning-box { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .priority { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .checklist-section-title { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            tr:nth-child(even) td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- Header -->
+        <header class="wp-header">
+            <img src="../images/logo.png" alt="ILDEN KI Consulting">
+            <div class="meta">
+                Whitepaper<br>
+                April 2026
+            </div>
+        </header>
+
+        <!-- Title -->
+        <div class="title-block">
+            <div class="label">Compliance Whitepaper</div>
+            <h1>EU AI Act<br>Compliance Checklist</h1>
+            <p class="subtitle">Was Sie jetzt tun müssen</p>
+            <p class="desc">Der praktische Leitfaden für Entscheider: 23 konkrete Punkte, klare Fristen, keine Ausreden.</p>
+            <p class="author-line">
+                Von <strong>Ilias Albay</strong>, Wirtschaftsingenieur &nbsp;|&nbsp; ILDEN KI Consulting &nbsp;|&nbsp; April 2026
+            </p>
+        </div>
+
+        <!-- Chapter 1 -->
+        <h2><span class="chapter-num">KAPITEL 01</span>Die wichtigsten Änderungen auf einen Blick</h2>
+
+        <p>Der EU AI Act ist das weltweit erste Gesetz, das Künstliche Intelligenz systematisch reguliert. Seit August 2024 in Kraft, mit gestaffelter Umsetzung bis 2027. Wer jetzt noch wartet, spielt mit dem Feuer.</p>
+
+        <p>Die Verordnung umfasst 85 Artikel und 13 Anhänge. Ich habe sie auf das reduziert, was für Sie als Entscheider relevant ist. Nicht weil der Rest unwichtig wäre — sondern weil Sie Prioritäten setzen müssen. Und die liegen hier.</p>
+
+        <div class="warning-box">
+            <div class="warning-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a07018" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Bußgelder bis zu 35 Millionen Euro
+            </div>
+            <p>Oder 7% des weltweiten Jahresumsatzes — je nachdem, welcher Betrag höher ist. Das ist mehr als bei der DSGVO. Und die EU meint es ernst.<sup class="footnote">[1]</sup></p>
+        </div>
+
+        <p>Die drei wichtigsten Dinge, die Sie wissen müssen:</p>
+
+        <ul>
+            <li><strong>Risikobasierter Ansatz.</strong> Nicht jedes KI-System wird gleich behandelt. Je höher das Risiko, desto strenger die Auflagen. Ein Spam-Filter hat andere Pflichten als ein Kreditscoring-System.</li>
+            <li><strong>Gestaffelte Fristen.</strong> Nicht alles gilt ab sofort. Aber die erste Frist (verbotene Praktiken) ist bereits verstrichen — seit Februar 2025. Wenn Sie Social Scoring betreiben, haben Sie ein Problem. Jetzt.</li>
+            <li><strong>Extraterritoriale Wirkung.</strong> Der AI Act gilt nicht nur für EU-Unternehmen, sondern für alle, die KI-Systeme in der EU anbieten oder deren Output in der EU genutzt wird. Klingt bekannt? Ja, das DSGVO-Prinzip.<sup class="footnote">[2]</sup></li>
+        </ul>
+
+        <!-- SVG Timeline -->
+        <div class="diagram-container">
+            <svg viewBox="0 0 700 150" xmlns="http://www.w3.org/2000/svg">
+                <text x="350" y="18" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a1e">Implementierungszeitplan EU AI Act</text>
+                <!-- Timeline line -->
+                <line x1="50" y1="65" x2="650" y2="65" stroke="#ddd" stroke-width="3"/>
+                <!-- Aug 2024: In Kraft -->
+                <circle cx="90" cy="65" r="8" fill="#4a90d9"/>
+                <text x="90" y="50" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#4a90d9">AUG 2024</text>
+                <text x="90" y="90" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">Inkrafttreten</text>
+                <!-- Feb 2025: Prohibited -->
+                <circle cx="230" cy="65" r="8" fill="#c23030"/>
+                <text x="230" y="50" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#c23030">FEB 2025</text>
+                <text x="230" y="90" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">Verbotene</text>
+                <text x="230" y="102" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">Praktiken</text>
+                <!-- Aug 2025: GPAI -->
+                <circle cx="370" cy="65" r="8" fill="#e8a832"/>
+                <text x="370" y="50" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#e8a832">AUG 2025</text>
+                <text x="370" y="90" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">GPAI-Modelle</text>
+                <text x="370" y="102" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">& Governance</text>
+                <!-- Aug 2026: High-Risk -->
+                <circle cx="510" cy="65" r="10" fill="#c23030" stroke="#c23030" stroke-width="3"/>
+                <circle cx="510" cy="65" r="6" fill="#fff"/>
+                <text x="510" y="50" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#c23030">AUG 2026</text>
+                <text x="510" y="90" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">High-Risk-</text>
+                <text x="510" y="102" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">Systeme</text>
+                <!-- Aug 2027: Remaining -->
+                <circle cx="620" cy="65" r="8" fill="#999"/>
+                <text x="620" y="50" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#999">AUG 2027</text>
+                <text x="620" y="90" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">Restliche</text>
+                <text x="620" y="102" text-anchor="middle" font-family="Inter" font-size="7.5" fill="#555">Pflichten</text>
+                <!-- "Sie sind hier" marker -->
+                <line x1="440" y1="35" x2="440" y2="65" stroke="#c23030" stroke-width="1" stroke-dasharray="3,3"/>
+                <text x="440" y="130" text-anchor="middle" font-family="Inter" font-size="8" font-weight="700" fill="#c23030">← SIE SIND HIER (April 2026)</text>
+            </svg>
+        </div>
+
+        <p>Sie sehen: Die Uhr tickt. Für High-Risk-Systeme bleiben noch vier Monate bis zur vollen Compliance-Pflicht. Vier Monate sind nicht viel, wenn Sie noch nicht angefangen haben.</p>
+
+        <!-- Chapter 2 -->
+        <div class="page-break"></div>
+        <h2><span class="chapter-num">KAPITEL 02</span>Risikoklassifizierung: Wo steht Ihr KI-System?</h2>
+
+        <p>Der gesamte EU AI Act baut auf einer einfachen Idee auf: Je riskanter ein KI-System, desto strenger die Regeln. Vier Stufen, von „verboten" bis „kaum reguliert". Ihre erste Aufgabe ist herauszufinden, wo Ihre Systeme stehen.</p>
+
+        <!-- SVG Pyramid -->
+        <div class="diagram-container">
+            <svg viewBox="0 0 600 320" xmlns="http://www.w3.org/2000/svg">
+                <!-- Level 1: Unacceptable (top) -->
+                <polygon points="300,30 235,100 365,100" fill="#c23030"/>
+                <text x="300" y="78" text-anchor="middle" font-family="Inter" font-size="9" font-weight="700" fill="#fff">VERBOTEN</text>
+                <!-- Level 2: High Risk -->
+                <polygon points="235,105 185,175 415,175 365,105" fill="#e8a832"/>
+                <text x="300" y="148" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#fff">HOHES RISIKO</text>
+                <!-- Level 3: Limited -->
+                <polygon points="185,180 135,250 465,250 415,180" fill="#4a90d9"/>
+                <text x="300" y="222" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#fff">BEGRENZTES RISIKO</text>
+                <!-- Level 4: Minimal -->
+                <polygon points="135,255 85,290 515,290 465,255" fill="#88b8e0"/>
+                <text x="300" y="280" text-anchor="middle" font-family="Inter" font-size="10" font-weight="700" fill="#fff">MINIMALES RISIKO</text>
+
+                <!-- Right labels -->
+                <text x="380" y="78" font-family="Inter" font-size="8" fill="#c23030">Social Scoring, manipulative KI</text>
+                <text x="430" y="145" font-family="Inter" font-size="8" fill="#a07018">Kreditscoring, Recruiting-KI,</text>
+                <text x="430" y="157" font-family="Inter" font-size="8" fill="#a07018">biometrische Identifikation</text>
+                <text x="478" y="218" font-family="Inter" font-size="8" fill="#2a6cb8">Chatbots, Deepfakes,</text>
+                <text x="478" y="230" font-family="Inter" font-size="8" fill="#2a6cb8">Emotionserkennung</text>
+                <text x="528" y="278" font-family="Inter" font-size="8" fill="#5a8ab0">Spam-Filter, Empfehlungen,</text>
+                <text x="528" y="290" font-family="Inter" font-size="8" fill="#5a8ab0">KI-gestützte Suche</text>
+            </svg>
+        </div>
+
+        <p>Die entscheidende Frage: Fällt Ihr System unter Annex III? Dieser Anhang listet alle High-Risk-Anwendungsbereiche auf. Acht Kategorien, von biometrischer Identifikation bis zur Strafverfolgung. Wenn ja, gelten die strengsten Auflagen.<sup class="footnote">[3]</sup></p>
+
+        <h3>High-Risk: Was zählt dazu?</h3>
+        <p>Typische Unternehmensanwendungen, die als High-Risk eingestuft werden:</p>
+        <ul>
+            <li>KI für Personalentscheidungen (Recruiting, Leistungsbewertung, Beförderung)</li>
+            <li>Kreditwürdigkeitsprüfung und Versicherungsbewertung</li>
+            <li>KI in der medizinischen Diagnostik</li>
+            <li>Biometrische Erkennung und Identifikation</li>
+            <li>KI-Systeme als Sicherheitskomponenten in Produkten (Maschinensteuerung, Fahrassistenz)</li>
+        </ul>
+
+        <h3>Limited Risk: Transparenzpflichten</h3>
+        <p>Systeme mit begrenztem Risiko unterliegen vor allem Transparenzpflichten. Wenn Nutzer mit einem Chatbot interagieren, müssen sie das wissen. Wenn ein Bild KI-generiert ist, muss das gekennzeichnet werden. Klingt einfach? Ist es auch. Aber erstaunlich viele Unternehmen tun es nicht.</p>
+
+        <h3>Minimal Risk: Fast keine Auflagen</h3>
+        <p>Die gute Nachricht: Die Mehrheit der KI-Systeme fällt in diese Kategorie. Spam-Filter, Produktempfehlungen, interne Optimierungstools — hier gelten kaum Einschränkungen. Aber: Dokumentation schadet nie. Und was heute minimal risk ist, kann durch Modelländerungen morgen anders aussehen.</p>
+
+        <!-- Chapter 3 -->
+        <div class="page-break"></div>
+        <h2><span class="chapter-num">KAPITEL 03</span>Die 23-Punkte Compliance-Checkliste</h2>
+
+        <p>Hier kommt der praktische Kern dieses Whitepapers. 23 Punkte, in fünf Bereiche gegliedert. Drucken Sie diese Seiten aus. Gehen Sie jeden Punkt durch. Markieren Sie, was erledigt ist und was nicht. Dann wissen Sie, wo Sie stehen.</p>
+
+        <div class="checklist">
+
+            <!-- Governance -->
+            <div class="checklist-section">
+                <div class="checklist-section-title">A. Governance (5 Punkte)</div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">1. KI-Verantwortlichen benannt</div>
+                        <div class="item-desc">Eine Person im Unternehmen ist für AI-Compliance verantwortlich und hat die nötige Entscheidungskompetenz.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">2. KI-Inventar erstellt</div>
+                        <div class="item-desc">Vollständige Liste aller KI-Systeme im Unternehmen — intern entwickelt und eingekauft.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">3. Risikoklassifizierung durchgeführt</div>
+                        <div class="item-desc">Jedes System ist gemäß Art. 6 und Annex III einer Risikoklasse zugeordnet.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">4. KI-Governance-Richtlinie verabschiedet</div>
+                        <div class="item-desc">Interne Richtlinie für Entwicklung, Beschaffung und Einsatz von KI-Systemen.</div>
+                    </div>
+                    <span class="priority mittel">Mittel</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">5. Schulungsprogramm für Mitarbeiter etabliert</div>
+                        <div class="item-desc">Art. 4 verlangt „AI Literacy" — Mitarbeiter müssen KI-Systeme verstehen, die sie nutzen.</div>
+                    </div>
+                    <span class="priority mittel">Mittel</span>
+                </div>
+            </div>
+
+            <!-- Daten -->
+            <div class="checklist-section">
+                <div class="checklist-section-title">B. Daten (5 Punkte)</div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">6. Trainingsdaten dokumentiert</div>
+                        <div class="item-desc">Herkunft, Umfang, Qualitätsmerkmale und Repräsentativität aller Trainingsdaten erfasst.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">7. Data Governance Prozess definiert</div>
+                        <div class="item-desc">Klare Verantwortlichkeiten für Datenqualität, -zugang und -löschung.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">8. Bias-Prüfung der Trainingsdaten</div>
+                        <div class="item-desc">Systematische Analyse auf Verzerrungen bezüglich Geschlecht, Alter, Herkunft etc.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">9. DSGVO-Konformität der KI-Datenverarbeitung</div>
+                        <div class="item-desc">Rechtsgrundlage, DSFA und Betroffenenrechte für alle KI-bezogenen Datenverarbeitungen geprüft.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">10. Datenaufbewahrungsrichtlinie für KI-Systeme</div>
+                        <div class="item-desc">Klare Fristen für die Speicherung von Trainings-, Validierungs- und Log-Daten.</div>
+                    </div>
+                    <span class="priority mittel">Mittel</span>
+                </div>
+            </div>
+
+            <!-- Transparenz -->
+            <div class="checklist-section">
+                <div class="checklist-section-title">C. Transparenz (4 Punkte)</div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">11. KI-Kennzeichnung für Endnutzer</div>
+                        <div class="item-desc">Nutzer werden informiert, wenn sie mit einem KI-System interagieren (Art. 50).</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">12. Erklärbarkeit der Entscheidungen</div>
+                        <div class="item-desc">Betroffene können nachvollziehen, wie KI-gestützte Entscheidungen zustande kommen.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">13. KI-generierte Inhalte gekennzeichnet</div>
+                        <div class="item-desc">Texte, Bilder, Audio und Video, die von KI erzeugt wurden, sind als solche erkennbar.</div>
+                    </div>
+                    <span class="priority mittel">Mittel</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">14. Informationspflichten gegenüber Betriebsrat erfüllt</div>
+                        <div class="item-desc">In Deutschland: Betriebsrat über KI-Einsatz informiert und ggf. Betriebsvereinbarung geschlossen.</div>
+                    </div>
+                    <span class="priority mittel">Mittel</span>
+                </div>
+            </div>
+
+            <!-- Dokumentation -->
+            <div class="checklist-section">
+                <div class="checklist-section-title">D. Dokumentation (5 Punkte)</div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">15. Technische Dokumentation erstellt</div>
+                        <div class="item-desc">Modellarchitektur, Trainingsparameter, Leistungskennzahlen — alles in einem zentralen Dokument.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">16. Risikobewertung dokumentiert</div>
+                        <div class="item-desc">Systematische Bewertung potenzieller Risiken für Gesundheit, Sicherheit und Grundrechte.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">17. Änderungsprotokoll geführt</div>
+                        <div class="item-desc">Jede Änderung am Modell, an Trainingsdaten oder an der Systemkonfiguration wird protokolliert.</div>
+                    </div>
+                    <span class="priority mittel">Mittel</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">18. Log-Daten werden automatisch gespeichert</div>
+                        <div class="item-desc">Für High-Risk-Systeme: automatisches Logging aller Systemaktivitäten (Art. 12).</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">19. Gebrauchsanweisung verfasst</div>
+                        <div class="item-desc">Klare Nutzungsanleitung für Deployer, inklusive Leistungsgrenzen und bekannter Risiken.</div>
+                    </div>
+                    <span class="priority mittel">Mittel</span>
+                </div>
+            </div>
+
+            <!-- Testing -->
+            <div class="checklist-section">
+                <div class="checklist-section-title">E. Testing & Monitoring (4 Punkte)</div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">20. Testverfahren vor Inbetriebnahme durchgeführt</div>
+                        <div class="item-desc">Funktionale Tests, Robustheitstests, Sicherheitstests — dokumentiert und bestanden.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">21. Mensch-in-der-Schleife-Mechanismus implementiert</div>
+                        <div class="item-desc">Menschliche Aufsicht ist gewährleistet; System kann jederzeit übersteuert oder abgeschaltet werden (Art. 14).</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">22. Post-Market Monitoring eingerichtet</div>
+                        <div class="item-desc">Laufende Überwachung der Systemleistung im Betrieb, mit Eskalationsprozess bei Abweichungen.</div>
+                    </div>
+                    <span class="priority hoch">Hoch</span>
+                </div>
+
+                <div class="checklist-item">
+                    <svg class="checkbox-svg" width="18" height="18" viewBox="0 0 20 20"><rect x="1" y="1" width="18" height="18" rx="3" fill="none" stroke="#ccc" stroke-width="1.5"/></svg>
+                    <div class="checklist-content">
+                        <div class="item-title">23. Meldewege für Incidents definiert</div>
+                        <div class="item-desc">Klarer Prozess für die Meldung schwerwiegender Vorfälle an die zuständige Aufsichtsbehörde.</div>
+                    </div>
+                    <span class="priority niedrig">Niedrig</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 4 -->
+        <div class="page-break"></div>
+        <h2><span class="chapter-num">KAPITEL 04</span>Dokumentationspflichten</h2>
+
+        <p>Dokumentation ist der Bereich, den niemand liebt, aber jeder braucht. Besonders bei High-Risk-Systemen schreibt der AI Act vor, was dokumentiert werden muss — und die Liste ist lang. Aber sie ist machbar, wenn Sie von Anfang an strukturiert vorgehen.</p>
+
+        <p>Tipp: Beginnen Sie die Dokumentation ab Tag 1 eines jeden KI-Projekts. Nicht erst, wenn das System fertig ist. Rückwirkend dokumentieren ist dreimal so teuer und halb so genau. Ich habe das bei Kunden erlebt, die nach einem Jahr versucht haben, Trainingsdaten-Entscheidungen zu rekonstruieren. Es geht. Aber es ist schmerzhaft.</p>
+
+        <h3>Was muss dokumentiert werden?</h3>
+
+        <table>
+            <tr><th>Bereich</th><th>Inhalt</th><th>Artikel</th></tr>
+            <tr><td><strong>Trainingsdaten</strong></td><td>Herkunft, Umfang, Vorverarbeitung, Labeling-Methodik, bekannte Limitationen</td><td>Art. 10</td></tr>
+            <tr><td><strong>Modellarchitektur</strong></td><td>Algorithmus, Hyperparameter, Modellgröße, Design-Entscheidungen und Begründungen</td><td>Art. 11</td></tr>
+            <tr><td><strong>Leistungskennzahlen</strong></td><td>Accuracy, Precision, Recall, F1-Score — aufgeschlüsselt nach relevanten Subgruppen</td><td>Art. 15</td></tr>
+            <tr><td><strong>Risikobewertung</strong></td><td>Identifizierte Risiken, Eintrittswahrscheinlichkeit, Gegenmaßnahmen, Restrisiken</td><td>Art. 9</td></tr>
+            <tr><td><strong>Menschliche Aufsicht</strong></td><td>Wie und wann Menschen eingreifen können, Eskalationswege, Abschaltmechanismus</td><td>Art. 14</td></tr>
+            <tr><td><strong>Änderungshistorie</strong></td><td>Jede Modelländerung, jedes Retraining, jede Datenaktualisierung mit Datum und Begründung</td><td>Art. 12</td></tr>
+        </table>
+
+        <h3>Empfohlene Dokumentstruktur</h3>
+        <p>Für jedes KI-System empfehle ich ein zentrales „AI System Record" mit folgender Gliederung:</p>
+        <ol>
+            <li>Systemübersicht und Zweckbestimmung</li>
+            <li>Risikoklassifizierung und Begründung</li>
+            <li>Trainingsdaten-Dokumentation</li>
+            <li>Technische Spezifikation</li>
+            <li>Leistungsbewertung und Testberichte</li>
+            <li>Risikobewertung und Mitigationsmaßnahmen</li>
+            <li>Human-Oversight-Konzept</li>
+            <li>Änderungsprotokoll</li>
+            <li>Verantwortlichkeiten und Kontaktpersonen</li>
+        </ol>
+
+        <p>Dieses Dokument lebt. Es wird bei jeder wesentlichen Änderung aktualisiert. Wer es als einmalige Pflicht sieht, hat den Sinn nicht verstanden.<sup class="footnote">[4]</sup></p>
+
+        <!-- Chapter 5 -->
+        <div class="page-break"></div>
+        <h2><span class="chapter-num">KAPITEL 05</span>Bias-Auditing: Fairness messbar machen</h2>
+
+        <p>Fairness ist keine einmalige Prüfung. Es ist ein kontinuierlicher Prozess. Und er beginnt mit der Frage: Was ist überhaupt „fair"? Das klingt philosophisch. Ist es auch. Aber es gibt mathematische Metriken, die helfen.</p>
+
+        <h3>Die drei wichtigsten Metriken</h3>
+
+        <p><strong>Demographic Parity:</strong> Die Entscheidungsrate des Systems ist über alle relevanten Gruppen gleich. Beispiel: Ein Recruiting-Tool empfiehlt 30% der männlichen und 30% der weiblichen Bewerber. Klingt fair. Aber was, wenn die Qualifikationsverteilung unterschiedlich ist?</p>
+
+        <p><strong>Equalized Odds:</strong> Die Fehlerrate ist über alle Gruppen gleich. Sowohl die False Positive Rate als auch die False Negative Rate. Das ist strenger als Demographic Parity — und oft relevanter.</p>
+
+        <p><strong>Calibration:</strong> Wenn das System sagt „70% Wahrscheinlichkeit", dann tritt das Ereignis auch in 70% der Fälle ein — unabhängig von der Gruppe. Besonders wichtig bei Scoring-Systemen.<sup class="footnote">[5]</sup></p>
+
+        <h3>Wann ist Bias-Testing Pflicht?</h3>
+        <p>Für alle High-Risk-Systeme gemäß Annex III. Aber auch darüber hinaus gibt es gute Gründe: Reputationsrisiken, ethische Verantwortung, und schlicht bessere Modellqualität. Ein Modell ohne Bias-Check ist wie ein Auto ohne TÜV — es fährt vielleicht, aber Sie wissen nicht, wie sicher.</p>
+
+        <p>In einem unserer Projekte haben wir durch systematisches Bias-Auditing die Verzerrung in einem Kreditscoring-Modell um 89% reduziert — ohne die Gesamtgenauigkeit zu beeinträchtigen. Das ist keine Theorie. Das sind gemessene Ergebnisse aus der Praxis.</p>
+
+        <div class="quote-block">
+            „Bias-freie KI gibt es nicht. Aber Bias-bewusste KI ist möglich — und Pflicht."
+        </div>
+
+        <p>Mein konkreter Rat: Führen Sie Bias-Audits quartalsweise durch. Nicht nur beim Launch. Daten ändern sich, Populationen verschieben sich, und ein Modell, das heute fair ist, kann in sechs Monaten diskriminierend sein. Automatisieren Sie das Monitoring wo möglich.</p>
+
+        <!-- Chapter 6 -->
+        <div class="page-break"></div>
+        <h2><span class="chapter-num">KAPITEL 06</span>Timeline: Bis wann müssen Sie compliant sein?</h2>
+
+        <p>Die gestaffelte Einführung des EU AI Act bedeutet, dass verschiedene Pflichten zu verschiedenen Zeitpunkten greifen. Hier der vollständige Zeitplan:</p>
+
+        <!-- SVG Gantt Chart -->
+        <div class="diagram-container">
+            <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Title -->
+                <text x="350" y="20" text-anchor="middle" font-family="Inter" font-size="11" font-weight="600" fill="#1a1a1e">Umsetzungszeitplan EU AI Act</text>
+
+                <!-- Timeline axis -->
+                <line x1="160" y1="50" x2="680" y2="50" stroke="#ddd" stroke-width="1"/>
+
+                <!-- Year markers -->
+                <text x="225" y="45" text-anchor="middle" font-family="Inter" font-size="8" fill="#999">2024</text>
+                <text x="355" y="45" text-anchor="middle" font-family="Inter" font-size="8" fill="#999">2025</text>
+                <text x="485" y="45" text-anchor="middle" font-family="Inter" font-size="8" fill="#999">2026</text>
+                <text x="615" y="45" text-anchor="middle" font-family="Inter" font-size="8" fill="#999">2027</text>
+
+                <!-- Row 1: Inkrafttreten -->
+                <text x="10" y="80" font-family="Inter" font-size="8.5" font-weight="500" fill="#333">Inkrafttreten</text>
+                <rect x="190" y="68" width="20" height="20" rx="3" fill="#4a90d9"/>
+                <text x="215" y="82" font-family="Inter" font-size="7.5" fill="#666">Aug 2024</text>
+
+                <!-- Row 2: Verbotene Praktiken -->
+                <text x="10" y="115" font-family="Inter" font-size="8.5" font-weight="500" fill="#333">Verbotene Praktiken</text>
+                <rect x="290" y="103" width="130" height="20" rx="3" fill="#c23030"/>
+                <text x="355" y="117" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="600" fill="#fff">ab Feb 2025</text>
+
+                <!-- Row 3: GPAI -->
+                <text x="10" y="150" font-family="Inter" font-size="8.5" font-weight="500" fill="#333">GPAI-Modelle</text>
+                <rect x="355" y="138" width="130" height="20" rx="3" fill="#e8a832"/>
+                <text x="420" y="152" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="600" fill="#fff">ab Aug 2025</text>
+
+                <!-- Row 4: High-Risk -->
+                <text x="10" y="185" font-family="Inter" font-size="8.5" font-weight="500" fill="#333">High-Risk-Systeme</text>
+                <rect x="485" y="173" width="130" height="20" rx="3" fill="#c23030"/>
+                <text x="550" y="187" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="600" fill="#fff">ab Aug 2026</text>
+
+                <!-- Row 5: Restliche -->
+                <text x="10" y="220" font-family="Inter" font-size="8.5" font-weight="500" fill="#333">Alle restlichen Pflichten</text>
+                <rect x="580" y="208" width="100" height="20" rx="3" fill="#888"/>
+                <text x="630" y="222" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="600" fill="#fff">ab Aug 2027</text>
+
+                <!-- "Jetzt" marker -->
+                <line x1="500" y1="55" x2="500" y2="240" stroke="#c23030" stroke-width="1.5" stroke-dasharray="5,3"/>
+                <rect x="475" y="245" width="50" height="18" rx="3" fill="#c23030"/>
+                <text x="500" y="258" text-anchor="middle" font-family="Inter" font-size="7.5" font-weight="700" fill="#fff">JETZT</text>
+            </svg>
+        </div>
+
+        <h3>Was bedeutet das konkret?</h3>
+
+        <ul>
+            <li><strong>Seit Februar 2025:</strong> Verbotene KI-Praktiken sind untersagt. Social Scoring, manipulative Systeme, biometrische Echtzeit-Fernidentifikation in öffentlichen Räumen (mit Ausnahmen). Wenn Sie solche Systeme betreiben — sofort abschalten.</li>
+            <li><strong>Seit August 2025:</strong> Anbieter von General Purpose AI (GPAI) Modellen müssen Transparenzpflichten erfüllen. Modelle mit systemischem Risiko unterliegen zusätzlichen Auflagen.</li>
+            <li><strong>Ab August 2026:</strong> Die großen Pflichten für High-Risk-Systeme greifen. Technische Dokumentation, Risikomanagement, Datenqualität, menschliche Aufsicht — alles muss stehen. Das sind noch vier Monate.</li>
+            <li><strong>Ab August 2027:</strong> Alle restlichen Bestimmungen werden anwendbar, einschließlich der Pflichten für KI-Systeme, die in Annex I gelistet sind.</li>
+        </ul>
+
+        <div class="quote-block">
+            „Meine Empfehlung: Handeln Sie jetzt. Nicht weil es Pflicht ist — obwohl es das zunehmend ist. Sondern weil Unternehmen, die ihre KI-Systeme ordentlich dokumentieren und testen, bessere Ergebnisse erzielen. Compliance ist kein Kostenfaktor. Es ist Qualitätsmanagement."
+        </div>
+
+        <p>Die Unternehmen, die ich als Berater am meisten bewundere, haben nicht auf die Fristen gewartet. Sie haben vor zwei Jahren angefangen. Nicht perfekt, nicht vollständig — aber sie haben angefangen. Und sie haben heute einen Vorsprung, der schwer aufzuholen ist.</p>
+
+        <!-- Sources -->
+        <div class="sources page-break">
+            <h2>Quellen</h2>
+            <ol>
+                <li>Europäisches Parlament und Rat der Europäischen Union (2024): Verordnung (EU) 2024/1689 zur Festlegung harmonisierter Vorschriften für Künstliche Intelligenz (Gesetz über Künstliche Intelligenz). Amtsblatt der Europäischen Union, L 2024/1689.</li>
+                <li>Europäische Kommission (2024): „AI Act — Fragen und Antworten." Pressemitteilung, 13. März 2024.</li>
+                <li>Anhang III der Verordnung (EU) 2024/1689: Liste der Hochrisiko-KI-Systeme gemäß Artikel 6 Absatz 2.</li>
+                <li>AI Act, Art. 9-15: Anforderungen an Hochrisiko-KI-Systeme — Risikomanagement, Datenqualität, technische Dokumentation, Aufzeichnungspflichten, Transparenz, menschliche Aufsicht, Genauigkeit und Robustheit.</li>
+                <li>Barocas, S. & Selbst, A. D. (2016): „Big Data's Disparate Impact." California Law Review, Vol. 104, No. 3, S. 671-732. | Chouldechova, A. (2017): „Fair prediction with disparate impact." Big Data, 5(2), S. 153-163.</li>
+                <li>Bitkom (2024): „Leitfaden zur Umsetzung des EU AI Acts für Unternehmen." Bitkom e.V., Berlin.</li>
+                <li>OECD (2024): „OECD AI Policy Observatory — AI Incidents Monitor." OECD.AI.</li>
+            </ol>
+        </div>
+
+        <!-- Back Cover -->
+        <div class="back-cover">
+            <h3>Compliance muss nicht kompliziert sein.<br>Sie muss nur gemacht werden.</h3>
+            <p>ILDEN KI Consulting begleitet Unternehmen von der Risikoklassifizierung<br>bis zur vollständigen EU AI Act Compliance.</p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:info@ilden.de">info@ilden.de</a>
+                </div>
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    Düsseldorf, Deutschland
+                </div>
+                <div class="contact-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a90d9" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                    <a href="https://ilden.de">ilden.de</a>
+                </div>
+            </div>
+            <p style="margin-top: 30px; font-size: 8.5pt; color: #666;">&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p>
+        </div>
+
+    </div>
+</body>
+</html>

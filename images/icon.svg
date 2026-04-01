@@ -1,0 +1,9 @@
+<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- ILDEN Brand Icon — Double Arrow (up-right) -->
+  <!-- Back arrow (light blue) — offset top-right -->
+  <rect x="28" y="10" width="22" height="8" rx="4" fill="#b8d4f0"/>
+  <rect x="42" y="10" width="8" height="24" rx="4" fill="#b8d4f0"/>
+  <!-- Front arrow (brand blue) — offset bottom-left -->
+  <rect x="14" y="24" width="22" height="8" rx="4" fill="#4a90d9"/>
+  <rect x="28" y="24" width="8" height="24" rx="4" fill="#4a90d9"/>
+</svg>

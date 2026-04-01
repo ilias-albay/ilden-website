@@ -1,0 +1,1311 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der KI-Report 2026 — ILDEN KI Consulting</title>
+<meta name="description" content="Der KI-Report 2026: Zahlen, Fakten und Handlungsempfehlungen für den deutschen Mittelstand. Datengetriebene Analyse von ILDEN Research.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="images/icon.svg">
+<style>
+/* ===== KI-Report 2026 — Page-specific styles ===== */
+
+/* Report Hero */
+.report-hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 180px 0 var(--space-2xl);
+    overflow: hidden;
+    background: var(--bg-dark);
+}
+.report-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 30%, rgba(74,144,217,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 30% at 80% 70%, rgba(196,169,98,0.03) 0%, transparent 50%);
+    pointer-events: none;
+}
+.report-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border-light), transparent);
+}
+.report-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+}
+.report-hero-content h1 {
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.0;
+    margin-bottom: var(--space-md);
+    letter-spacing: -0.04em;
+}
+.report-hero-content h2 {
+    font-family: var(--font-body);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--space-lg);
+    max-width: 640px;
+}
+.report-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    font-size: var(--type-micro);
+    color: var(--text-dim);
+    flex-wrap: wrap;
+}
+.report-meta span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.report-meta .meta-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--text-dim);
+}
+.report-meta .meta-icon {
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+}
+
+/* Stat Cards */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-md);
+}
+.stat-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--blue-pale));
+    opacity: 0;
+    transition: var(--transition);
+}
+.stat-card:hover::before {
+    opacity: 1;
+}
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+.stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+}
+.stat-label {
+    font-size: var(--type-small);
+    color: var(--text-dark);
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+    font-weight: 500;
+}
+.stat-source {
+    font-size: 0.7rem;
+    color: var(--text-dark-secondary);
+    opacity: 0.6;
+    border-top: 1px solid rgba(0,0,0,0.06);
+    padding-top: 12px;
+    margin-top: auto;
+}
+
+/* Report Sections */
+.report-section {
+    padding: var(--section-pad) 0;
+    position: relative;
+}
+.report-section-dark {
+    background: var(--bg-dark);
+}
+.report-section-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(74,144,217,0.03) 0%, transparent 70%);
+    pointer-events: none;
+}
+.report-section-light {
+    background: var(--cream);
+    color: var(--text-dark);
+}
+.report-section-light h2 {
+    color: var(--navy);
+}
+.report-section-light h3 {
+    color: var(--navy);
+}
+.report-section-light p {
+    color: var(--text-dark-secondary);
+}
+
+.report-h2 {
+    font-size: var(--type-h2);
+    margin-bottom: var(--space-lg);
+}
+
+.report-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+.report-text p {
+    font-size: var(--type-body);
+    line-height: 1.8;
+    margin-bottom: var(--space-md);
+}
+
+/* CSS Bar Chart */
+.bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.bar-chart-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.bar-label {
+    min-width: 120px;
+    font-size: var(--type-small);
+    font-weight: 500;
+    text-align: right;
+    flex-shrink: 0;
+}
+.bar-track {
+    flex: 1;
+    height: 36px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+}
+.report-section-light .bar-track {
+    background: rgba(0,0,0,0.04);
+}
+.bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--white);
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.bar-fill-blue { background: linear-gradient(90deg, var(--blue), var(--blue-light)); }
+.bar-fill-navy { background: linear-gradient(90deg, var(--navy), var(--blue)); }
+.bar-fill-gold { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.bar-fill-dark { background: linear-gradient(90deg, var(--navy), #2a3f6e); }
+.bar-value {
+    min-width: 70px;
+    font-size: var(--type-small);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Horizontal growth bar */
+.growth-bar-container {
+    margin-top: var(--space-lg);
+    padding: var(--space-lg);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+.report-section-light .growth-bar-container {
+    background: rgba(0,0,0,0.02);
+    border-color: rgba(0,0,0,0.06);
+}
+.growth-bar-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+.growth-bar-label {
+    font-size: var(--type-small);
+    font-weight: 600;
+    min-width: 100px;
+}
+.growth-bar-track {
+    flex: 1;
+    height: 24px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.report-section-light .growth-bar-track {
+    background: rgba(0,0,0,0.04);
+}
+.growth-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.growth-bar-fill-small { background: var(--blue); }
+.growth-bar-fill-large { background: linear-gradient(90deg, var(--blue), var(--gold)); }
+
+/* Donut / Ring Charts */
+.donut-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    text-align: center;
+}
+.donut-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+}
+.donut-ring {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.donut-ring-bg {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: conic-gradient(var(--blue) 0%, var(--blue) var(--percent), rgba(0,0,0,0.06) var(--percent), rgba(0,0,0,0.06) 100%);
+    mask: radial-gradient(circle at center, transparent 55px, black 56px);
+    -webkit-mask: radial-gradient(circle at center, transparent 55px, black 56px);
+}
+.donut-value {
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    color: var(--navy);
+    position: relative;
+    z-index: 2;
+    letter-spacing: -0.02em;
+}
+.donut-label {
+    font-size: var(--type-small);
+    color: var(--text-dark-secondary);
+    line-height: 1.5;
+    max-width: 200px;
+}
+.donut-source {
+    font-size: 0.7rem;
+    color: var(--text-dark-secondary);
+    opacity: 0.5;
+}
+
+/* Size bars (horizontal) */
+.size-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: var(--space-lg);
+    max-width: 700px;
+}
+.size-bar-item {
+    display: grid;
+    grid-template-columns: 200px 1fr 50px;
+    align-items: center;
+    gap: 16px;
+}
+.size-bar-label {
+    font-size: var(--type-small);
+    font-weight: 500;
+    text-align: right;
+    color: var(--text-dark);
+}
+.size-bar-track {
+    height: 28px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.size-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy), var(--blue));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.size-bar-value {
+    font-size: var(--type-small);
+    font-weight: 700;
+    color: var(--navy);
+}
+
+/* Failure reasons */
+.failure-split {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+.failure-big-number {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 14vw, 12rem);
+    line-height: 0.85;
+    color: rgba(74,144,217,0.1);
+    letter-spacing: -0.04em;
+    position: relative;
+}
+.failure-big-number span {
+    font-size: 0.4em;
+    vertical-align: top;
+}
+.failure-reasons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.failure-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.failure-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.failure-item-label {
+    font-size: var(--type-small);
+    font-weight: 500;
+}
+.failure-item-value {
+    font-size: var(--type-small);
+    font-weight: 700;
+    color: var(--blue-light);
+}
+.failure-bar-track {
+    height: 8px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.failure-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--blue), var(--blue-light));
+    border-radius: 4px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ROI chart */
+.roi-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    height: 300px;
+    padding: var(--space-lg) 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    margin-bottom: var(--space-md);
+}
+.roi-bar-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    gap: 8px;
+}
+.roi-bar-value {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+}
+.roi-bar {
+    width: 100%;
+    max-width: 72px;
+    border-radius: 6px 6px 0 0;
+    transition: height 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    height: 0;
+}
+.roi-bar-1 { background: linear-gradient(180deg, var(--blue), var(--navy)); }
+.roi-bar-2 { background: linear-gradient(180deg, var(--blue-light), var(--blue)); }
+.roi-bar-3 { background: linear-gradient(180deg, var(--gold), #9a7e2e); }
+.roi-bar-4 { background: linear-gradient(180deg, var(--blue-pale), var(--blue-light)); }
+.roi-bar-5 { background: linear-gradient(180deg, #8b9dc3, var(--navy)); }
+.roi-bar-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: var(--text-dark-secondary);
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Insight box */
+.insight-box {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    position: relative;
+    overflow: hidden;
+}
+.insight-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(74,144,217,0.15), transparent 70%);
+    pointer-events: none;
+}
+.insight-box-number {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 8px;
+    position: relative;
+}
+.insight-box p {
+    color: rgba(255,255,255,0.7) !important;
+    position: relative;
+    font-size: var(--type-small);
+    line-height: 1.7;
+}
+.insight-box .source-tag {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.7rem;
+    margin-top: 12px;
+    display: block;
+    position: relative;
+}
+
+/* Funnel visualization */
+.funnel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: var(--space-lg);
+    padding: var(--space-lg) 0;
+}
+.funnel-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: var(--type-small);
+    color: var(--white);
+    text-align: center;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 0;
+    position: relative;
+    gap: 8px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.funnel-step-1 { background: linear-gradient(90deg, var(--blue), var(--blue-light)); }
+.funnel-step-2 { background: linear-gradient(90deg, #3a7ac0, var(--blue)); }
+.funnel-step-3 { background: linear-gradient(90deg, #2a5a90, #3a7ac0); }
+.funnel-step-4 { background: linear-gradient(90deg, var(--navy), #2a5a90); }
+.funnel-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.funnel-percent {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    letter-spacing: -0.02em;
+}
+
+/* Recommendations */
+.rec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-md);
+}
+.rec-card {
+    background: var(--warm-white);
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg) var(--space-md);
+    transition: var(--transition);
+    position: relative;
+}
+.rec-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+}
+.rec-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: var(--space-sm);
+    opacity: 0.3;
+}
+.rec-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: var(--navy);
+}
+.rec-card p {
+    font-size: var(--type-small);
+    line-height: 1.7;
+    color: var(--text-dark-secondary);
+}
+.rec-card a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: var(--type-small);
+    font-weight: 600;
+    color: var(--blue);
+    margin-top: 12px;
+    transition: var(--transition);
+}
+.rec-card a:hover {
+    gap: 10px;
+    color: var(--navy);
+}
+
+/* Sources section */
+.sources-section {
+    background: var(--bg-section);
+    padding: var(--space-xl) 0;
+    border-top: 1px solid var(--border);
+}
+.sources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+.source-item {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    line-height: 1.6;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+}
+.source-item strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Lead capture */
+.lead-capture {
+    background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+    padding: var(--space-xl) 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+.lead-capture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(74,144,217,0.08), transparent 70%);
+    pointer-events: none;
+}
+.lead-form {
+    display: flex;
+    gap: 12px;
+    max-width: 600px;
+    margin: var(--space-md) auto 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+.lead-form input {
+    flex: 1;
+    min-width: 180px;
+    padding: 14px 20px;
+    border-radius: 60px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.06);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    color: var(--white);
+    outline: none;
+    transition: var(--transition);
+}
+.lead-form input::placeholder {
+    color: var(--text-dim);
+}
+.lead-form input:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(74,144,217,0.15);
+}
+.lead-form button {
+    padding: 14px 32px;
+    border-radius: 60px;
+    background: var(--white);
+    color: var(--navy);
+    font-family: var(--font-body);
+    font-size: var(--type-small);
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.lead-form button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(255,255,255,0.15);
+}
+
+/* Chart source labels */
+.chart-source {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: var(--space-sm);
+    font-style: italic;
+}
+.report-section-light .chart-source {
+    color: var(--text-dark-secondary);
+    opacity: 0.6;
+}
+
+/* Subsection */
+.report-subsection {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--border);
+}
+.report-section-light .report-subsection {
+    border-color: rgba(0,0,0,0.06);
+}
+
+/* Gap callout */
+.gap-callout {
+    background: rgba(74,144,217,0.06);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    padding: var(--space-md) var(--space-lg);
+    margin-top: var(--space-lg);
+    font-size: var(--type-body);
+    line-height: 1.7;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+/* Agentic stats */
+.agentic-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+.agentic-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+}
+.agentic-stat-number {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--white);
+    margin-bottom: 4px;
+}
+.agentic-stat-label {
+    font-size: var(--type-small);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+.agentic-stat-source {
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    margin-top: 8px;
+}
+
+/* Animated state — charts animate on scroll */
+[data-animate-chart].is-visible .bar-fill,
+[data-animate-chart].is-visible .failure-bar-fill,
+[data-animate-chart].is-visible .size-bar-fill,
+[data-animate-chart].is-visible .growth-bar-fill,
+[data-animate-chart].is-visible .roi-bar,
+[data-animate-chart].is-visible .funnel-step {
+    /* widths/heights set via inline style */
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .report-split { grid-template-columns: 1fr; }
+    .failure-split { grid-template-columns: 1fr; }
+    .failure-big-number { text-align: center; font-size: 8rem; }
+    .donut-grid { grid-template-columns: repeat(2, 1fr); }
+    .agentic-stats { grid-template-columns: 1fr; }
+    .sources-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    .stat-grid { grid-template-columns: 1fr; }
+    .donut-grid { grid-template-columns: 1fr; }
+    .rec-grid { grid-template-columns: 1fr; }
+    .roi-chart { height: 220px; gap: 10px; }
+    .size-bar-item { grid-template-columns: 140px 1fr 40px; }
+    .bar-label { min-width: 80px; font-size: 0.75rem; }
+    .lead-form { flex-direction: column; }
+    .lead-form input { min-width: 100%; }
+    .lead-form button { width: 100%; }
+    .funnel-step { height: 44px; font-size: 0.75rem; }
+}
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="index.html" class="logo"><img src="images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="insights.html" class="nav-link">Insights</a></li>
+        <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<!-- 1. Report Hero -->
+<section class="report-hero">
+    <div class="container">
+        <div class="report-hero-content" data-animate>
+            <nav class="breadcrumb" aria-label="Breadcrumb" style="margin-bottom:var(--space-lg)">
+                <a href="index.html">Home</a>
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <a href="insights.html">Insights</a>
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span>KI-Report 2026</span>
+            </nav>
+            <span class="overline">ILDEN Research &middot; April 2026</span>
+            <h1>Der KI-Report 2026</h1>
+            <h2>Zahlen, Fakten und Handlungsempfehlungen für den deutschen Mittelstand</h2>
+            <div class="report-meta">
+                <span><svg class="meta-icon" viewBox="0 0 16 16" fill="none"><path d="M8 14A6 6 0 108 2a6 6 0 000 12z" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg> 15 Min. Lesezeit</span>
+                <span class="meta-dot"></span>
+                <span>ILDEN Research Team</span>
+                <span class="meta-dot"></span>
+                <span>April 2026</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 2. Executive Summary -->
+<section class="report-section report-section-light">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <span class="overline" style="color:var(--blue);">Executive Summary</span>
+            <h2 class="report-h2">Das Wichtigste auf einen Blick</h2>
+        </div>
+
+        <div class="stat-grid" data-animate>
+            <div class="stat-card">
+                <div class="stat-number">$2,52 Bio.</div>
+                <div class="stat-label">Weltweite KI-Ausgaben 2026<br><span style="font-weight:400;font-size:0.8rem;color:var(--text-dark-secondary);">+44% gegenüber Vorjahr</span></div>
+                <div class="stat-source">Quelle: Gartner, 2026</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">78%</div>
+                <div class="stat-label">der Unternehmen weltweit nutzen KI in mindestens einem Geschäftsbereich</div>
+                <div class="stat-source">Quelle: McKinsey State of AI, 2025</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">80%</div>
+                <div class="stat-label">aller KI-Projekte scheitern oder liefern nicht den erwarteten ROI</div>
+                <div class="stat-source">Quelle: RAND Corporation, 2025</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">37%</div>
+                <div class="stat-label">der deutschen Unternehmen setzen KI produktiv ein</div>
+                <div class="stat-source">Quelle: IW Köln, 2025</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 3. Marktüberblick -->
+<section class="report-section report-section-dark">
+    <div class="container" style="position:relative;z-index:2;">
+        <div class="section-header" data-animate>
+            <span class="overline">Marktüberblick</span>
+            <h2 class="report-h2">Der globale KI-Markt explodiert</h2>
+        </div>
+
+        <div class="report-split" data-animate>
+            <div class="report-text">
+                <p>Der weltweite KI-Markt wächst mit beispielloser Geschwindigkeit. Von $184 Milliarden im Jahr 2024 auf prognostizierte $2.480 Milliarden bis 2030 — eine Verzehnfachung in nur sechs Jahren. Dieses Wachstum wird getrieben durch drei Faktoren: die Skalierung generativer KI, die zunehmende Automatisierung von Wissensarbeit und den Ausbau von KI-Infrastruktur durch Hyperscaler.</p>
+                <p>Für den deutschen Mittelstand bedeutet das: KI ist kein Zukunftsthema mehr — es ist ein Wettbewerbsfaktor der Gegenwart. Unternehmen, die jetzt nicht investieren, riskieren in drei bis fünf Jahren irreversible Rückstände gegenüber international aufgestellten Wettbewerbern.</p>
+            </div>
+            <div data-animate-chart>
+                <h3 style="font-size:1rem;margin-bottom:var(--space-md);color:var(--text-secondary);">Globaler KI-Markt (in Mrd. USD)</h3>
+                <div class="bar-chart">
+                    <div class="bar-chart-item">
+                        <span class="bar-label">2024</span>
+                        <div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:7.4%;" data-width="7.4%"><span style="font-size:0.7rem;"></span></div></div>
+                        <span class="bar-value" style="color:var(--text-primary);">$184 Mrd.</span>
+                    </div>
+                    <div class="bar-chart-item">
+                        <span class="bar-label">2025</span>
+                        <div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:11.1%;" data-width="11.1%"></div></div>
+                        <span class="bar-value" style="color:var(--text-primary);">$276 Mrd.</span>
+                    </div>
+                    <div class="bar-chart-item">
+                        <span class="bar-label">2026</span>
+                        <div class="bar-track"><div class="bar-fill bar-fill-blue" style="width:15.2%;" data-width="15.2%"></div></div>
+                        <span class="bar-value" style="color:var(--text-primary);">$376 Mrd.</span>
+                    </div>
+                    <div class="bar-chart-item">
+                        <span class="bar-label" style="color:var(--blue-light);">2030 (proj.)</span>
+                        <div class="bar-track"><div class="bar-fill bar-fill-gold" style="width:100%;" data-width="100%"></div></div>
+                        <span class="bar-value" style="color:var(--gold-light);">$2.480 Mrd.</span>
+                    </div>
+                </div>
+                <p class="chart-source">Quelle: Fortune Business Insights, 2026</p>
+            </div>
+        </div>
+
+        <!-- KI-Beratungsmarkt subsection -->
+        <div class="report-subsection" data-animate>
+            <h3 style="margin-bottom:var(--space-md);">KI-Beratungsmarkt</h3>
+            <p style="color:var(--text-secondary);margin-bottom:var(--space-md);max-width:700px;line-height:1.7;">Der Markt für KI-Beratung wächst von $14 Milliarden (2026) auf prognostizierte $117 Milliarden bis 2035 — ein CAGR von 26,5%. Der Bedarf an strategischer KI-Beratung steigt überproportional, da Unternehmen erkennen, dass Technologie allein nicht reicht.</p>
+            <div class="growth-bar-container" data-animate-chart>
+                <div class="growth-bar-wrapper">
+                    <span class="growth-bar-label" style="color:var(--text-secondary);">2026</span>
+                    <div class="growth-bar-track" style="flex:1;">
+                        <div class="growth-bar-fill growth-bar-fill-small" style="width:12%;" data-width="12%"></div>
+                    </div>
+                    <span style="font-size:var(--type-small);font-weight:700;color:var(--blue-light);min-width:80px;">$14 Mrd.</span>
+                </div>
+                <div class="growth-bar-wrapper">
+                    <span class="growth-bar-label" style="color:var(--text-secondary);">2035</span>
+                    <div class="growth-bar-track" style="flex:1;">
+                        <div class="growth-bar-fill growth-bar-fill-large" style="width:100%;" data-width="100%"></div>
+                    </div>
+                    <span style="font-size:var(--type-small);font-weight:700;color:var(--gold-light);min-width:80px;">$117 Mrd.</span>
+                </div>
+                <p style="font-size:0.8rem;color:var(--text-dim);margin-top:12px;">CAGR: 26,5% &middot; Quelle: Business Research Insights, 2026</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 4. Deutschland im Fokus -->
+<section class="report-section report-section-light">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <span class="overline" style="color:var(--blue);">Deutschland im Fokus</span>
+            <h2 class="report-h2">Wo steht der deutsche Mittelstand?</h2>
+        </div>
+
+        <div class="donut-grid" data-animate data-animate-chart>
+            <div class="donut-item">
+                <div class="donut-ring" style="--percent:20%;">
+                    <div class="donut-ring-bg"></div>
+                    <span class="donut-value">20%</span>
+                </div>
+                <div class="donut-label">Anteil der Unternehmen, die KI produktiv nutzen</div>
+                <div class="donut-source">Quelle: Destatis, 2024</div>
+            </div>
+            <div class="donut-item">
+                <div class="donut-ring" style="--percent:86%;">
+                    <div class="donut-ring-bg" style="background:conic-gradient(var(--gold) 0%, var(--gold) var(--percent), rgba(0,0,0,0.06) var(--percent), rgba(0,0,0,0.06) 100%);"></div>
+                    <span class="donut-value">86%</span>
+                </div>
+                <div class="donut-label">der KMUs erkennen die strategische Relevanz von KI</div>
+                <div class="donut-source">Quelle: Maximal Digital, 2025</div>
+            </div>
+            <div class="donut-item">
+                <div class="donut-ring" style="--percent:23%;">
+                    <div class="donut-ring-bg" style="background:conic-gradient(var(--navy) 0%, var(--navy) var(--percent), rgba(0,0,0,0.06) var(--percent), rgba(0,0,0,0.06) 100%);"></div>
+                    <span class="donut-value">23%</span>
+                </div>
+                <div class="donut-label">haben tatsächlich KI-Projekte umgesetzt</div>
+                <div class="donut-source">Quelle: Maximal Digital, 2025</div>
+            </div>
+        </div>
+
+        <div class="gap-callout" data-animate>
+            Die Lücke zwischen Erkenntnis und Umsetzung ist alarmierend: <strong>86% der KMUs</strong> sagen, KI sei strategisch wichtig — aber nur <strong>23% handeln</strong>. Diese Diskrepanz ist die größte Chance und gleichzeitig das größte Risiko für den deutschen Mittelstand.
+        </div>
+
+        <!-- Nach Unternehmensgröße -->
+        <div class="report-subsection" data-animate>
+            <h3 style="color:var(--navy);margin-bottom:var(--space-sm);">KI-Nutzung nach Unternehmensgröße</h3>
+            <p style="font-size:var(--type-small);color:var(--text-dark-secondary);margin-bottom:var(--space-md);">Je kleiner das Unternehmen, desto geringer die KI-Adoption — trotz vergleichbarer Potenziale.</p>
+            <div class="size-bars" data-animate-chart>
+                <div class="size-bar-item">
+                    <span class="size-bar-label">Großunternehmen (250+)</span>
+                    <div class="size-bar-track"><div class="size-bar-fill" style="width:48%;" data-width="48%"></div></div>
+                    <span class="size-bar-value">48%</span>
+                </div>
+                <div class="size-bar-item">
+                    <span class="size-bar-label">Mittlere (50–249)</span>
+                    <div class="size-bar-track"><div class="size-bar-fill" style="width:28%;" data-width="28%"></div></div>
+                    <span class="size-bar-value">28%</span>
+                </div>
+                <div class="size-bar-item">
+                    <span class="size-bar-label">Kleine (10–49)</span>
+                    <div class="size-bar-track"><div class="size-bar-fill" style="width:17%;" data-width="17%"></div></div>
+                    <span class="size-bar-value">17%</span>
+                </div>
+            </div>
+            <p class="chart-source">Quelle: Destatis, 2024</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- 5. Warum KI-Projekte scheitern -->
+<section class="report-section report-section-dark">
+    <div class="container" style="position:relative;z-index:2;">
+        <div class="section-header" data-animate>
+            <span class="overline">Analyse</span>
+            <h2 class="report-h2">80% scheitern. Aber warum?</h2>
+        </div>
+
+        <div class="failure-split" data-animate>
+            <div>
+                <div class="failure-big-number">80<span>%</span></div>
+            </div>
+            <div class="failure-reasons" data-animate-chart>
+                <div class="failure-item">
+                    <div class="failure-item-header">
+                        <span class="failure-item-label">Unzureichende Datenqualität</span>
+                        <span class="failure-item-value">76%</span>
+                    </div>
+                    <div class="failure-bar-track"><div class="failure-bar-fill" style="width:76%;" data-width="76%"></div></div>
+                </div>
+                <div class="failure-item">
+                    <div class="failure-item-header">
+                        <span class="failure-item-label">Fehlende Strategie</span>
+                        <span class="failure-item-value">67%</span>
+                    </div>
+                    <div class="failure-bar-track"><div class="failure-bar-fill" style="width:67%;" data-width="67%"></div></div>
+                </div>
+                <div class="failure-item">
+                    <div class="failure-item-header">
+                        <span class="failure-item-label">Fehlende Skalierungskompetenz</span>
+                        <span class="failure-item-value">61%</span>
+                    </div>
+                    <div class="failure-bar-track"><div class="failure-bar-fill" style="width:61%;" data-width="61%"></div></div>
+                </div>
+                <div class="failure-item">
+                    <div class="failure-item-header">
+                        <span class="failure-item-label">Kein klarer Business Case</span>
+                        <span class="failure-item-value">54%</span>
+                    </div>
+                    <div class="failure-bar-track"><div class="failure-bar-fill" style="width:54%;" data-width="54%"></div></div>
+                </div>
+                <div class="failure-item">
+                    <div class="failure-item-header">
+                        <span class="failure-item-label">Mangelndes Change Management</span>
+                        <span class="failure-item-value">48%</span>
+                    </div>
+                    <div class="failure-bar-track"><div class="failure-bar-fill" style="width:48%;" data-width="48%"></div></div>
+                </div>
+                <p class="chart-source">Quellen: RAND Corporation, Gartner, IW Köln (aggregiert)</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 6. ROI und Erfolgsfaktoren -->
+<section class="report-section report-section-light">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <span class="overline" style="color:var(--blue);">Erfolgsfaktoren</span>
+            <h2 class="report-h2">Was erfolgreiche KI-Projekte anders machen</h2>
+        </div>
+
+        <div data-animate>
+            <h3 style="color:var(--navy);font-size:1rem;margin-bottom:var(--space-md);">Durchschnittlicher ROI nach Branche (Faktor)</h3>
+            <div class="roi-chart" data-animate-chart>
+                <div class="roi-bar-col">
+                    <span class="roi-bar-value">4,2x</span>
+                    <div class="roi-bar roi-bar-1" style="height:84%;" data-height="84%"></div>
+                    <span class="roi-bar-label">Financial<br>Services</span>
+                </div>
+                <div class="roi-bar-col">
+                    <span class="roi-bar-value">3,9x</span>
+                    <div class="roi-bar roi-bar-2" style="height:78%;" data-height="78%"></div>
+                    <span class="roi-bar-label">Media &<br>Telecom</span>
+                </div>
+                <div class="roi-bar-col">
+                    <span class="roi-bar-value">3,1x</span>
+                    <div class="roi-bar roi-bar-3" style="height:62%;" data-height="62%"></div>
+                    <span class="roi-bar-label">Manufac-<br>turing</span>
+                </div>
+                <div class="roi-bar-col">
+                    <span class="roi-bar-value">2,8x</span>
+                    <div class="roi-bar roi-bar-4" style="height:56%;" data-height="56%"></div>
+                    <span class="roi-bar-label">Health-<br>care</span>
+                </div>
+                <div class="roi-bar-col">
+                    <span class="roi-bar-value">2,5x</span>
+                    <div class="roi-bar roi-bar-5" style="height:50%;" data-height="50%"></div>
+                    <span class="roi-bar-label">Retail</span>
+                </div>
+            </div>
+            <p class="chart-source">Quelle: McKinsey / Enterprise-Studien</p>
+        </div>
+
+        <div class="insight-box" data-animate>
+            <div class="insight-box-number">63%</div>
+            <p>der deutschen Unternehmen mit produktiver KI-Nutzung berichten von direkten, messbaren Verbesserungen in Effizienz, Umsatz oder Kundenzufriedenheit. Der Schlüssel: Sie haben vor dem Technologie-Einsatz den Business Case definiert — nicht umgekehrt.</p>
+            <span class="source-tag">Quelle: IW Köln, 2025</span>
+        </div>
+    </div>
+</section>
+
+
+<!-- 7. Agentic AI -->
+<section class="report-section report-section-dark">
+    <div class="container" style="position:relative;z-index:2;">
+        <div class="section-header" data-animate>
+            <span class="overline">Trend 2026</span>
+            <h2 class="report-h2">2026 ist das Jahr der KI-Agenten</h2>
+        </div>
+
+        <div class="report-text" data-animate style="max-width:740px;margin-bottom:var(--space-lg);">
+            <p>Agentic AI — autonome KI-Systeme, die eigenständig Aufgaben planen, ausführen und iterieren — ist das bestimmende Thema 2026. Die Adoption ist rapide, doch zwischen Experimentierung und Produktiveinsatz klafft eine erhebliche Lücke.</p>
+        </div>
+
+        <div class="agentic-stats" data-animate>
+            <div class="agentic-stat">
+                <div class="agentic-stat-number">79%</div>
+                <div class="agentic-stat-label">der Unternehmen haben AI Agents in irgendeiner Form adoptiert</div>
+                <div class="agentic-stat-source">Quelle: Gartner, 2026</div>
+            </div>
+            <div class="agentic-stat">
+                <div class="agentic-stat-number">11%</div>
+                <div class="agentic-stat-label">der AI-Agent-Projekte laufen tatsächlich in der Produktion</div>
+                <div class="agentic-stat-source">Quelle: Gartner, 2026</div>
+            </div>
+            <div class="agentic-stat">
+                <div class="agentic-stat-number">40%+</div>
+                <div class="agentic-stat-label">der Agent-Projekte werden bis 2027 aufgegeben oder umstrukturiert</div>
+                <div class="agentic-stat-source">Quelle: Gartner, 2026</div>
+            </div>
+            <div class="agentic-stat">
+                <div class="agentic-stat-number">$2,6–4,4 Bio.</div>
+                <div class="agentic-stat-label">jährliches Wertschöpfungspotenzial durch KI-Agenten weltweit</div>
+                <div class="agentic-stat-source">Quelle: McKinsey, 2025</div>
+            </div>
+        </div>
+
+        <!-- Adoption Funnel -->
+        <div data-animate data-animate-chart>
+            <h3 style="font-size:1rem;color:var(--text-secondary);margin-bottom:var(--space-sm);">Adoption Funnel: Von der Idee zur Produktion</h3>
+            <div class="funnel-container">
+                <div class="funnel-step funnel-step-1" style="width:100%;" data-width="100%">
+                    <span class="funnel-label"><span class="funnel-percent">79%</span> Adoptiert</span>
+                </div>
+                <div class="funnel-step funnel-step-2" style="width:49%;" data-width="49%">
+                    <span class="funnel-label"><span class="funnel-percent">39%</span> Experimentieren</span>
+                </div>
+                <div class="funnel-step funnel-step-3" style="width:29%;" data-width="29%">
+                    <span class="funnel-label"><span class="funnel-percent">23%</span> Skalieren</span>
+                </div>
+                <div class="funnel-step funnel-step-4" style="width:14%;" data-width="14%">
+                    <span class="funnel-label"><span class="funnel-percent">11%</span> Produktion</span>
+                </div>
+            </div>
+            <p class="chart-source" style="text-align:center;">Quelle: Gartner, 2026</p>
+        </div>
+    </div>
+</section>
+
+
+<!-- 8. Handlungsempfehlungen -->
+<section class="report-section report-section-light">
+    <div class="container">
+        <div class="section-header" data-animate>
+            <span class="overline" style="color:var(--blue);">Handlungsempfehlungen</span>
+            <h2 class="report-h2">Was Sie jetzt tun sollten</h2>
+        </div>
+
+        <div class="rec-grid" data-stagger>
+            <div class="rec-card" style="--i:0">
+                <div class="rec-number">01</div>
+                <h3>KI-Readiness bewerten</h3>
+                <p>Bevor Sie in Technologie investieren, müssen Sie wissen, wo Sie stehen. Ein strukturiertes Assessment Ihrer Daten, Prozesse und Organisation ist der erste Schritt — nicht der Kauf einer Plattform.</p>
+                <a href="ki-strategie.html">Zur KI-Scorecard <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+            <div class="rec-card" style="--i:1">
+                <div class="rec-number">02</div>
+                <h3>ROI vor Technologie</h3>
+                <p>Definieren Sie den Business Case, bevor Sie die Technologie wählen. 54% der gescheiterten Projekte hatten keinen klaren ROI-Plan. Die Frage lautet nicht "Was kann KI?" — sondern "Was bringt es uns?"</p>
+            </div>
+            <div class="rec-card" style="--i:2">
+                <div class="rec-number">03</div>
+                <h3>Klein starten, schnell skalieren</h3>
+                <p>Beginnen Sie mit einem klar abgegrenzten Pilotprojekt mit messbarem Ergebnis. Erfolgreiche Unternehmen starten in 4–6 Wochen mit einem Proof of Value — nicht in 12 Monaten mit einer Plattform-Migration.</p>
+            </div>
+            <div class="rec-card" style="--i:3">
+                <div class="rec-number">04</div>
+                <h3>Datenqualität als Fundament</h3>
+                <p>76% der KI-Projekte scheitern an Datenqualität. Investieren Sie in Datenbereinigung, -strukturierung und -governance, bevor Sie Modelle trainieren. Gute Daten schlagen jedes Mal gute Algorithmen.</p>
+            </div>
+            <div class="rec-card" style="--i:4">
+                <div class="rec-number">05</div>
+                <h3>Partner statt Selbstbau</h3>
+                <p>Der Fachkräftemangel im KI-Bereich ist real. Strategische Partnerschaften mit spezialisierten Beratungen beschleunigen die Time-to-Value und reduzieren das Risiko gescheiterter Alleingänge erheblich.</p>
+                <a href="kontakt.html">Gespräch vereinbaren <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M4 8h8M8 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 9. Quellen -->
+<section class="sources-section">
+    <div class="container">
+        <div data-animate>
+            <span class="overline" style="margin-bottom:var(--space-lg);">Quellen & Referenzen</span>
+            <div class="sources-grid">
+                <div class="source-item"><strong>Gartner (2026)</strong> — Worldwide AI Spending Forecast. Projected $2.52 trillion in total AI spending for 2026, +44% YoY growth.</div>
+                <div class="source-item"><strong>McKinsey & Company (2025)</strong> — The State of AI: Global Survey. 78% of organizations using AI in at least one business function.</div>
+                <div class="source-item"><strong>RAND Corporation (2025)</strong> — An Assessment of AI Project Success Rates. Analysis of enterprise AI project outcomes across industries.</div>
+                <div class="source-item"><strong>Institut der deutschen Wirtschaft Köln (2025)</strong> — KI als Wettbewerbsfaktor. 37% der deutschen Unternehmen mit produktivem KI-Einsatz.</div>
+                <div class="source-item"><strong>Statistisches Bundesamt / Destatis (2024)</strong> — KI-Nutzung in Unternehmen. 20% Adoptionsrate, aufgeschlüsselt nach Unternehmensgröße.</div>
+                <div class="source-item"><strong>Maximal Digital (2025)</strong> — KI im Mittelstand: Erkenntnis vs. Umsetzung. 86% Relevanz-Anerkennung, 23% Umsetzungsquote.</div>
+                <div class="source-item"><strong>Business Research Insights (2026)</strong> — AI Consulting Market Size & Forecast. $14B (2026) to $117B (2035), CAGR 26.5%.</div>
+                <div class="source-item"><strong>Fortune Business Insights (2026)</strong> — Artificial Intelligence Market Size, Share & Trends. $184B (2024) to $2,480B (2030).</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 10. Lead Capture CTA -->
+<section class="lead-capture">
+    <div class="container" data-animate style="position:relative;z-index:2;">
+        <h2 style="margin-bottom:var(--space-sm);">Report als PDF erhalten</h2>
+        <p style="color:var(--text-secondary);max-width:500px;margin:0 auto;font-size:var(--type-small);line-height:1.7;">Inklusive aller Charts und Quellen als druckbares PDF — ideal für interne Entscheidungsvorlagen und Strategiegespräche.</p>
+        <form class="lead-form" action="backend/submit.php" method="POST">
+            <input type="hidden" name="anliegen" value="ki-report">
+            <input type="text" name="name" placeholder="Ihr Name" required aria-label="Name">
+            <input type="email" name="email" placeholder="ihre@email.de" required aria-label="E-Mail-Adresse">
+            <button type="submit">PDF anfordern</button>
+        </form>
+        <p style="font-size:var(--type-micro);color:var(--text-dim);margin-top:var(--space-sm);text-align:center;position:relative;">Kein Spam. Ihre Daten werden gemäß unserer <a href="datenschutz.html" style="color:var(--blue-light);text-decoration:underline;">Datenschutzerklärung</a> verarbeitet.</p>
+    </div>
+</section>
+
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container" data-animate>
+        <h2>Lassen Sie uns über Ihre<br>KI-Strategie sprechen.</h2>
+        <p>Erste Einschätzung. Klare Empfehlungen. Kein Verkaufsgespräch.</p>
+        <a href="kontakt.html" class="btn btn-primary">Gespräch buchen</a>
+    </div>
+</section>
+
+</main>
+
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="ki-strategie.html">KI-Strategie</a></li><li><a href="automatisierung.html">Automatisierung</a></li><li><a href="datenanalyse.html">Datenanalyse</a></li><li><a href="schulungen.html">Schulungen</a></li><li><a href="implementierung.html">Implementierung</a></li><li><a href="compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="ueber-uns.html">Über ILDEN</a></li><li><a href="methodik.html">Methodik</a></li><li><a href="referenzen.html">Referenzen</a></li><li><a href="insights.html">Insights</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="impressum.html">Impressum</a></li><li><a href="datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Chart animation on scroll — animate bar widths and heights when visible
+(function() {
+    const chartObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Animate bars with data-width
+                entry.target.querySelectorAll('[data-width]').forEach(function(el, i) {
+                    setTimeout(function() {
+                        el.style.width = el.getAttribute('data-width');
+                    }, i * 80);
+                });
+                // Animate ROI bars with data-height
+                entry.target.querySelectorAll('[data-height]').forEach(function(el, i) {
+                    setTimeout(function() {
+                        el.style.height = el.getAttribute('data-height');
+                    }, i * 120);
+                });
+                chartObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    // Initially set widths/heights to 0 for animation
+    document.querySelectorAll('[data-animate-chart]').forEach(function(container) {
+        container.querySelectorAll('[data-width]').forEach(function(el) {
+            el.style.width = '0';
+        });
+        container.querySelectorAll('[data-height]').forEach(function(el) {
+            el.style.height = '0';
+        });
+        chartObserver.observe(container);
+    });
+})();
+</script>
+</body></html>

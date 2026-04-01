@@ -1,0 +1,4 @@
+backend/data/
+*.sqlite
+.DS_Store
+Thumbs.db

@@ -1,0 +1,232 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EU AI Act 2026: Was sich ab August ändert — ILDEN Insights</title>
+<meta name="description" content="Was der EU AI Act ab August 2026 für Ihr Unternehmen bedeutet. Strafen, Fristen und 5 konkrete Schritte zur Vorbereitung.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="../images/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+.content-body { max-width: 720px; margin: 0 auto; }
+.content-body p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); }
+.content-body h2 { font-family: var(--font-heading); font-size: clamp(1.5rem, 2.5vw, 2rem); margin: var(--space-xl) 0 var(--space-sm); color: var(--text-primary); }
+.content-body h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: var(--space-lg) 0 var(--space-xs); color: var(--text-primary); }
+.content-body ul, .content-body ol { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); padding-left: 1.5em; }
+.content-body li { margin-bottom: 8px; }
+.content-body blockquote { border-left: 3px solid var(--blue); padding: var(--space-sm) var(--space-md); margin: var(--space-lg) 0; background: rgba(74,144,217,0.05); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.content-body blockquote p { font-style: italic; color: var(--text-primary); margin-bottom: 0; }
+.content-body strong { color: var(--text-primary); }
+.content-body a { color: var(--blue-light); text-decoration: underline; text-underline-offset: 3px; }
+.content-body a:hover { color: var(--blue-pale); }
+.source-note { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+.author-box { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: var(--space-lg) 0; margin: var(--space-xl) 0; display: flex; gap: var(--space-md); align-items: center; }
+.author-box-info h4 { color: var(--text-primary); margin-bottom: 4px; }
+.author-box-info p { color: var(--text-secondary); font-size: var(--type-small); margin: 0; }
+.author-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--border); }
+.related-articles { margin: var(--space-xl) 0; }
+.related-articles h3 { font-family: var(--font-heading); margin-bottom: var(--space-md); color: var(--text-primary); }
+.related-link { display: block; padding: var(--space-sm) var(--space-md); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: var(--space-sm); transition: var(--transition); color: var(--text-secondary); text-decoration: none; }
+.related-link:hover { border-color: var(--blue); background: rgba(74,144,217,0.04); color: var(--text-primary); }
+.related-link strong { display: block; color: var(--text-primary); margin-bottom: 4px; }
+.article-cta { text-align: center; padding: var(--space-xl); background: var(--surface); border-radius: var(--radius-xl); border: 1px solid var(--border); margin: var(--space-xl) 0; }
+.article-cta h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: var(--space-sm); color: var(--text-primary); }
+.article-cta p { color: var(--text-secondary); margin-bottom: var(--space-md); max-width: 480px; margin-left: auto; margin-right: auto; }
+.timeline-box { position: relative; padding-left: 28px; margin: var(--space-lg) 0; }
+.timeline-box::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+.timeline-item { position: relative; margin-bottom: var(--space-md); }
+.timeline-item::before { content: ''; position: absolute; left: -24px; top: 8px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); border: 2px solid var(--bg); }
+.timeline-item.active::before { background: var(--gold, #c9a84c); box-shadow: 0 0 12px rgba(201,168,76,0.4); }
+.timeline-item strong { color: var(--text-primary); display: block; font-size: 0.9rem; margin-bottom: 2px; }
+.timeline-item span { color: var(--text-secondary); font-size: 0.9rem; }
+.penalty-box { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin: var(--space-lg) 0; }
+.penalty-card { padding: var(--space-md); background: rgba(220,60,60,0.06); border: 1px solid rgba(220,60,60,0.2); border-radius: var(--radius-md); text-align: center; }
+.penalty-card .penalty-amount { font-family: var(--font-heading); font-size: 1.6rem; color: #e85555; display: block; margin-bottom: 4px; }
+.penalty-card .penalty-desc { font-size: 0.8rem; color: var(--text-dim); }
+@media (max-width: 600px) { .penalty-box { grid-template-columns: 1fr; } .author-box { flex-direction: column; text-align: center; } }
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="../index.html" class="logo"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="../ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="../automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="../datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="../schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="../implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="../compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="../ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="../methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="../referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="../insights.html" class="nav-link">Insights</a></li>
+        <li><a href="../kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="../kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<section class="page-hero" style="padding:160px 0 var(--space-lg)">
+    <div class="container" style="max-width:720px">
+        <a href="../insights.html" style="color:var(--blue-light);font-size:var(--type-small);display:inline-flex;align-items:center;gap:6px;margin-bottom:var(--space-md);text-decoration:none">&larr; Zurück zu Insights</a>
+        <div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-light);background:rgba(74,144,217,0.1);padding:6px 14px;border-radius:100px;margin-bottom:var(--space-md)">COMPLIANCE</div>
+        <h1 style="font-size:var(--type-display);margin-bottom:var(--space-sm);line-height:1.1">EU AI Act 2026: Was sich ab August für Ihr Unternehmen ändert</h1>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-dim);flex-wrap:wrap">
+            <span>Ilias Albay</span><span style="opacity:0.4">·</span><span>Wirtschaftsingenieur</span><span style="opacity:0.4">·</span><span>8. März 2026</span><span style="opacity:0.4">·</span><span>6 Min. Lesezeit</span>
+        </div>
+    </div>
+</section>
+
+<section class="content-section" style="padding:var(--space-xl) 0 var(--space-2xl)">
+    <div class="container" style="max-width:720px">
+        <div class="content-body">
+
+            <p>Im August 2026 wird es ernst. Dann treten die Vorschriften für Hochrisiko-KI-Systeme im EU AI Act vollständig in Kraft — und mit ihnen ein Regelwerk, das die Art, wie Unternehmen KI einsetzen, grundlegend verändern wird. Wer sich nicht vorbereitet, riskiert nicht nur Bußgelder, sondern auch operative Stillstände.</p>
+
+            <p>Die meisten Unternehmen, die ich berate, unterschätzen den Aufwand. Nicht weil sie nachlässig wären, sondern weil die Regulierung komplex ist und sich viele Details erst in den letzten Monaten konkretisiert haben. Deshalb hier der Versuch, die wichtigsten Punkte klar und ohne juristisches Kauderwelsch zusammenzufassen.</p>
+
+            <h2>Die Timeline: Was wann greift</h2>
+
+            <p>Der EU AI Act wurde im August 2024 veröffentlicht und tritt in Stufen in Kraft. Das ist kein Big Bang, sondern ein Stufenplan:</p>
+
+            <div class="timeline-box">
+                <div class="timeline-item">
+                    <strong>Februar 2025 — Verbotene Praktiken</strong>
+                    <span>Social Scoring, manipulative KI-Systeme und biometrische Echtzeit-Überwachung in öffentlichen Räumen sind verboten.</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>August 2025 — GPAI-Regeln</strong>
+                    <span>Transparenzpflichten für General-Purpose AI Modelle (z.B. GPT, Claude, Gemini). Betrifft vor allem Anbieter dieser Modelle.</span>
+                </div>
+                <div class="timeline-item active">
+                    <strong>August 2026 — Hochrisiko-Systeme</strong>
+                    <span>Die große Welle: Alle Anforderungen für Hochrisiko-KI-Systeme greifen. Betrifft die Mehrheit der Unternehmens-KI.</span>
+                </div>
+                <div class="timeline-item">
+                    <strong>August 2027 — Vollständige Durchsetzung</strong>
+                    <span>Alle Bestimmungen in Kraft, inklusive bestehender Produkte die unter Annex I fallen.</span>
+                </div>
+            </div>
+
+            <h2>Was im August 2026 konkret passiert</h2>
+
+            <p>Ab August 2026 müssen Unternehmen, die Hochrisiko-KI-Systeme einsetzen oder anbieten, eine Reihe von Anforderungen erfüllen. „Hochrisiko" klingt nach Nische — ist es aber nicht. Die Definition ist breit und umfasst unter anderem:</p>
+
+            <ul>
+                <li>KI in der <strong>Personalauswahl</strong> (CV-Screening, Bewerber-Scoring)</li>
+                <li>KI für <strong>Kreditwürdigkeitsprüfungen</strong></li>
+                <li>KI in <strong>Bildung</strong> (automatische Benotung, Zugangssteuerung)</li>
+                <li>KI in <strong>kritischer Infrastruktur</strong> (Energie, Wasser, Verkehr)</li>
+                <li>KI-gestützte <strong>Sicherheitskomponenten</strong> in Produkten (Medizintechnik, Automotive)</li>
+            </ul>
+
+            <p>Wenn Sie also ein KI-Tool nutzen, das Bewerbungen vorsortiert — das ist Hochrisiko. Wenn Ihre Bank KI für Kreditentscheidungen einsetzt — Hochrisiko. Die Schwelle ist niedriger als die meisten denken.</p>
+
+            <p>Die konkreten Pflichten umfassen:</p>
+
+            <ul>
+                <li><strong>Risikomanagement-System:</strong> Dokumentierte, fortlaufende Risikoanalyse über den gesamten Lebenszyklus des KI-Systems.</li>
+                <li><strong>Daten-Governance:</strong> Nachweisbar hohe Qualität der Trainings-, Validierungs- und Testdaten. Keine systematischen Verzerrungen.</li>
+                <li><strong>Technische Dokumentation:</strong> Detaillierte Beschreibung des Systems, seiner Funktionsweise und seiner Grenzen.</li>
+                <li><strong>Menschliche Aufsicht:</strong> KI-Systeme müssen so gestaltet sein, dass Menschen sie effektiv überwachen und eingreifen können.</li>
+                <li><strong>Transparenz:</strong> Nutzer müssen wissen, dass sie mit KI interagieren, und über die Funktionsweise informiert werden.</li>
+            </ul>
+
+            <h2>Die Strafen: Kein Kavaliersdelikt</h2>
+
+            <div class="penalty-box">
+                <div class="penalty-card">
+                    <span class="penalty-amount">bis 35 Mio. EUR</span>
+                    <span class="penalty-desc">oder 7% des weltweiten Jahresumsatzes für verbotene KI-Praktiken</span>
+                </div>
+                <div class="penalty-card">
+                    <span class="penalty-amount">bis 15 Mio. EUR</span>
+                    <span class="penalty-desc">oder 3% des Jahresumsatzes für Verstöße gegen Hochrisiko-Anforderungen</span>
+                </div>
+            </div>
+
+            <p>Das sind keine theoretischen Summen. Die EU hat bei der DSGVO gezeigt, dass sie Bußgelder auch tatsächlich verhängt — Meta zahlte 2023 allein 1,2 Milliarden Euro (Quelle: Irish Data Protection Commission). Es gibt keinen Grund anzunehmen, dass es beim AI Act anders sein wird.</p>
+
+            <h2>Fünf Schritte, die Sie jetzt unternehmen sollten</h2>
+
+            <h3>1. KI-Inventar erstellen</h3>
+            <p>Klingt banal, ist aber der erste Stolperstein. Wissen Sie, welche KI-Systeme in Ihrem Unternehmen im Einsatz sind? Ich meine nicht nur die großen Projekte. Ich meine auch den Chatbot, den das Marketing vor zwei Jahren eingeführt hat. Oder das Excel-Plugin mit dem ML-Modell, das der Controller nutzt. Erstellen Sie eine vollständige Liste — mit Anbieter, Einsatzzweck und betroffenen Personen.</p>
+
+            <h3>2. Risikoklassifizierung durchführen</h3>
+            <p>Ordnen Sie jedes System den Kategorien des AI Act zu: verboten, Hochrisiko, begrenztes Risiko oder minimales Risiko. Das klingt einfach, ist es in der Praxis aber nicht. Die Grenze zwischen „begrenztem Risiko" und „Hochrisiko" ist fließend und hängt oft vom konkreten Einsatzkontext ab. Im Zweifel: konservativ klassifizieren.</p>
+
+            <h3>3. Dokumentation aufbauen</h3>
+            <p>Für Hochrisiko-Systeme brauchen Sie technische Dokumentation, die den Anforderungen von Artikel 11 des AI Act entspricht. Das betrifft Systemarchitektur, Trainingsdaten, Leistungskennzahlen, bekannte Einschränkungen und mehr. Starten Sie jetzt damit — nicht im Juli.</p>
+
+            <h3>4. Verantwortlichkeiten festlegen</h3>
+            <p>Wer in Ihrem Unternehmen ist für KI-Compliance verantwortlich? Wenn die Antwort „niemand" oder „irgendwie alle" lautet, haben Sie ein Problem. Sie brauchen eine klare Rolle — ob das ein AI Officer ist, der Datenschutzbeauftragte mit erweitertem Mandat, oder ein externes Team.</p>
+
+            <h3>5. Lieferanten einbeziehen</h3>
+            <p>Wenn Sie KI-Systeme von Drittanbietern nutzen (und das tun fast alle), sind Sie als „Deployer" mitverantwortlich. Fordern Sie von Ihren Lieferanten die nötige Dokumentation ein. Prüfen Sie, ob deren Systeme die Anforderungen des AI Act erfüllen. Integrieren Sie AI-Act-Klauseln in neue Verträge.</p>
+
+            <h2>Was das für den Mittelstand bedeutet</h2>
+
+            <p>Ich sage es ehrlich: Für große Unternehmen mit Rechtsabteilungen und Compliance-Teams ist das machbar. Für den Mittelstand ist es eine echte Herausforderung. Nicht weil die Anforderungen unzumutbar wären, sondern weil die Ressourcen fehlen.</p>
+
+            <p>Aber genau deshalb ist es wichtig, jetzt anzufangen. Nicht im August, wenn die Frist abläuft und jeder Berater in Deutschland ausgebucht ist. Jetzt, wo Sie noch die Ruhe haben, systematisch vorzugehen.</p>
+
+            <p>Für eine detaillierte Analyse der Anforderungen und einen konkreten Fahrplan empfehle ich unseren <a href="../whitepaper-eu-ai-act.html">Whitepaper zum EU AI Act</a> — dort gehen wir deutlich tiefer ins Detail, inklusive Checklisten und Vorlagen.</p>
+
+            <p class="source-note">Quellen: EU AI Act, Verordnung (EU) 2024/1689; European Commission, „AI Act Implementation Timeline" (2024); Irish Data Protection Commission, Meta-Entscheidung (2023); Gartner, „Preparing for the EU AI Act" (2025).</p>
+
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-dim)"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="author-box-info">
+                    <h4>Über den Autor</h4>
+                    <p><strong>Ilias Albay</strong> ist Wirtschaftsingenieur und Gründer von ILDEN KI Consulting. Er berät mittelständische Unternehmen bei der strategischen Einführung von KI — mit Fokus auf messbare Ergebnisse statt Hype.</p>
+                </div>
+            </div>
+
+            <!-- Related Articles -->
+            <div class="related-articles">
+                <h3>Weiterlesen</h3>
+                <a href="ki-projekte-scheitern.html" class="related-link">
+                    <strong>Warum 87% aller KI-Projekte scheitern — und was die restlichen 13% anders machen</strong>
+                    Die fünf häufigsten Gründe und wie erfolgreiche Projekte anders vorgehen.
+                </a>
+                <a href="roi-von-ki.html" class="related-link">
+                    <strong>ROI von KI: So rechnen Sie richtig — und vermeiden teure Fehler</strong>
+                    Warum die meisten ROI-Berechnungen falsch sind und wie Sie es besser machen.
+                </a>
+            </div>
+
+            <!-- CTA -->
+            <div class="article-cta">
+                <h3>Lassen Sie uns über Ihre KI-Strategie sprechen</h3>
+                <p>30 Minuten, unverbindlich. Wir prüfen gemeinsam, ob Ihre KI-Systeme bereit für den EU AI Act sind.</p>
+                <a href="../kontakt.html" class="btn btn-primary">Gespräch buchen &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="../ki-strategie.html">KI-Strategie</a></li><li><a href="../automatisierung.html">Automatisierung</a></li><li><a href="../datenanalyse.html">Datenanalyse</a></li><li><a href="../schulungen.html">Schulungen</a></li><li><a href="../implementierung.html">Implementierung</a></li><li><a href="../compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="../ueber-uns.html">Über ILDEN</a></li><li><a href="../methodik.html">Methodik</a></li><li><a href="../referenzen.html">Referenzen</a></li><li><a href="../insights.html">Insights</a></li><li><a href="../kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="../js/main.js"></script>
+
+</body></html>

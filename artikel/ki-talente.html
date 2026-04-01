@@ -1,0 +1,242 @@
+<!DOCTYPE html><html lang="de"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KI-Talente gewinnen und halten — ILDEN Insights</title>
+<meta name="description" content="Der Kampf um KI-Talente: Was Data Scientists wirklich wollen und wie der Mittelstand gegen FAANG-Gehälter bestehen kann.">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" type="image/svg+xml" href="../images/icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+.content-body { max-width: 720px; margin: 0 auto; }
+.content-body p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); }
+.content-body h2 { font-family: var(--font-heading); font-size: clamp(1.5rem, 2.5vw, 2rem); margin: var(--space-xl) 0 var(--space-sm); color: var(--text-primary); }
+.content-body h3 { font-family: var(--font-heading); font-size: 1.3rem; margin: var(--space-lg) 0 var(--space-xs); color: var(--text-primary); }
+.content-body ul, .content-body ol { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.9; margin-bottom: var(--space-md); padding-left: 1.5em; }
+.content-body li { margin-bottom: 8px; }
+.content-body blockquote { border-left: 3px solid var(--blue); padding: var(--space-sm) var(--space-md); margin: var(--space-lg) 0; background: rgba(74,144,217,0.05); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+.content-body blockquote p { font-style: italic; color: var(--text-primary); margin-bottom: 0; }
+.content-body strong { color: var(--text-primary); }
+.content-body a { color: var(--blue-light); text-decoration: underline; text-underline-offset: 3px; }
+.content-body a:hover { color: var(--blue-pale); }
+.source-note { font-size: 0.85rem; color: var(--text-dim); font-style: italic; }
+.author-box { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: var(--space-lg) 0; margin: var(--space-xl) 0; display: flex; gap: var(--space-md); align-items: center; }
+.author-box-info h4 { color: var(--text-primary); margin-bottom: 4px; }
+.author-box-info p { color: var(--text-secondary); font-size: var(--type-small); margin: 0; }
+.author-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--surface); display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 2px solid var(--border); }
+.related-articles { margin: var(--space-xl) 0; }
+.related-articles h3 { font-family: var(--font-heading); margin-bottom: var(--space-md); color: var(--text-primary); }
+.related-link { display: block; padding: var(--space-sm) var(--space-md); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: var(--space-sm); transition: var(--transition); color: var(--text-secondary); text-decoration: none; }
+.related-link:hover { border-color: var(--blue); background: rgba(74,144,217,0.04); color: var(--text-primary); }
+.related-link strong { display: block; color: var(--text-primary); margin-bottom: 4px; }
+.article-cta { text-align: center; padding: var(--space-xl); background: var(--surface); border-radius: var(--radius-xl); border: 1px solid var(--border); margin: var(--space-xl) 0; }
+.article-cta h3 { font-family: var(--font-heading); font-size: 1.5rem; margin-bottom: var(--space-sm); color: var(--text-primary); }
+.article-cta p { color: var(--text-secondary); margin-bottom: var(--space-md); max-width: 480px; margin-left: auto; margin-right: auto; }
+.decision-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin: var(--space-lg) 0; }
+.decision-card { padding: var(--space-md); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-md); }
+.decision-card h4 { color: var(--blue-light); font-size: 1rem; margin-bottom: 8px; font-family: var(--font-heading); }
+.decision-card p { font-size: 0.9rem; margin-bottom: 8px; }
+.decision-card ul { font-size: 0.85rem; padding-left: 1.2em; }
+.decision-card li { margin-bottom: 4px; }
+.talent-stat { display: flex; gap: var(--space-md); margin: var(--space-lg) 0; flex-wrap: wrap; }
+.talent-stat-item { flex: 1; min-width: 140px; text-align: center; padding: var(--space-md); background: var(--surface); border-radius: var(--radius-md); border: 1px solid var(--border); }
+.talent-stat-item .ts-number { font-family: var(--font-heading); font-size: 1.8rem; color: var(--blue-light); display: block; }
+.talent-stat-item .ts-label { font-size: 0.78rem; color: var(--text-dim); margin-top: 4px; display: block; }
+@media (max-width: 768px) { .decision-grid { grid-template-columns: 1fr; } .author-box { flex-direction: column; text-align: center; } }
+</style>
+</head><body>
+
+<!-- Navigation -->
+<nav class="navbar" id="navbar"><div class="container nav-container">
+    <a href="../index.html" class="logo"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img"></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Navigation"><span></span><span></span><span></span></button>
+    <div class="nav-menu" id="navMenu"><ul class="nav-links">
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Leistungen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu"><div class="dropdown-grid">
+            <a href="../ki-strategie.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>KI-Strategie</strong><span>Roadmap & Potenzialanalyse</span></div></a>
+            <a href="../automatisierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Automatisierung</strong><span>Workflows & Prozesse</span></div></a>
+            <a href="../datenanalyse.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Datenanalyse</strong><span>ML & Analytics</span></div></a>
+            <a href="../schulungen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Schulungen</strong><span>Workshops & Training</span></div></a>
+            <a href="../implementierung.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Implementierung</strong><span>Deployment</span></div></a>
+            <a href="../compliance.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Compliance</strong><span>AI Act</span></div></a>
+        </div></div></li>
+        <li class="nav-dropdown"><a href="#" class="nav-link dropdown-trigger">Unternehmen <svg width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a><div class="dropdown-menu" style="min-width:320px"><div class="dropdown-grid" style="grid-template-columns:1fr">
+            <a href="../ueber-uns.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Über ILDEN</strong><span>Team & Werte</span></div></a>
+            <a href="../methodik.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Methodik</strong><span>Framework</span></div></a>
+            <a href="../referenzen.html" class="dropdown-item"><div class="dropdown-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H6M12 4v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div><strong>Referenzen</strong><span>Case Studies</span></div></a>
+        </div></div></li>
+        <li><a href="../insights.html" class="nav-link">Insights</a></li>
+        <li><a href="../kontakt.html" class="nav-link">Kontakt</a></li>
+    </ul><div class="nav-cta"><a href="../kontakt.html" class="btn btn-primary btn-small">Gespräch buchen</a></div></div>
+</div></nav>
+<div class="nav-overlay" id="navOverlay"></div>
+
+<main>
+
+<section class="page-hero" style="padding:160px 0 var(--space-lg)">
+    <div class="container" style="max-width:720px">
+        <a href="../insights.html" style="color:var(--blue-light);font-size:var(--type-small);display:inline-flex;align-items:center;gap:6px;margin-bottom:var(--space-md);text-decoration:none">&larr; Zurück zu Insights</a>
+        <div style="display:inline-block;font-size:0.65rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue-light);background:rgba(74,144,217,0.1);padding:6px 14px;border-radius:100px;margin-bottom:var(--space-md)">TRENDS</div>
+        <h1 style="font-size:var(--type-display);margin-bottom:var(--space-sm);line-height:1.1">KI-Talente gewinnen und halten: Der Kampf um die besten Köpfe</h1>
+        <div style="display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text-dim);flex-wrap:wrap">
+            <span>Ilias Albay</span><span style="opacity:0.4">·</span><span>Wirtschaftsingenieur</span><span style="opacity:0.4">·</span><span>14. Januar 2026</span><span style="opacity:0.4">·</span><span>6 Min. Lesezeit</span>
+        </div>
+    </div>
+</section>
+
+<section class="content-section" style="padding:var(--space-xl) 0 var(--space-2xl)">
+    <div class="container" style="max-width:720px">
+        <div class="content-body">
+
+            <p>Die besten Data Scientists, die ich kenne, haben alle eines gemeinsam: Sie wollen an echten Problemen arbeiten, nicht an Dashboards. Sie wollen Modelle bauen, die tatsächlich eingesetzt werden — nicht PowerPoint-Folien, die in Schubladen verschwinden. Und sie sind bereit, dafür auf 30% Gehalt zu verzichten, wenn das Unternehmen stimmt.</p>
+
+            <p>Das ist die gute Nachricht für den Mittelstand. Die schlechte: Die meisten Mittelständler wissen das nicht. Und so verlieren sie den Kampf um KI-Talente, bevor er überhaupt beginnt.</p>
+
+            <h2>Die Lage in Zahlen</h2>
+
+            <div class="talent-stat">
+                <div class="talent-stat-item">
+                    <span class="ts-number">3,5 Mio.</span>
+                    <span class="ts-label">Unbesetzte KI-Stellen weltweit (WEF 2025)</span>
+                </div>
+                <div class="talent-stat-item">
+                    <span class="ts-number">68%</span>
+                    <span class="ts-label">der Unternehmen nennen Talentmangel als Hauptbremse (McKinsey)</span>
+                </div>
+                <div class="talent-stat-item">
+                    <span class="ts-number">21%</span>
+                    <span class="ts-label">Gehaltssteigerung für KI-Rollen in 2025 (Hays)</span>
+                </div>
+            </div>
+
+            <p>Das World Economic Forum schätzt die globale Lücke an KI-Fachkräften auf 3,5 Millionen Stellen. In Deutschland ist die Situation besonders angespannt: Der Bitkom-Verband meldet 149.000 offene IT-Stellen insgesamt, davon ein wachsender Anteil im KI-Bereich. Die durchschnittliche Time-to-Hire für einen Senior Data Scientist liegt laut StepStone bei über 6 Monaten. Sechs Monate, in denen Ihr Projekt stillsteht.</p>
+
+            <h2>Was KI-Talente wirklich wollen</h2>
+
+            <p>Ich habe in den letzten Jahren mit dutzenden Data Scientists, ML Engineers und KI-Forschern gesprochen. Über das, was sie bei einem Arbeitgeber suchen. Die Antworten haben mich überrascht — nicht weil sie ungewöhnlich wären, sondern weil sie so anders sind als das, was die meisten Stellenanzeigen bieten.</p>
+
+            <h3>1. Echte Projekte, echter Impact</h3>
+
+            <p>Der Nummer-eins-Faktor. Nicht Gehalt. Nicht Obstkorb. Nicht Tischtennisplatte. Sondern die Frage: „Wird meine Arbeit tatsächlich genutzt?" Ein Data Scientist bei Google verdient vielleicht 180.000 Euro — und trainiert Modelle, die nie deployed werden, weil das Projekt nach sechs Monaten eingestellt wird. Ein Data Scientist im Mittelstand verdient 95.000 Euro — und baut ein System, das morgen in der Produktion läuft und dem Unternehmen messbar Geld spart.</p>
+
+            <p>Welches Szenario finden Sie attraktiver? Die meisten Talente, die ich kenne, wählen Option zwei. Vorausgesetzt, das Unternehmen macht klar, dass es seine KI-Projekte ernst meint.</p>
+
+            <h3>2. Autonomie und Gestaltungsspielraum</h3>
+
+            <p>Gute KI-Talente wollen nicht nach Vorschrift arbeiten. Sie wollen die Freiheit, Technologien auszuwählen, Ansätze zu testen, Fehler zu machen und daraus zu lernen. Das ist im Mittelstand oft einfacher als im Konzern, wo jede Toolentscheidung drei Monate durch das Architecture Review Board dauert. Nutzen Sie diesen Vorteil.</p>
+
+            <h3>3. Der Tech Stack</h3>
+
+            <p>Ja, der Tech Stack ist wichtig. Nicht weil Data Scientists technikverliebte Nerds sind (okay, manche schon), sondern weil ein veralteter Stack ihre Arbeit unproduktiv macht. Wenn Ihre „KI-Infrastruktur" aus einem Shared Server mit 16 GB RAM besteht, auf dem ein Python 2.7 läuft, wird kein ernsthaftes Talent bei Ihnen anfangen. Sie brauchen keine GPU-Farm. Aber Sie brauchen eine moderne, cloudbasierte Umgebung, in der Leute effizient arbeiten können.</p>
+
+            <h3>4. Weiterbildung und Community</h3>
+
+            <p>Das KI-Feld bewegt sich so schnell, dass man nach sechs Monaten Pause den Anschluss verliert. Gute Talente wollen Konferenzen besuchen, Paper lesen, mit der Community austauschen. Budget für Weiterbildung ist nicht „nice to have" — es ist eine Mindestanforderung. Laut einer LinkedIn-Studie (2024) ist „Lern- und Entwicklungsmöglichkeiten" der drittwichtigste Faktor bei der Arbeitgeberwahl für Tech-Talente.</p>
+
+            <h2>Build vs. Buy vs. Partner</h2>
+
+            <p>Nicht jedes Unternehmen muss ein eigenes Data-Science-Team aufbauen. Es gibt drei Modelle, und jedes hat seine Berechtigung:</p>
+
+            <div class="decision-grid">
+                <div class="decision-card">
+                    <h4>Build</h4>
+                    <p>Eigenes Team aufbauen</p>
+                    <ul>
+                        <li>Volle Kontrolle über IP</li>
+                        <li>Langfristiger Kompetenzaufbau</li>
+                        <li>Hohe Anfangsinvestition</li>
+                        <li>6–12 Monate bis zur Produktivität</li>
+                    </ul>
+                </div>
+                <div class="decision-card">
+                    <h4>Buy</h4>
+                    <p>Fertige Lösungen einkaufen</p>
+                    <ul>
+                        <li>Schnelle Umsetzung</li>
+                        <li>Geringeres Risiko</li>
+                        <li>Eingeschränkte Anpassbarkeit</li>
+                        <li>Vendor Lock-in möglich</li>
+                    </ul>
+                </div>
+                <div class="decision-card">
+                    <h4>Partner</h4>
+                    <p>Externe Spezialisten einbinden</p>
+                    <ul>
+                        <li>Sofort verfügbare Expertise</li>
+                        <li>Flexibel skalierbar</li>
+                        <li>Wissenstransfer möglich</li>
+                        <li>Abhängigkeit vom Partner</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Meine Empfehlung für die meisten Mittelständler: Starten Sie mit einem Partner, der Ihnen die ersten Projekte umsetzt und gleichzeitig internes Know-how aufbaut. Stellen Sie parallel einen oder zwei eigene Leute ein — nicht als Projektleiter, sondern als technische Ansprechpartner, die vom Partner lernen und langfristig die Verantwortung übernehmen. Das ist kein „Outsourcing". Das ist ein strukturierter Kompetenzaufbau.</p>
+
+            <h2>Fünf Tipps für den Mittelstand</h2>
+
+            <p>Konkret — was können Sie tun, wenn Sie gegen Google, Microsoft und SAP um Talente konkurrieren?</p>
+
+            <ol>
+                <li><strong>Schreiben Sie ehrliche Stellenanzeigen.</strong> Keine Buzzword-Listen. Beschreiben Sie das konkrete Projekt, die Daten, die Technologie, das Team. Data Scientists lesen Stellenanzeigen wie Code — Bullshit fällt sofort auf.</li>
+                <li><strong>Bieten Sie Sichtbarkeit.</strong> Lassen Sie Ihre Talente auf Konferenzen sprechen, Blogposts schreiben, Open-Source-Projekte beitragen. Das kostet wenig und ist für viele mehr wert als eine Gehaltserhöhung.</li>
+                <li><strong>Flexible Arbeitsmodelle.</strong> Remote-First oder zumindest Hybrid. Das ist kein Benefit mehr — es ist Standard. Laut einer Stack Overflow Developer Survey (2024) lehnen 62% der Entwickler Stellen ab, die Full-Time-Office voraussetzen.</li>
+                <li><strong>Schnelle Hiring-Prozesse.</strong> Wenn Ihr Bewerbungsprozess 8 Wochen dauert, hat das Talent nach 3 Wochen bei jemand anderem unterschrieben. Drei Runden maximal: Screening, technisches Interview, Kultur-Fit. In zwei Wochen erledigt.</li>
+                <li><strong>Investieren Sie in Upskilling.</strong> Sie müssen nicht immer extern rekrutieren. Vielleicht gibt es in Ihrer IT-Abteilung jemanden, der sich seit zwei Jahren im Stillen Python beibringt. Finden Sie diese Leute. Geben Sie ihnen eine Chance. Schicken Sie sie auf ein Data-Science-Bootcamp. Der ROI ist enorm.</li>
+            </ol>
+
+            <h2>Das Fazit, das keiner hören will</h2>
+
+            <p>Talent allein löst keine Probleme. Ich habe Unternehmen gesehen, die brillante Data Scientists eingestellt haben — und sie dann mit schlechten Daten, unklaren Aufgaben und fehlender Infrastruktur verheizen. Das Ergebnis: Nach 12 Monaten kündigt das Talent, frustriert und desillusioniert. Und das Unternehmen sagt: „KI funktioniert bei uns nicht."</p>
+
+            <p>KI-Talente zu gewinnen ist nur der erste Schritt. Sie zu halten erfordert eine Umgebung, in der sie wirksam sein können. Das bedeutet: klare Projekte, saubere Daten, moderne Tools und — vor allem — ein Management, das versteht, was KI kann und was nicht. Das ist anspruchsvoll. Aber es ist machbar.</p>
+
+            <p class="source-note">Quellen: World Economic Forum, „Future of Jobs Report 2025"; McKinsey Global Institute, „The State of AI 2024"; Bitkom, „IT-Fachkräfte Report 2025"; LinkedIn, „Global Talent Trends 2024"; Stack Overflow, „Developer Survey 2024"; Hays, „Salary Guide Technology 2025".</p>
+
+            <!-- Author Box -->
+            <div class="author-box">
+                <div class="author-avatar">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--text-dim)"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="author-box-info">
+                    <h4>Über den Autor</h4>
+                    <p><strong>Ilias Albay</strong> ist Wirtschaftsingenieur und Gründer von ILDEN KI Consulting. Er berät mittelständische Unternehmen bei der strategischen Einführung von KI — mit Fokus auf messbare Ergebnisse statt Hype.</p>
+                </div>
+            </div>
+
+            <!-- Related Articles -->
+            <div class="related-articles">
+                <h3>Weiterlesen</h3>
+                <a href="prompt-engineering.html" class="related-link">
+                    <strong>Prompt Engineering für Führungskräfte: Was Sie wirklich wissen müssen</strong>
+                    Kein technischer Guide — ein strategischer.
+                </a>
+                <a href="ki-projekte-scheitern.html" class="related-link">
+                    <strong>Warum 87% aller KI-Projekte scheitern — und was die restlichen 13% anders machen</strong>
+                    Die fünf häufigsten Gründe und wie erfolgreiche Projekte anders vorgehen.
+                </a>
+            </div>
+
+            <!-- CTA -->
+            <div class="article-cta">
+                <h3>Lassen Sie uns über Ihre KI-Strategie sprechen</h3>
+                <p>30 Minuten, unverbindlich. Wir helfen Ihnen, die richtige Talent-Strategie für Ihre KI-Initiativen zu entwickeln.</p>
+                <a href="../kontakt.html" class="btn btn-primary">Gespräch buchen &rarr;</a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><img src="../images/logo-white.png" alt="ILDEN" class="logo-img" style="height:28px;width:auto"><p>Process. Automation. Performance.<br>KI-Beratung, die Ergebnisse liefert.</p></div>
+    <div class="footer-links"><h4>Leistungen</h4><ul><li><a href="../ki-strategie.html">KI-Strategie</a></li><li><a href="../automatisierung.html">Automatisierung</a></li><li><a href="../datenanalyse.html">Datenanalyse</a></li><li><a href="../schulungen.html">Schulungen</a></li><li><a href="../implementierung.html">Implementierung</a></li><li><a href="../compliance.html">Compliance</a></li></ul></div>
+    <div class="footer-links"><h4>Unternehmen</h4><ul><li><a href="../ueber-uns.html">Über ILDEN</a></li><li><a href="../methodik.html">Methodik</a></li><li><a href="../referenzen.html">Referenzen</a></li><li><a href="../insights.html">Insights</a></li><li><a href="../kontakt.html">Kontakt</a></li></ul></div>
+    <div class="footer-links"><h4>Rechtliches</h4><ul><li><a href="../impressum.html">Impressum</a></li><li><a href="../datenschutz.html">Datenschutz</a></li></ul></div>
+</div><div class="footer-bottom"><p>&copy; 2026 ILDEN KI Consulting. Alle Rechte vorbehalten.</p></div></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="../js/main.js"></script>
+
+</body></html>

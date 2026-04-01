@@ -1,0 +1,6 @@
+# Zugriff auf config.php und data/ blockieren
+<FilesMatch "^(config\.php|init-db\.php)$">
+    Deny from all
+</FilesMatch>
+
+# Nur submit.php ist öffentlich erreichbar
