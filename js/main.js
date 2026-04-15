@@ -134,66 +134,64 @@ document.addEventListener('DOMContentLoaded', () => {
         heroEls.forEach(el => el.setAttribute('data-hero', ''));
 
         if (heroH1) {
-            const heroTl = gsap.timeline({ defaults: { ease: 'power4.out' } });
-
-            // Split h1 into lines for staggered reveal
-            const h1Text = heroH1.innerHTML;
-            const lines = h1Text.split('<br>').length > 1 ? h1Text.split('<br>') : [h1Text];
-            heroH1.innerHTML = lines.map(line => `<span class="line-wrap"><span class="line-inner">${line.trim()}</span></span>`).join('');
-
-            const style = document.createElement('style');
-            style.textContent = `.line-wrap { display: block; overflow: hidden; } .line-inner { display: block; }`;
-            document.head.appendChild(style);
+            // Hero: fast, no delay. Alles sofort sichtbar.
+            const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
             heroTl
-                .fromTo(heroOverline, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.2)
-                .fromTo('.line-inner', { y: '110%' }, { y: '0%', duration: 0.9, stagger: 0.15 }, 0.4)
-                .fromTo(heroText, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.9)
-                .fromTo(heroCta, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5 }, 1.1);
+                .fromTo(heroOverline, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 }, 0)
+                .fromTo(heroH1, { y: 15, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4 }, 0.1)
+                .fromTo(heroText, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 }, 0.2)
+                .fromTo(heroCta, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3 }, 0.3);
 
             if (heroVisual) {
-                heroTl.fromTo(heroVisual, { x: 60, opacity: 0 }, { x: 0, opacity: 1, duration: 1, ease: 'power3.out' }, 0.5);
+                heroTl.fromTo(heroVisual, { x: 30, opacity: 0 }, { x: 0, opacity: 1, duration: 0.5 }, 0.15);
+            }
+
+            // Logo in hero
+            const heroLogo = document.querySelector('.hero-logo');
+            if (heroLogo) {
+                heroTl.fromTo(heroLogo, { opacity: 0 }, { opacity: 1, duration: 0.4 }, 0);
             }
         }
 
-        // --- Scroll-triggered section reveals (skip hero elements) ---
+        // --- Scroll reveals: FAST, subtle ---
         document.querySelectorAll('[data-animate]').forEach(el => {
             if (el.hasAttribute('data-hero') || el.closest('[data-hero]')) return;
 
             const type = el.dataset.animate || 'up';
             const from = { opacity: 0 };
-            const to = { opacity: 1, duration: 0.8, ease: 'power3.out' };
+            const to = { opacity: 1, duration: 0.4, ease: 'power2.out' };
 
-            if (type === 'up' || type === '') { from.y = 50; to.y = 0; }
+            if (type === 'up' || type === '') { from.y = 20; to.y = 0; }
             else if (type === 'fade') { /* just opacity */ }
-            else if (type === 'slide-left') { from.x = -60; to.x = 0; }
-            else if (type === 'slide-right') { from.x = 60; to.x = 0; }
-            else if (type === 'scale') { from.scale = 0.92; to.scale = 1; }
+            else if (type === 'slide-left') { from.x = -25; to.x = 0; }
+            else if (type === 'slide-right') { from.x = 25; to.x = 0; }
+            else if (type === 'scale') { from.scale = 0.96; to.scale = 1; }
 
             gsap.fromTo(el, from, {
                 ...to,
                 scrollTrigger: {
                     trigger: el,
-                    start: 'top 88%',
+                    start: 'top 92%',
                     once: true,
                 },
             });
         });
 
-        // --- Staggered children ---
+        // --- Staggered children: fast ---
         document.querySelectorAll('[data-stagger]').forEach(container => {
             if (container.hasAttribute('data-hero') || container.closest('[data-hero]')) return;
 
             gsap.fromTo(container.children,
-                { y: 40, opacity: 0 },
+                { y: 15, opacity: 0 },
                 {
                     y: 0, opacity: 1,
-                    duration: 0.6,
-                    stagger: 0.1,
-                    ease: 'power3.out',
+                    duration: 0.35,
+                    stagger: 0.06,
+                    ease: 'power2.out',
                     scrollTrigger: {
                         trigger: container,
-                        start: 'top 85%',
+                        start: 'top 90%',
                         once: true,
                     },
                 }

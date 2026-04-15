@@ -547,7 +547,7 @@ h3 { font-size: var(--type-h3); }
 /* ===== ANIMATIONS ===== */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
 /* Animation states — only applied when JS adds .will-animate class */
-[data-animate].will-animate { opacity: 0; transform: translateY(40px); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
+[data-animate].will-animate { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; }
 [data-animate].will-animate.visible { opacity: 1; transform: translateY(0); }
 [data-animate="fade"].will-animate { transform: none; }
 [data-animate="slide-left"].will-animate { transform: translateX(-40px); }
